@@ -1,0 +1,123 @@
+.header-sec{
+    display: flex;
+    justify-content: center;
+    background: url("./assets/headerBg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 34px;
+}
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1280px;
+    width: 90%;
+    align-items: center;
+}
+.header-content,.header-image {
+    width: 47%;
+}
+.header-content{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.header-content h1{
+    font-family: 'Outfit';
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 65.52px;
+    text-align: left;
+    color: #000000;
+}
+.header-cards{
+    display: flex;
+gap: 20px;
+align-items: center;
+}
+.header-card{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.header-card >DIV{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.header-card h5{
+    font-family: 'Outfit';
+    font-size: 14px;
+    font-weight: 500;
+    
+    text-align: left;
+    color: #000000;
+}
+.header-card p{
+    font-family: 'Lato';
+    font-size: 12px;
+    font-weight: 400;
+    
+    text-align: left;
+    color: #202020;
+}
+.header-pricing{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.header-pricing h2{
+    font-family: 'Outfit';
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 50px;
+    text-align: left;
+    color: #FFFFFF;
+    padding: 17px 60px;
+    background: url("./assets/h2bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.header-pricing-card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-pricing-card p{
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26.24px;
+    text-align: left;
+    color: #131313;
+}
+@media (max-width: 1024px) {
+    .header-container{
+        gap: 30px;
+    }
+
+    .header-image,.header-content{
+        width: 100%;
+    }
+    .header-image img{
+        width: 100%;
+    }
+    .header-content h1{
+        font-size: 32px;
+        line-height: normal;
+    }
+    .header-pricing{
+        flex-direction: column;
+    }
+    .header-sec{
+        padding-bottom: 34px;
+    }
+    .label-container a{
+        width: 49%;
+    }
+}
+@media (max-width: 767px) {
+    .header-container{
+        flex-direction: column;
+    }
+}

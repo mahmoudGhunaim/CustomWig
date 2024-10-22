@@ -1,0 +1,152 @@
+.HairLace-sec{
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+}
+.HairLace-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1280px;
+}
+.HairLace-head{
+    margin-bottom: 40px;
+}
+.HairLace-head H2{
+    font-family: 'Outfit';
+    font-size: 43.8px;
+    font-weight: 500;
+    line-height: 52.62px;
+    text-align: center;
+    color: #000000;
+}
+.HairLace-cards{
+    display: flex;
+    justify-content: space-between;
+}
+.HairLace-card{
+    width: 33.3%;
+    position: relative;
+}
+.HairLace-card-content{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+    width: 101%;
+    align-items: center;
+    gap: 10px;
+    height: 75px;
+    background: #FFFFFFBF;
+
+}
+.HairLace-card-content h6{
+    font-family: 'Outfit';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #131313;
+}
+.HairLace-card-selected{
+    width: 40% !important;
+    min-width: 40%;
+}
+.HairLace-card img {
+    height: 320px;
+    width: 100%;
+    object-fit: cover;
+}
+.HairLace-card-content img {
+    height: auto;
+    width: auto;
+}
+.HairLace-card-tabs .MuiTabs-flexContainer{
+    justify-content: space-between;
+
+}
+.HairLace-card-tabs {
+    background: white;
+    padding: 30px 35px 0;
+}
+.HairLace-card-tabs .MuiTabs-indicator {
+    display: none;
+}
+.HairLace-card-tabs .MuiBox-root  .MuiBox-root {
+    border-bottom: none !important  ;
+}
+.HairLace-card-tabs .MuiTabs-flexContainer button{
+    width: 24%;
+    border: 1px solid #131313;
+    font-family: 'Outfit';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #131313;
+    position: relative;
+}
+.HairLace-card-tabs .MuiTabs-flexContainer button.Mui-selected {
+    background: #131313;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.HairLace-card-tabs .MuiTabs-flexContainer button.Mui-selected::before {
+    content: "";
+    background: url("./assets/check.svg");
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+}
+.HairLace-card-tabs p {
+    font-family: 'Outfit';
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 26.6px;
+    text-align: left;
+}
+.HairLace-card-tabs-content > div{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+.HairLace-card-tabs >div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.HairLace-card-content p{
+    display: none;
+}
+.HairLace-card-selected .HairLace-card-content p{
+    display: inline-block;
+    color: #505050 !important;
+    font-family: 'Outfit';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+@media (max-width: 1024px){
+    .HairLace-cards{
+        flex-direction: column;
+    }
+    .HairLace-card ,.HairLace-card-selected{
+        width: 100% !important;
+    }
+    .HairLace-card-tabs .MuiTabs-flexContainer{
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .HairLace-card-tabs .MuiTabs-flexContainer button{
+        width: 100%;
+    }
+    .HairLace-card-tabs-content > div{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

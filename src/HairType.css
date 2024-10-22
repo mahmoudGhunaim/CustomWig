@@ -1,0 +1,188 @@
+.HairType-sec{
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+}
+.HairType-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    width: 90%;
+}
+.HairType-head h2{
+    font-family: 'Outfit';
+    font-size: 43.8px;
+    font-weight: 500;
+    line-height: 52.62px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+}
+.HairType-cards{
+    display: flex;
+    justify-content: space-between;
+}
+.HairType-card{
+    position: relative;
+    width: 33%;
+    cursor: pointer;
+}
+.HairType-card img{
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+}
+.HairType-card-active{
+    width: 40% !important;
+}
+.HairType-label{
+    position: absolute;
+    bottom: 0px;
+    background: #ffffff99;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+}
+.HairType-card  .HairType-label p{
+    display: none;
+}
+.HairType-card-active  .HairType-label p{
+    display: inline-block;
+}
+.HairType-label img{
+    width: auto;
+    height: auto;
+}
+.HairType-label h6,.HairType-label p{
+    font-family: 'Outfit';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #131313;
+}
+.HairType-label p {
+    color: #505050 !important;
+}
+/* HairTypeAnimations.css */
+.fade-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  .card-tabs .MuiTabs-flexContainer {
+    justify-content: flex-start;
+    gap: 5.3%;
+  }
+  .card-tabs .MuiTabs-flexContainer button{
+    width: 33%;
+    border: 1px solid #131313;
+    font-family: Outfit;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #131313;
+    position: relative;
+  }
+  .card-tabs .MuiTabs-flexContainer button.Mui-selected{
+    background: #131313;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .card-tabs .MuiTabs-flexContainer button.Mui-selected::before{
+    content: "";
+    background: url("./assets/check.svg");
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+  }
+  .card-tabs .MuiTabs-indicator{
+    display: none;
+  }
+  .card-tabs .MuiBox-root .MuiBox-root {
+    border-bottom: none;
+  }
+  .card-tabs{
+    background: white;
+    padding: 30px 35px 0;
+  }
+  .card-tabs p{
+    font-family: 'Outfit';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25.6px;
+    text-align: left;
+
+  }
+  .mobile{
+    display: none !important;
+  }
+  @media (max-width: 1024px) {
+    .HairType-cards{
+      flex-direction: column;
+    }
+    .btn-sliider button{
+      background: none;
+      border: none;
+    }
+    .btn-sliider{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 75px;
+    }
+    .btn-sliider button{
+      z-index: 11;
+      position: absolute;
+      top: 29.5%;
+    }
+    .btn-sliider button:last-child{
+      right: 15px;
+    }
+    .btn-sliider button:first-child{
+      left: 15px;
+    }
+    .desktop{
+      display: none !important;
+    }
+    .mobile{
+      display: block !important;
+    }
+    .HairType-card {
+      width: 100%;
+    }
+    .HairType-card-active{
+      width: 100% !important;
+    }.card-tabs .MuiTabs-flexContainer{
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+    .card-tabs .MuiTabs-flexContainer button{
+      width: 100%;
+    }
+    .card-swiper{
+      max-width: 100%;
+    }
+  }
