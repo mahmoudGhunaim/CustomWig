@@ -78,19 +78,21 @@ align-items: center;
     background-position: center center;
     background-size: contain;
 }
-.header-pricing-card{
+.header-pricing button{
     display: flex;
     align-items: center;
     gap: 10px;
-}
-.header-pricing-card p{
     font-family: 'Outfit';
     font-size: 18px;
     font-weight: 400;
     line-height: 26.24px;
     text-align: left;
     color: #131313;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
+
 @media (max-width: 1024px) {
     .header-container{
         gap: 30px;

@@ -22,7 +22,7 @@ import "./HeadMeasurements.css";
 
 const HeadMeasurements = ({measurements,setMeasurements}) => {
   const [unit, setUnit] = useState("inch");
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(window.innerWidth <= 1024 ? "mobile" : "");
 
  
 

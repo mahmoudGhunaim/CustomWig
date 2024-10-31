@@ -65,6 +65,7 @@ const AlmostDone = ({
   getPriceSilkTop,
   getPriceBleachedKnots,
   selectedPrice,
+  CartHandlerComponent,
 }) => {
   const hairTypes = {
     Straight: ["Silk Straight", "Kinky Straight", "Yaki Straight"],
@@ -382,10 +383,7 @@ const AlmostDone = ({
               </div>
             </div>
             <h2>SAR 2649.00</h2>
-            <button>
-              <img src={Cart} alt="Add to Cart Icon" />
-              Add to Cart
-            </button>
+           {CartHandlerComponent}
           </div>
         </div>
       </div>

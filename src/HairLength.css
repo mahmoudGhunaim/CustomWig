@@ -128,7 +128,7 @@
 }
 @media (max-width: 1024px) {
     .HairLength-container{
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 30px;
     }
     .HairLength-image img{
@@ -147,4 +147,8 @@
     .HairLength-Length {
         left: 33%;
     }
+    .HairLength-content{
+        gap: 15px;
+    }
+    
 }

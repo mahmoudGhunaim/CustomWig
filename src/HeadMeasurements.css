@@ -201,8 +201,7 @@
         object-fit: cover;
     }
     .HeadMeasurements-options{
-        flex-direction: column;
-        align-items: center;
+       display: none;
     }
     .HeadMeasurements-options button img{
         width: auto !important;

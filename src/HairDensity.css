@@ -11,11 +11,45 @@
     justify-content: space-between;
     padding: 30px;
     border: 1px solid #DDDDDD;
+    position: relative;
+    background: white;
 }
 .HairDensity-content{
     display: flex;
     flex-direction: column;
     gap: 30px;
+    align-items: flex-start;
+}
+.HairDensity-container button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #131313;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #131313;
+}
+.swiper-button-next,.swiper-button-prev{
+    color: #131313 !important;
+}
+.HairDensity-Slider {
+    width: 100%;
+}
+.HairDensity-container button img{
+    width: 24px;
+    height: 24px;
 }
 .HairDensity-content h6{
     font-family: 'Outfit';
@@ -55,15 +89,197 @@
     text-align: left;
     color: #131313;
 }
+.image-detail-hair-density{
+    max-width: -webkit-fill-available;
+    position: absolute;
+}
+.image-detail-hair-density-image img{
+    max-width: 525px;
+}
+.image-detail-hair-density-swiper{
+    max-width: 100%;}
+    .HairDensity-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+      
+      .main-content {
+        display: flex;
+        transition: opacity 0.3s ease;
+        justify-content: space-between;
+      }
+      
+      .main-content.hidden {
+        display: none;
+      }
+      
+      /* Detail section styles */
+      .detail-section {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      
+      .detail-section.visible {
+        opacity: 1;
+        visibility: visible;
+        height: 525px;
+      }
+      
+      .detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .detail-header h2{
+        font-family: 'Outfit';
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: left;
+        color: #131313;
+      }
+      .back-button {
+        padding: 8px 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      
+      .back-button:hover {
+        opacity: 0.8;
+      }
+      
+      /* Image detail styles */
+
+      
+      .image-detail-hair-density-image {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      
+      .image-detail-hair-density-image div {
+        flex: 1;
+        text-align: center;
+      }
+      
+      .image-detail-hair-density-image img {
+        max-width: 300px;
+        height: auto;
+        object-fit: cover;
+        width: 50%;
+      }
+      
+      /* Swiper customization */
+      .image-detail-hair-density-swiper {
+        padding: 20px 0;
+      }
+      
+      .image-detail-hair-density-slide p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+      .detail-section {
+        display: none !important;
+      }
+      .detail-section.visible{
+        display: block !important;
+      }
+      .clickable-image {
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+      
+      .clickable-image:hover {
+        opacity: 0.9;
+      }
+      
+      /* Image viewer overlay styles */
+      .image-viewer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        padding: 40px;
+      }
+      
+      .image-viewer-content {
+        max-width: 90%;
+        max-height: 90vh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .image-viewer-content img {
+        max-width: 100%;
+        max-height: calc(90vh - 60px);
+        object-fit: contain;
+      }
+      .clickable-image {
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+      
+      .clickable-image:hover {
+        opacity: 0.9;
+      }
+      .image-viewer-content p {
+        color: white;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      
+      .close-viewer {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 32px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      
+      .close-viewer:hover {
+        opacity: 0.8;
+      }
 @media (max-width: 1024px) {
-    .HairDensity-container{
+    .main-content{
         flex-direction: column-reverse;
         gap: 30px;
+        }
+    .HairDensity-Slider{
+        margin:0 20px ;
     }
     .HairDensity-image img{
         width: 100%;
     }
     .HairDensity-content,.HairDensity-image{
         width: 100%;
+    }
+}
+@media (max-width: 767px) {
+    .detail-section.visible{
+        height: 250px;
     }
 }

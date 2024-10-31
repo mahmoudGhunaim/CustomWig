@@ -17,6 +17,28 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    align-items: flex-start;
+}
+.PUedge-content button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #131313;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #131313;
 }
 .PUedge-content h2{
     font-family: 'Outfit';
@@ -85,7 +107,23 @@ color: #131313;
     background: url("./assets/whiteChech.svg");
     background-size: contain;
 }
-
+.SwiperSlide-pu p{
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    color: #131313;
+} 
+.SwiperSlide-pu >div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SwiperSlide-pu >div img{
+    width: 50%;
+    max-width: 350px;
+}
 @media (max-width: 1024px){
     .PUedge-select{
         display: flex;
@@ -94,5 +132,9 @@ color: #131313;
     }
     .PUedge-select button{
         width: 100%;
+    }
+    .SwiperSlide-pu >div img{
+        width: 40%;
+        max-width: 350px;
     }
 }

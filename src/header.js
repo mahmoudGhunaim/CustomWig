@@ -4,7 +4,8 @@ import headerImage from "./assets/image_fx_ (30) 1.png";
 import deliveryIcon from "./assets/Groupqqq.svg";      
 import confidenceIcon from "./assets/aaaaaaaaaaa.svg"; 
 import Cart from "./assets/cart-plus.svg"
-const Header = () => {
+
+const Header = ({CartHandlerComponent }) => {
   return (
     <section className="header-sec">
       <div className="header-container">
@@ -31,10 +32,7 @@ const Header = () => {
           </div>
           <div className="header-pricing">
             <h2>SAR 2649.00</h2>
-            <div className="header-pricing-card">
-              <img src={Cart} alt="Add to Cart Icon" />
-              <p>Add to Cart</p>
-            </div>
+            {CartHandlerComponent}
           </div>
         </div>
       </div>
