@@ -85,9 +85,9 @@
     position: relative;
 }
 .HairLength-Length {
-    position: absolute; /* Allow positioning within the image */
-    left: 39.5%; /* Adjust as necessary for visual display */
-    transform: translateY(-50%); /* Center it vertically */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,-50%); 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,14 +139,10 @@
     .HairLength-content h6{
         flex-wrap: wrap;
     }
-    .HairLength-Length{
-        left: 39%;
-    }
+
 }
 @media (max-width: 767px) {
-    .HairLength-Length {
-        left: 33%;
-    }
+
     .HairLength-content{
         gap: 15px;
     }

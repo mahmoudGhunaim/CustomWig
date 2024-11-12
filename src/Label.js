@@ -64,25 +64,7 @@ const Label = ({
   selectedPrice,
   selectedNameColors
 }) => {
-  console.log("select",selectedOptionsBK,
-    Density,
-    selectedColor,
-    length,
-    isCm,
-    measurements,
-    lastSelected,
-    lastSelectedTab,
-    selectedCard,
-    selectedColors,
-    selectedOptions,
-    selectedOptionsSilkTop,
-    getPriceLength,
-    getPriceDensity,
-    getPricePUedge,
-    getPriceSilkTop,
-    getPriceBleachedKnots,
-    selectedPrice,
-    selectedNameColors)
+  
   const hairTypes = {
     Straight: ["Silk Straight", "Kinky Straight", "Yaki Straight"],
     Wavy: ["Deep Wave", "Body Wave", "Water Wave"],

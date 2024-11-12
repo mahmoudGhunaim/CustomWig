@@ -84,6 +84,8 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
       
     }));
   };
+  console.log(selectedColors.hairColor,"selectedColors.hairColor");
+  console.log(selectedColors.hairColor,"selectedColors.hairColor");
   const colorOptions = {
     hairColor: {
       black: [
@@ -506,7 +508,7 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
                       handleColorNameSelect(activeTab, color.name);
                     }}
                   >
-                    <h5 style={{ backgroundColor: color.color }}>{color.id}</h5>
+                     <h5 className={`${selectedColors.hairColor === color.color ? "colorr-active" : ""}`} style={{ backgroundColor: color.color }}>{color.id}</h5>
                     <h6>{color.name}</h6>
                   </div>
                 ))

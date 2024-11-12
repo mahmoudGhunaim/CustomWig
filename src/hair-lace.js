@@ -204,7 +204,6 @@ const HairLace = ({
     setLastActiveTab(newValue); // Track the active tab
     // Your existing logic to change tabs...
   };
-  console.log("selectedCard", showDetailImages);
 
   return (
     <section className="HairLace-sec">

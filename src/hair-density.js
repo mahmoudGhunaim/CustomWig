@@ -109,6 +109,7 @@ const HairDensity = ({ Density, setDensity, getPriceDensity }) => {
                 marks={marks}
                 min={60}
                 max={150}
+                disableSwap  
                 sx={{
                   color: "#131313",
                   "& .MuiSlider-thumb": {

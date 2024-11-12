@@ -66,6 +66,7 @@ const AlmostDone = ({
   getPriceBleachedKnots,
   selectedPrice,
   CartHandlerComponent,
+  totalPrice,
 }) => {
   const hairTypes = {
     Straight: ["Silk Straight", "Kinky Straight", "Yaki Straight"],
@@ -382,7 +383,7 @@ const AlmostDone = ({
                 </div>
               </div>
             </div>
-            <h2>SAR 2649.00</h2>
+            <h2>SAR {totalPrice}</h2>
            {CartHandlerComponent}
           </div>
         </div>

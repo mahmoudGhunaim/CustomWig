@@ -217,6 +217,9 @@
     filter: blur(5px);
     z-index: 2;
 }
+.colorr-active{
+    border:3px solid #00CD1F;
+}
 @media (max-width: 1024px) {
     .HairColor-image img{
         width: 100%;

@@ -85,6 +85,19 @@ color: #131313;
     background: url("./assets/whiteChech.svg");
     background-size: contain;
 }
+.error-alert{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    color: #ff0000;
+    font-family: 'Outfit';
+    font-size: 14px;
+    font-weight: 400;
+}
+.error-alert img{
+    width: 24px;
+}
 @media (max-width: 1024px){
     .BleachedKnots-select{
         flex-direction: column;

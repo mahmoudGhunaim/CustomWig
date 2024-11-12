@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import React, { useState } from "react"; // Ensure to import useState
+import React, { useState, useEffect } from "react"; // Ensure to import useState
 import Header from "./header";
 import Label from "./Label";
 import Customize from "./customize";
@@ -23,6 +22,9 @@ function App() {
   const [selectedColor, setSelectedColor] = useState(null);
   const [length, setLength] = useState(12); // Initial length state in inches
   const [isCm, setIsCm] = useState(false); // State to track whether to use inches or centimeters
+
+  const [basePrice, setBasePrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const [measurements, setMeasurements] = useState(
     window.innerWidth <= 1024
@@ -84,6 +86,75 @@ function App() {
   const [selectedOptionsSilkTop, setSelectedOptionsSilkTop] = useState([]);
   const [selectedOptionsBK, setSelectedOptionsBK] = useState([]);
 
+  useEffect(() => {
+    fetchProductData();
+}, []);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [
+    basePrice,
+    selectedColors,
+    length,
+    Density,
+    selectedOptions,
+    selectedOptionsSilkTop,
+    selectedOptionsBK,
+    selectedPrice,
+  ]);
+
+  const calculateTotalPrice = () => {
+    let total = basePrice;
+    // Add addon prices
+    if (selectedPrice.hairColor) {
+      total += parseFloat(selectedPrice.hairColor);
+    }
+    if (selectedPrice.colorGradient) {
+      total += parseFloat(selectedPrice.colorGradient);
+    }
+    if (selectedPrice.highlight) {
+      total += parseFloat(selectedPrice.highlight);
+    }
+    // Add length price
+    const lengthPrice = getPriceLength();
+    if (lengthPrice !== "0 SAR") {
+      total += parseFloat(lengthPrice.replace(" SAR", ""));
+    }
+    // Add density price
+    const densityPrice = getPriceDensity();
+    if (densityPrice !== "0 SAR") {
+      total += parseFloat(densityPrice.replace(" SAR", ""));
+    }
+    // Add PU edge price
+    const puEdgePrice = getPricePUedge();
+    if (puEdgePrice !== "0 SAR") {
+      total += parseFloat(puEdgePrice.replace(" SAR", ""));
+    }
+    // Add Silk Top price
+    const silkTopPrice = getPriceSilkTop();
+    if (silkTopPrice !== "0 SAR") {
+      total += parseFloat(silkTopPrice.replace(" SAR", ""));
+    }
+    // Add Bleached Knots price
+    const bleachedKnotsPrice = getPriceBleachedKnots();
+    if (bleachedKnotsPrice !== "0 SAR") {
+      total += parseFloat(bleachedKnotsPrice.replace(" SAR", ""));
+    }
+    setTotalPrice(total);
+  };
+  const fetchProductData = async () => {
+    // try {
+        const response = await fetch('/wp-json/wc/v3/product-info/801');
+        const data = await response.json();
+        if (data.price) {
+          console.log(data);
+          console.log("data.price",data.price)
+            setBasePrice(parseFloat(data.price));
+        }
+    // } catch (error) {
+        // console.error('Error fetching product data:', error);
+    // }
+};
   const getPriceLength = () => {
     const priceMap = {
       16: "+50 SAR",
@@ -153,11 +224,13 @@ function App() {
       selectedOptionsSilkTop={selectedOptionsSilkTop}
       selectedOptionsBK={selectedOptionsBK}
       measurements={measurements}
+      basePrice={basePrice}
+      totalPrice={totalPrice}
     />
   );
   return (
     <React.Fragment>
-      <Header CartHandlerComponent={cartHandler} />
+      <Header CartHandlerComponent={cartHandler} totalPrice={totalPrice} />
       <Label
         selectedNameColors={selectedNameColors}
         selectedPrice={selectedPrice}
@@ -233,9 +306,8 @@ function App() {
         measurements={measurements}
         setMeasurements={setMeasurements}
       />
-      
+
       <AlmostDone
-        CartHandlerComponent={cartHandler}
         selectedPrice={selectedPrice}
         getPriceBleachedKnots={getPriceBleachedKnots}
         getPriceSilkTop={getPriceSilkTop}
@@ -254,6 +326,8 @@ function App() {
         selectedCard={selectedCard}
         lastSelectedTab={lastSelectedTab}
         selectedColors={selectedColors}
+        CartHandlerComponent={cartHandler}
+        totalPrice={totalPrice}
       />
     </React.Fragment>
   );
