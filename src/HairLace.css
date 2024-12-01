@@ -25,6 +25,17 @@
 .HairLace-cards{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+.w-full{
+    width: 100%;
+}
+.HairLace-card-tabs-fix{
+    padding: 24px !important;
+}
+.HairLace-card-tabs-fix img:first-child{
+    width: 95px;
+    height: 95px;
 }
 .HairLace-card{
     width: 33.3%;

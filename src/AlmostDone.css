@@ -128,6 +128,9 @@ font-weight: 500;
 line-height: 50px;
 color: #FFFFFF;
 }
+.AlmostDone-Payment >div{
+    width: 100% ;
+}
 .AlmostDone-Payment button{
     width: 100%;
     height: 100px;

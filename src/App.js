@@ -83,7 +83,7 @@ function App() {
     highlight: null, // Default color for highlights
   });
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [selectedOptionsSilkTop, setSelectedOptionsSilkTop] = useState([]);
+  // const [selectedOptionsSilkTop, setSelectedOptionsSilkTop] = useState([]);
   const [selectedOptionsBK, setSelectedOptionsBK] = useState([]);
 
   useEffect(() => {
@@ -98,7 +98,7 @@ function App() {
     length,
     Density,
     selectedOptions,
-    selectedOptionsSilkTop,
+    // selectedOptionsSilkTop,
     selectedOptionsBK,
     selectedPrice,
   ]);
@@ -131,10 +131,10 @@ function App() {
       total += parseFloat(puEdgePrice.replace(" SAR", ""));
     }
     // Add Silk Top price
-    const silkTopPrice = getPriceSilkTop();
-    if (silkTopPrice !== "0 SAR") {
-      total += parseFloat(silkTopPrice.replace(" SAR", ""));
-    }
+    // const silkTopPrice = getPriceSilkTop();
+    // if (silkTopPrice !== "0 SAR") {
+    //   total += parseFloat(silkTopPrice.replace(" SAR", ""));
+    // }
     // Add Bleached Knots price
     const bleachedKnotsPrice = getPriceBleachedKnots();
     if (bleachedKnotsPrice !== "0 SAR") {
@@ -197,12 +197,12 @@ function App() {
     }
     return "0 SAR";
   };
-  const getPriceSilkTop = () => {
-    if (selectedOptionsSilkTop.includes("Silk-Top")) {
-      return "+60 SAR";
-    }
-    return "0 SAR";
-  };
+  // const getPriceSilkTop = () => {
+  //   if (selectedOptionsSilkTop.includes("Silk-Top")) {
+  //     return "+60 SAR";
+  //   }
+  //   return "0 SAR";
+  // };
   const getPriceBleachedKnots = () => {
     if (selectedOptionsBK.includes("Bleached")) {
       return "+30 SAR";
@@ -221,7 +221,7 @@ function App() {
       lastSelectedTab={lastSelectedTab}
       selectedColor={selectedColor}
       selectedOptions={selectedOptions}
-      selectedOptionsSilkTop={selectedOptionsSilkTop}
+      // selectedOptionsSilkTop={selectedOptionsSilkTop}
       selectedOptionsBK={selectedOptionsBK}
       measurements={measurements}
       basePrice={basePrice}
@@ -235,13 +235,13 @@ function App() {
         selectedNameColors={selectedNameColors}
         selectedPrice={selectedPrice}
         getPriceBleachedKnots={getPriceBleachedKnots}
-        getPriceSilkTop={getPriceSilkTop}
+        // getPriceSilkTop={getPriceSilkTop}
         getPricePUedge={getPricePUedge}
         getPriceDensity={getPriceDensity}
         getPriceLength={getPriceLength}
         selectedOptions={selectedOptions}
         Density={Density}
-        selectedOptionsSilkTop={selectedOptionsSilkTop}
+        // selectedOptionsSilkTop={selectedOptionsSilkTop}
         selectedOptionsBK={selectedOptionsBK}
         selectedColor={selectedColor}
         length={length}
@@ -292,12 +292,13 @@ function App() {
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
-      <SilkTop
+      {/* <SilkTop
         getPriceSilkTop={getPriceSilkTop}
         selectedOptionsSilkTop={selectedOptionsSilkTop}
         setSelectedOptionsSilkTop={setSelectedOptionsSilkTop}
-      />
+      /> */}
       <BleachedKnots
+        selectedCard={selectedCard}
         getPriceBleachedKnots={getPriceBleachedKnots}
         selectedOptionsBK={selectedOptionsBK}
         setSelectedOptionsBK={setSelectedOptionsBK}
@@ -310,13 +311,13 @@ function App() {
       <AlmostDone
         selectedPrice={selectedPrice}
         getPriceBleachedKnots={getPriceBleachedKnots}
-        getPriceSilkTop={getPriceSilkTop}
+        // getPriceSilkTop={getPriceSilkTop}
         getPricePUedge={getPricePUedge}
         getPriceDensity={getPriceDensity}
         getPriceLength={getPriceLength}
         selectedOptions={selectedOptions}
         Density={Density}
-        selectedOptionsSilkTop={selectedOptionsSilkTop}
+        // selectedOptionsSilkTop={selectedOptionsSilkTop}
         selectedOptionsBK={selectedOptionsBK}
         selectedColor={selectedColor}
         length={length}

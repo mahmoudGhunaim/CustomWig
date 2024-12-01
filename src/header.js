@@ -15,22 +15,7 @@ const Header = ({CartHandlerComponent,  basePrice,
         </div>
         <div className="header-content">
           <h1>Create Your Own Hair Today!</h1>
-          <div className="header-cards">
-            <div className="header-card">
-              <img src={deliveryIcon} alt="Delivery Time Icon" />
-              <div>
-                <h5>Delivery time</h5>
-                <p>35-40 Days</p>
-              </div>
-            </div>
-            <div className="header-card">
-              <img src={confidenceIcon} alt="Confidence Icon" />
-              <div>
-                <h5>Shop with Confidence</h5>
-                <p>30 Days free return</p>
-              </div>
-            </div>
-          </div>
+          
           <div className="header-pricing">
             <h2>{totalPrice} SAR</h2>
             {CartHandlerComponent}

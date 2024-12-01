@@ -74,6 +74,11 @@
     color: #FFFFFF;
     padding: 5px;
 }
+.HairDensity-image img{
+  width: 100%;
+  max-height: 370px;
+  object-fit: contain;
+}
 .HairDensity-content{
     width: 47%;
 }

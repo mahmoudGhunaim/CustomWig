@@ -221,7 +221,7 @@ const CartHandler = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="">
       
       <button 
         onClick={handleAddToCart}

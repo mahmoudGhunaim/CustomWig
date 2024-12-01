@@ -18,6 +18,15 @@ import density120 from "./assets/density 120.png";
 import densityhair120 from "./assets/densityhair120.png";
 import density150 from "./assets/densityhair100.png";
 import densityhair150 from "./assets/density 150.png";
+
+import HairDensity60 from "./assets/Hair density60.jpg"
+import HairDensity80 from "./assets/Hair density80.jpg"
+import HairDensity90 from "./assets/Hair density90.jpg"
+import HairDensity100 from "./assets/Hair density100.jpg"
+import HairDensity120 from "./assets/Hair density120.jpg"
+import HairDensity150 from "./assets/Hair density150.jpg"
+
+
 import "swiper/css";
 import "./HairDensity.css";
 import "swiper/css/navigation";
@@ -52,6 +61,25 @@ const ImageViewer = ({ image, alt, onClose }) => {
 const HairDensity = ({ Density, setDensity, getPriceDensity }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const getHairDensityImage = (value) => {
+    switch (value) {
+      case 60:
+        return HairDensity60;
+      case 80:
+        return HairDensity80;
+      case 90:
+        return HairDensity90;
+      case 100:
+        return HairDensity100;
+      case 120:
+        return HairDensity120;
+      case 150:
+        return HairDensity150;
+      default:
+        return HairDensitya;
+    }
+  };
 
   const handleSliderChange = (event, newValue) => {
     setDensity(newValue);
@@ -144,7 +172,7 @@ const HairDensity = ({ Density, setDensity, getPriceDensity }) => {
             </Box>
           </div>
           <div className="HairDensity-image">
-            <img src={HairDensitya} alt="Hair Density" />
+          <img src={getHairDensityImage(Density)} alt={`Hair Density ${Density}%`} />
           </div>
         </div>
 

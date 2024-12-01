@@ -75,6 +75,19 @@
     align-items: center;
     gap: 10px;
 }
+.blue-size-alert{
+    font-family: 'Lato';
+    font-size: 14.75px;
+    font-weight: 600;
+    line-height: 17.7px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
 .HeadMeasurements-alert p{
     display: flex;
     align-items: center;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import plus from "./assets/plus.svg";
 import check_circle from "./assets/check-circle.svg";
 import "./bleached-knots.css"
-const BleachedKnots = ({setSelectedOptionsBK,selectedOptionsBK,getPriceBleachedKnots}) => {
+const BleachedKnots = ({setSelectedOptionsBK,selectedOptionsBK,getPriceBleachedKnots,selectedCard}) => {
 
     const handleSelect = (option) => {
         if (option === 'Without') {
@@ -17,7 +17,8 @@ const BleachedKnots = ({setSelectedOptionsBK,selectedOptionsBK,getPriceBleachedK
       
       
   return (
-<section className='BleachedKnots-sec' id='BK'>
+<section className='BleachedKnots-sec' id='BK' style={{ display: selectedCard === 'Front' || selectedCard === 'Full' ? 'flex' : 'none' }}>
+
       <div className='BleachedKnots-container'>
         <div className='BleachedKnots-content'>
         <h2>

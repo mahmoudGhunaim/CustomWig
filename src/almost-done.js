@@ -16,7 +16,7 @@ import DeepWave from "./assets/DeepWave.png";
 import BodyWave from "./assets/BodyWave.jpg";
 import WaterWave from "./assets/WaterWave.jpg";
 import Curly from "./assets/Curly.png";
-import KinkyCurly from "./assets/KinkyCurly.jpg";
+import KinkyCurly from "./assets/KinkyCurly.png";
 
 import Transparent from "./assets/Transparent.png";
 
@@ -31,16 +31,10 @@ const hairTypeImages = {
 };
 
 const labels = {
-  Front: ["With Stretch Back", "Mono Top", "With Weft Back"],
-  Full: [
-    "With Adhesive",
-    "Without Adhesive",
-    "Mono Top",
-    "Medical with Silk Top",
-  ],
+  Front: ["Premium Front Lace Wig",""],
+  Full: ["Premium Full Lace Wig",""],
   Silk: ["Silk Top with Adhesive", "Silk Top No Adhesive", "Medical Silk Top"],
 };
-
 const imageMap = {
   Front: frontBr,
   Full: fullBr,
@@ -58,11 +52,11 @@ const AlmostDone = ({
   selectedCard,
   selectedColors,
   selectedOptions,
-  selectedOptionsSilkTop,
+  // selectedOptionsSilkTop,
   getPriceLength,
   getPriceDensity,
   getPricePUedge,
-  getPriceSilkTop,
+  // getPriceSilkTop,
   getPriceBleachedKnots,
   selectedPrice,
   CartHandlerComponent,
@@ -227,7 +221,7 @@ const AlmostDone = ({
             <a href="#NetType">
               <div className="AlmostDone-card">
                 <img src={imageMap[currentNetType]} alt={currentNetType} />
-                <h6>Net Type</h6>
+                <h6>Base Type</h6>
                 <p>
                   {lastSelectedTab[selectedCard] === undefined
                     ? "Please choose"
@@ -279,38 +273,7 @@ const AlmostDone = ({
                 </div>
               </a>
             )}
-            {selectedOptionsSilkTop.length > 0 && (
-              <a href="#ST">
-                <div className="AlmostDone-card ST">
-                  <div className="Haircolor-label">
-                    <h3>
-                      {" "}
-                      <h5>ST</h5>
-                    </h3>
-                  </div>
-                  <h6>Silk-Top</h6>
-                  <p>
-                    {selectedOptionsSilkTop.map((option, index) => (
-                      <span key={index}>
-                        {option}
-                        {index < selectedOptionsSilkTop.length - 1 &&
-                          " & "}{" "}
-                        {/* Add a comma if it's not the last item */}
-                      </span>
-                    ))}
-                    <h6
-                      className={`${
-                        getPriceSilkTop() !== "0 SAR"
-                          ? getPriceSilkTop()
-                          : "zero-price"
-                      }`}
-                    >
-                      {getPriceSilkTop() !== "0 SAR" ? getPriceSilkTop() : null}
-                    </h6>
-                  </p>
-                </div>
-              </a>
-            )}
+           
             {selectedOptionsBK.length > 0 && (
               <a href="#BK">
                 <div className="AlmostDone-card BK">

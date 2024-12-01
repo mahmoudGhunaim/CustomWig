@@ -19,6 +19,8 @@ import Small from "./assets/Small.png";
 import Medium from "./assets/Medium.png";
 import Large from "./assets/Large.png";
 import "./HeadMeasurements.css";
+import Bluecircle from "./assets/blue-circle.png"
+
 
 const HeadMeasurements = ({measurements,setMeasurements}) => {
   const [unit, setUnit] = useState("inch");
@@ -135,8 +137,9 @@ const HeadMeasurements = ({measurements,setMeasurements}) => {
 
         <div
           className="HeadMeasurements-size"
-          style={{ display: size === "" ? "none" : "" }}
         >
+        <h6 className="blue-size-alert"><img src={Bluecircle}/>These are the brand's standard sizes. You can easily adjust them to perfectly suit your unique fit and style. We’re here to help make sure your wig feels like it was made just for you!</h6>
+          <div style={{ display: size === "" ? "none" : "" }}>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="head measurements table">
               <TableHead>
@@ -298,6 +301,7 @@ const HeadMeasurements = ({measurements,setMeasurements}) => {
                 <p>Measure the width of the hairline in the neck.</p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

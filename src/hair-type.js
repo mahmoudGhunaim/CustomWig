@@ -10,7 +10,7 @@ import DeepWave from "./assets/DeepWave.png";
 import BodyWave from "./assets/BodyWave.jpg";
 import WaterWave from "./assets/WaterWave.jpg";
 import Curly from "./assets/Curly.png";
-import KinkyCurly from "./assets/KinkyCurly.jpg";
+import KinkyCurly from "./assets/KinkyCurly.png";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
