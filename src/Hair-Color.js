@@ -84,8 +84,7 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
       
     }));
   };
-  console.log(selectedColors.hairColor,"selectedColors.hairColor");
-  console.log(selectedColors.hairColor,"selectedColors.hairColor");
+
   const colorOptions = {
     hairColor: {
       black: [

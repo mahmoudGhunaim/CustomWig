@@ -12,7 +12,7 @@ const CartHandler = ({
   lastSelectedTab,
   selectedColor,
   selectedOptions,
-  selectedOptionsSilkTop,
+  // selectedOptionsSilkTop,
   selectedOptionsBK,
   measurements,
   basePrice,
@@ -27,11 +27,10 @@ const CartHandler = ({
   };
   
   const labels = {
-    Front: ["With Stretch Back", "Mono Top", "With Weft Back"],
-    Full: ["With Adhesive", "Without Adhesive", "Mono Top", "Medical with Silk Top"],
+    Front: ["Premium Front Lace Wig",""],
+    Full: ["Premium Full Lace Wig",""],
     Silk: ["Silk Top with Adhesive", "Silk Top No Adhesive", "Medical Silk Top"],
   };
-
   const validateFields = () => {
     // Check required measurements
     if (!measurements.circumference || 
@@ -133,15 +132,6 @@ const CartHandler = ({
         field_type: "custom_text"
       }
     ];
-
-    if (selectedOptionsSilkTop.length > 0) {
-      addons.push({
-        name: "Silk-Top",
-        value: selectedOptionsSilkTop[0],
-        price: "60",
-        field_type: "multiple_choice"
-      });
-    }
 
     if (selectedOptions.length > 0) {
       selectedOptions.forEach(option => {

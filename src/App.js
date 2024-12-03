@@ -147,8 +147,7 @@ function App() {
         const response = await fetch('/wp-json/wc/v3/product-info/801');
         const data = await response.json();
         if (data.price) {
-          console.log(data);
-          console.log("data.price",data.price)
+         
             setBasePrice(parseFloat(data.price));
         }
     // } catch (error) {
