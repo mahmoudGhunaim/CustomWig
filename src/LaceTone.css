@@ -31,6 +31,9 @@
     text-align: left;
     color: #131313;
 }
+html[lang="ar"] .LaceTone-container p{
+    text-align: right;
+}
 .LaceTone-container h2 img{
     width: 24px;
     height: 24px;

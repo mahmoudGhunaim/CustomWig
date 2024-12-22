@@ -18,19 +18,44 @@
     color: #000000;
     margin-bottom: 40px;
 }
-.HairType-cards{
-    display: flex;
-    justify-content: space-between;
+.HairType-cards {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
-.HairType-card{
-    position: relative;
-    width: 33%;
-    cursor: pointer;
+
+.HairType-card {
+  position: relative;
+  width: 33.3%;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+  flex-shrink: 1;
+  opacity: 1;
+}
+
+.HairType-card img {
+  width: 100%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.HairType-card-active {
+  width: 40% !important;
+  min-width: 40%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  flex-shrink: 0;
+  opacity: 1;
+}
+
+.HairType-card:not(.HairType-card-active) {
+  width: 30%;
 }
 .HairType-card img{
     width: 100%;
     height: 440px;
     object-fit: cover;
+    opacity: 1;
 }
 .HairType-card-active{
     width: 40% !important;
@@ -125,7 +150,12 @@
   }
   .card-tabs{
     background: white;
-    padding: 30px 35px 0;
+    padding: 30px 35px ;
+  }
+  .HairType-label >div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .card-tabs p{
     font-family: 'Outfit';
@@ -134,6 +164,12 @@
     line-height: 25.6px;
     text-align: left;
 
+  }
+  html[lang="ar"] .card-tabs p,  html[lang="ar"] .HairType-label h6,  html[lang="ar"] .HairType-label p,html[lang="ar"] .HairLength-content h5,html[lang="ar"] .HairLength-content p{
+    text-align: right;
+  }
+  html[lang="ar"] .HairLength-Slider{
+    direction: ltr !important;
   }
   .mobile{
     display: none !important;

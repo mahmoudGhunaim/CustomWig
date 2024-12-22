@@ -22,11 +22,7 @@
     text-align: center;
     color: #000000;
 }
-.HairLace-cards{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
+
 .w-full{
     width: 100%;
 }
@@ -37,9 +33,38 @@
     width: 95px;
     height: 95px;
 }
-.HairLace-card{
+.HairLace-cards {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.HairLace-card {
     width: 33.3%;
     position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+    flex-shrink: 1;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.HairLace-card img {
+    width: 100%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.HairLace-card-selected {
+    width: 40% !important;
+    min-width: 40%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.HairLace-card:not(.HairLace-card-selected) {
+    width: 30%;
 }
 .HairLace-card-content{
     display: flex;
@@ -62,10 +87,7 @@
     text-align: left;
     color: #131313;
 }
-.HairLace-card-selected{
-    width: 40% !important;
-    min-width: 40%;
-}
+
 .HairLace-card img {
     height: 320px;
     width: 100%;
@@ -76,12 +98,13 @@
     width: auto;
 }
 .HairLace-card-tabs .MuiTabs-flexContainer{
-    justify-content: space-between;
-
+    /* justify-content: space-between; */
+    gap: 10%;
 }
 .HairLace-card-tabs {
     background: white;
     padding: 30px 35px 0;
+    width: 100%;
 }
 .HairLace-card-tabs .MuiTabs-indicator {
     display: none;
@@ -119,6 +142,9 @@
     font-weight: 400;
     line-height: 26.6px;
     text-align: left;
+}
+html[lang="ar"] .HairLace-card-tabs p{
+    text-align: right;
 }
 .HairLace-card-tabs-content{
     position: relative;

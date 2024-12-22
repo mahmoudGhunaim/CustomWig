@@ -326,6 +326,7 @@ function App() {
         selectedCard={selectedCard}
         lastSelectedTab={lastSelectedTab}
         selectedColors={selectedColors}
+        selectedNameColors={selectedNameColors}
         CartHandlerComponent={cartHandler}
         totalPrice={totalPrice}
       />

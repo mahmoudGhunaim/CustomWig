@@ -26,8 +26,21 @@
     font-size: 52px;
     font-weight: 600;
     line-height: 65.52px;
-    text-align: left;
+    text-align: center;
     color: #000000;
+}
+.header-content p{
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #282C3B;
+}
+html[lang="ar"] .header-content h1{
+    text-align: right;
 }
 .header-cards{
     display: flex;
@@ -92,7 +105,9 @@ align-items: center;
     background: none;
     cursor: pointer;
 }
-
+.header-image img{
+    width: 100%;
+}
 @media (max-width: 1024px) {
     .header-container{
         gap: 30px;

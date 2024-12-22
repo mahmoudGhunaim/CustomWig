@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import plus from "./assets/plus.svg";
 import check_circle from "./assets/check-circle.svg";
 import "./bleached-knots.css"
+import getTranslation from "./utils/translations";
+
 const BleachedKnots = ({setSelectedOptionsBK,selectedOptionsBK,getPriceBleachedKnots,selectedCard}) => {
 
     const handleSelect = (option) => {
@@ -22,26 +24,37 @@ const BleachedKnots = ({setSelectedOptionsBK,selectedOptionsBK,getPriceBleachedK
       <div className='BleachedKnots-container'>
         <div className='BleachedKnots-content'>
         <h2>
-            <img src={plus} alt="Plus icon" />
-            Bleached knots 
-            {selectedOptionsBK.length === 0 && <span>*optional</span>}
-            {selectedOptionsBK.length > 0 && <h6>{getPriceBleachedKnots()}</h6>}
-          </h2>
-                    <p>Optionally, choose bleached knots for an even more natural look. To ensure optimum strength of the knots, we only bleach the visible hair line.</p>
+  <img src={plus} alt={getTranslation('plus_icon_alt', 'Plus icon')} />
+  {getTranslation('bleached_knots', 'Bleached knots')}
+  {selectedOptionsBK.length === 0 && (
+    <span>*{getTranslation('optional', 'optional')}</span>
+  )}
+  {selectedOptionsBK.length > 0 && (
+    <h6>
+      {getPriceBleachedKnots().replace(' SAR', '')} {getTranslation('currency_sar', 'SAR')}
+    </h6>
+  )}
+</h2>
+<p>
+  {getTranslation(
+    'bleached_knots_description',
+    'Optionally, choose bleached knots for an even more natural look. To ensure optimum strength of the knots, we only bleach the visible hair line.'
+  )}
+</p>
         </div>
         <div className='BleachedKnots-select'>
-          <button 
-            className={selectedOptionsBK.length === 0 ? "BleachedKnots-button-selected" : ""} 
-            onClick={() => handleSelect('Without')}
-          >
-            Without
-          </button>
-          <button 
-            className={selectedOptionsBK.includes('Bleached') ? "BleachedKnots-button-selected" : ""}
-            onClick={() => handleSelect('Bleached')}
-          >
-            Bleached
-          </button>
+        <button 
+  className={selectedOptionsBK.length === 0 ? "BleachedKnots-button-selected" : ""} 
+  onClick={() => handleSelect('Without')}
+>
+  {getTranslation('without', 'Without')}
+</button>
+<button 
+  className={selectedOptionsBK.includes('Bleached') ? "BleachedKnots-button-selected" : ""}
+  onClick={() => handleSelect('Bleached')}
+>
+  {getTranslation('bleached', 'Bleached')}
+</button>
          
         </div>
       </div>

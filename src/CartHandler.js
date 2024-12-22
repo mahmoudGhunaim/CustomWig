@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Cart from "./assets/cart-plus.svg";
-import Alert from "./assets/alert-3.svg"
+import Alert from "./assets/alert-3.svg";
+import getTranslation from './utils/translations';
+
 const CartHandler = ({
   selectedColors,
   selectedNameColors,
@@ -12,7 +14,6 @@ const CartHandler = ({
   lastSelectedTab,
   selectedColor,
   selectedOptions,
-  // selectedOptionsSilkTop,
   selectedOptionsBK,
   measurements,
   basePrice,
@@ -21,61 +22,61 @@ const CartHandler = ({
   const [error, setError] = useState(null);
 
   const hairTypes = {
-    Straight: ["Silk Straight", "Kinky Straight", "Yaki Straight"],
-    Wavy: ["Deep Wave", "Body Wave", "Water Wave"],
-    Curly: ["Curly", "Jerry/Kinky Curl"],
+    Straight: [
+      getTranslation("silk_straight", "Straight"),
+      getTranslation("kinky_straight", "Kinky Straight"),
+      getTranslation("yaki_straight", "Yaki Straight")
+    ],
+    Wavy: [
+      getTranslation("deep_wave", "Wave"),
+      getTranslation("body_wave", "Body Wave"),
+      getTranslation("water_wave", "Water Wave")
+    ],
+    Curly: [
+      getTranslation("curly", "Curly"),
+      getTranslation("jerry_kinky_curl", "Jerry/Kinky Curl")
+    ],
   };
   
   const labels = {
-    Front: ["Premium Front Lace Wig",""],
-    Full: ["Premium Full Lace Wig",""],
-    Silk: ["Silk Top with Adhesive", "Silk Top No Adhesive", "Medical Silk Top"],
+    Front: [getTranslation("premium_front_lace_wig", "Premium Front Lace Wig"), ""],
+    Full: [getTranslation("premium_full_lace_wig", "Premium Full Lace Wig"), ""],
+    Silk: [getTranslation("front_lace_silk_top", "Front lace silk top"), getTranslation("folded_seamless_hairline", "Folded seamless hairline")],
   };
+
   const validateFields = () => {
-    // Check required measurements
     if (!measurements.circumference || 
         !measurements.frontToNape || 
         !measurements.forehead || 
         !measurements.siteToSite || 
         !measurements.neckWidth || 
         !measurements.head) {
-      setError("All measurements are required");
+      setError(getTranslation("measurements_required", "All measurements are required"));
       return false;
     }
 
-    // Check length
     if (!length) {
-      setError("Length is required");
+      setError(getTranslation("length_required", "Length is required"));
       return false;
     }
 
-    // Check Density
     if (!Density) {
-      setError("Density is required");
+      setError(getTranslation("density_required", "Density is required"));
       return false;
     }
 
-    // Check hair color
     if (!selectedNameColors?.hairColor) {
-      setError("Hair color is required");
+      setError(getTranslation("hair_color_required", "Hair color is required"));
       return false;
     }
 
-    // Check hair type selection
     if (!lastSelected?.type || !hairTypes[lastSelected.type]) {
-      setError("Hair type is required");
+      setError(getTranslation("hair_type_required", "Hair type is required"));
       return false;
     }
 
-    // Check tab selection
-    if (!Object.values(lastSelectedTab).some(value => value !== 0)) {
-      setError("Please select a style option");
-      return false;
-    }
-
-    // Check lace tone
     if (!selectedColor?.name) {
-      setError("Lace tone is required");
+      setError(getTranslation("lace_tone_required", "Lace tone is required"));
       return false;
     }
 
@@ -95,38 +96,38 @@ const CartHandler = ({
 
     const addons = [
       {
-        name: "Hair colour",
+        name: getTranslation("hair_color", "Hair colour"),
         value: selectedNameColors.hairColor,
         price: "",
         field_type: "multiple_choice"
       },
       {
-        name: "Hair Type",
+        name: getTranslation("hair_type", "Hair Type"),
         value: lastSelected.type ? 
           `${hairTypes[lastSelected.type][lastSelected.index]}` : "",
         price: "",
         field_type: "custom_text"
       },
       {
-        name: "Length Type",
-        value: `${length}${isCm ? ' cm' : ''}`,
+        name: getTranslation("length_type", "Length Type"),
+        value: `${length}${isCm ? getTranslation("cm", "cm") : ''}`,
         price: "",
         field_type: "multiple_choice"
       },
       {
-        name: "Hair density",
+        name: getTranslation("hair_density", "Hair density"),
         value: `${Density}`,
         price: "",
         field_type: "multiple_choice"
       },
       {
-        name: "Hair Lace",
+        name: getTranslation("hair_lace", "Hair Lace"),
         value: currentOption || "",
         price: "",
         field_type: "custom_text"
       },
       {
-        name: "Lace tone",
+        name: getTranslation("lace_tone", "Lace tone"),
         value: selectedColor?.name,
         price: "",
         field_type: "custom_text"
@@ -136,7 +137,7 @@ const CartHandler = ({
     if (selectedOptions.length > 0) {
       selectedOptions.forEach(option => {
         addons.push({
-          name: "PU edge",
+          name: getTranslation("pu_edge", "PU edge"),
           value: option,
           price: "30",
           field_type: "checkbox"
@@ -146,7 +147,7 @@ const CartHandler = ({
 
     if (selectedOptionsBK.length > 0) {
       addons.push({
-        name: "Bleached knots",
+        name: getTranslation("bleached_knots", "Bleached knots"),
         value: selectedOptionsBK[0],
         price: "30",
         field_type: "checkbox"
@@ -156,32 +157,32 @@ const CartHandler = ({
     if (measurements.circumference) {
       addons.push(
         {
-          name: "Head measurements - Circumference",
+          name: getTranslation("head_measurement_circumference", "Head measurements - Circumference"),
           value: measurements.circumference.toString(),
           field_type: "custom_text"
         },
         {
-          name: "Head measurements - Front to nape",
+          name: getTranslation("head_measurement_front_nape", "Head measurements - Front to nape"),
           value: measurements.frontToNape.toString(),
           field_type: "custom_text"
         },
         {
-          name: "Head measurements - Forehead (ear to ear)",
+          name: getTranslation("head_measurement_forehead", "Head measurements - Forehead (ear to ear)"),
           value: measurements.forehead.toString(),
           field_type: "custom_text"
         },
         {
-          name: "Head measurements - Site to site",
+          name: getTranslation("head_measurement_site", "Head measurements - Site to site"),
           value: measurements.siteToSite.toString(),
           field_type: "custom_text"
         },
         {
-          name: "Head measurements - Neck width",
+          name: getTranslation("head_measurement_neck", "Head measurements - Neck width"),
           value: measurements.neckWidth.toString(),
           field_type: "custom_text"
         },
         {
-          name: "Head (ear to ear)",
+          name: getTranslation("head_measurement_ear", "Head (ear to ear)"),
           value: measurements.head.toString(),
           field_type: "custom_text"
         }
@@ -205,24 +206,23 @@ const CartHandler = ({
         window.location.reload();
       }
     } catch (error) {
-      setError('Failed to add item to cart. Please try again.');
+      setError(getTranslation("cart_error", "Failed to add item to cart. Please try again."));
       console.error('Error:', error);
     }
   };
 
   return (
     <div className="">
-      
       <button 
         onClick={handleAddToCart}
         className="w-full h-16 flex items-center justify-center gap-2.5 font-outfit text-lg bg-transparent border border-gray-900 cursor-pointer hover:bg-gray-100 transition-colors"
       >
-        <img src={Cart} alt="Add to Cart Icon" />
-        <p>Add to Cart</p>
+        <img src={Cart} alt={getTranslation("cart_icon", "Add to Cart Icon")} />
+        <p>{getTranslation("add_to_cart", "Add to Cart")}</p>
       </button>
       {error && (
         <div className="text-red-500 text-sm mb-2 text-center error-alert">
-          <img src={Alert}/>  {error}
+          <img src={Alert} alt={getTranslation("alert_icon", "Alert Icon")}/> {error}
         </div>
       )}
     </div>

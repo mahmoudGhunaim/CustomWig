@@ -16,10 +16,10 @@ import Curly from "./assets/Curly.png";
 import KinkyCurly from "./assets/KinkyCurly.png";
 
 import Transparent from "./assets/Transparent.png";
-
 import frontBr from "./assets/front_br.png";
 import fullBr from "./assets/full_br.png";
 import silkBr from "./assets/silk_br.png";
+import getTranslation from './utils/translations'; // Import your translation utility
 
 const hairTypeImages = {
   Straight: [SilkStraight, KinkyStraight, YakiStraight],
@@ -28,15 +28,17 @@ const hairTypeImages = {
 };
 
 const labels = {
-  Front: ["Premium Front Lace Wig",""],
-  Full: ["Premium Full Lace Wig",""],
-  Silk: ["Silk Top with Adhesive", "Silk Top No Adhesive", "Medical Silk Top"],
+  Front: [getTranslation("front_lace_wig_title", "Front Lace-Wig"),""],
+  Full: [getTranslation("full_lace_wig_title", "Full Lace-Wig"),""],
+  Silk: [getTranslation("front_lace_silk_top", "Front lace silk top"), getTranslation("folded_seamless_hairline", "Folded seamless hairline")],
 };
+
 const imageMap = {
   Front: frontBr,
   Full: fullBr,
   Silk: silkBr,
 };
+
 const Label = ({
   selectedOptionsBK,
   Density,
@@ -49,7 +51,6 @@ const Label = ({
   selectedCard,
   selectedColors,
   selectedOptions,
-  // selectedOptionsSilkTop,
   getPriceLength,
   getPriceDensity,
   getPricePUedge,
@@ -59,14 +60,16 @@ const Label = ({
 }) => {
   
   const hairTypes = {
-    Straight: ["Silk Straight", "Kinky Straight", "Yaki Straight"],
-    Wavy: ["Deep Wave", "Body Wave", "Water Wave"],
-    Curly: ["Curly", "Jerry/Kinky Curl"],
+    Straight: [getTranslation("silk_straight", "Straight"), getTranslation("kinky_straight", "Kinky Straight"), getTranslation("yaki_straight", "Yaki Straight")],
+    Wavy: [getTranslation("deep_wave", "Wave"), getTranslation("body_wave", "Body Wave"), getTranslation("water_wave", "Water Wave")],
+    Curly: [getTranslation("curly", "Curly"), getTranslation("jerry_kinky_curl", "Jerry/Kinky Curl")],
   };
+
   const currentHairImage =
     lastSelected.type && hairTypeImages[lastSelected.type]
       ? hairTypeImages[lastSelected.type][lastSelected.index]
       : SilkStraight;
+
   const currentNetType = React.useMemo(() => {
     const lastNonZeroType = Object.entries(lastSelectedTab)
       .reverse()
@@ -87,7 +90,7 @@ const Label = ({
         <a href="#Haircolor">
           <div className="label-type">
             <div className="Haircolor-label">
-              <img src={hair} />
+              <img src={hair} alt={getTranslation("hair_icon", "Hair Icon")} />
               <svg
                 width="75"
                 height="75"
@@ -99,15 +102,16 @@ const Label = ({
                 <rect width="75" height="75" fill={selectedColors.hairColor} />
               </svg>
             </div>
-            <h6>Hair color</h6>
-            <p>{selectedNameColors.hairColor || "Please choose"} {selectedPrice.hairColor ? <h6>+{selectedPrice.hairColor} SAR</h6> :  ``}</p>
+            <h6>{getTranslation("hair_color", "Hair Color")}</h6>
+            <p>{selectedNameColors.hairColor || getTranslation("please_choose", "Please choose")} 
+              {selectedPrice.hairColor ? <h6>+{selectedPrice.hairColor} SAR</h6> :  ``}</p>
           </div>
         </a>
         {selectedColors.colorGradient !== null && (
           <a href="#Haircolor">
             <div className="label-type">
               <div className="Haircolor-label">
-                <img src={hair} />
+                <img src={hair} alt={getTranslation("hair_icon", "Hair Icon")} />
                 <svg
                   width="75"
                   height="75"
@@ -116,15 +120,12 @@ const Label = ({
                   xmlns="http://www.w3.org/2000/svg"
                   className="Haircolor-svg"
                 >
-                  <rect
-                    width="75"
-                    height="75"
-                    fill={selectedColors.colorGradient}
-                  />
+                  <rect width="75" height="75" fill={selectedColors.colorGradient} />
                 </svg>
               </div>
-              <h6>Colour gradient</h6>
-              <p>{selectedNameColors.colorGradient} {selectedPrice.colorGradient ? <h6>+{selectedPrice.colorGradient} SAR</h6> :  ``}</p>
+              <h6>{getTranslation("color_gradient", "Colour Gradient")}</h6>
+              <p>{selectedNameColors.colorGradient} 
+                {selectedPrice.colorGradient ? <h6>+{selectedPrice.colorGradient} SAR</h6> :  ``}</p>
             </div>
           </a>
         )}
@@ -132,7 +133,7 @@ const Label = ({
           <a href="#Haircolor">
             <div className="label-type">
               <div className="Haircolor-label">
-                <img src={hair} />
+                <img src={hair} alt={getTranslation("hair_icon", "Hair Icon")} />
                 <svg
                   width="75"
                   height="75"
@@ -141,42 +142,37 @@ const Label = ({
                   xmlns="http://www.w3.org/2000/svg"
                   className="Haircolor-svg"
                 >
-                  <rect
-                    width="75"
-                    height="75"
-                    fill={selectedColors.highlight}
-                  />
+                  <rect width="75" height="75" fill={selectedColors.highlight} />
                 </svg>
               </div>
-              <h6>Colour gradient</h6>
-              <p>{selectedNameColors.highlight} {selectedPrice.highlight ? <h6>+{selectedPrice.highlight} SAR</h6> :  ``}</p>
+              <h6>{getTranslation("highlight", "Colour Gradient")}</h6>
+              <p>{selectedNameColors.highlight} 
+                {selectedPrice.highlight ? <h6>+{selectedPrice.highlight} SAR</h6> :  ``}</p>
             </div>
           </a>
         )}
         <a href="#Hairtype">
           <div className="label-type">
             <div>
-              <img src={currentHairImage} />
+              <img src={currentHairImage} alt={getTranslation("hair_type", "Hair Type")} />
             </div>
-            <h6>Hair type</h6>
+            <h6>{getTranslation("hair_type", "Hair Type")}</h6>
             <p>
               {lastSelected.type
                 ? ` ${hairTypes[lastSelected.type][lastSelected.index]}`
-                : "Please choose"}
+                : getTranslation("please_choose", "Please choose")}
             </p>
           </div>
         </a>
         <a href="#Length">
           <div className="label-type">
-            <img src={HairLengthImage} />
-            <h6>Length</h6>
+            <img src={HairLengthImage} alt={getTranslation("hair_length", "Hair Length")} />
+            <h6>{getTranslation("length", "Length")}</h6>
             <p>
-              {length} {isCm === false ? `inch` : `cm`}{" "}
-              <h6
-                className={`${
-                  getPriceLength() !== "0 SAR" ? getPriceLength() : "zero-price"
-                }`}
-              >
+              {length} {isCm === false ? getTranslation("inch", "inch") : getTranslation("cm", "cm")}
+              <h6 className={`${
+                getPriceLength() !== "0 SAR" ? getPriceLength() : "zero-price"
+              }`}>
                 {getPriceLength() !== "0 SAR" ? getPriceLength() : null}
               </h6>
             </p>
@@ -184,17 +180,15 @@ const Label = ({
         </a>
         <a href="#Hairdensity">
           <div className="label-type">
-            <img src={Hairdensity} />
-            <h6>Hair density</h6>
+            <img src={Hairdensity} alt={getTranslation("hair_density", "Hair Density")} />
+            <h6>{getTranslation("hair_density", "Hair Density")}</h6>
             <p>
               {Density}%{" "}
-              <h6
-                className={`${
-                  getPriceDensity() !== "0 SAR"
-                    ? getPriceDensity()
-                    : "zero-price"
-                }`}
-              >
+              <h6 className={`${
+                getPriceDensity() !== "0 SAR"
+                  ? getPriceDensity()
+                  : "zero-price"
+              }`}>
                 {getPriceDensity() !== "0 SAR" ? getPriceDensity() : null}
               </h6>
             </p>
@@ -204,49 +198,44 @@ const Label = ({
         <a href="#NetType">
           <div className="label-type">
             <img src={imageMap[currentNetType]} alt={currentNetType} />
-            <h6>Base Type</h6>
+            <h6>{getTranslation("base_type", "Base Type")}</h6>
             <p>
               {lastSelectedTab[selectedCard] === undefined
-                ? "Please choose"
-                : lastSelectedTab[currentNetType] ===
-                  lastSelectedTab[selectedCard]
+                ? getTranslation("please_choose", "Please choose")
+                : lastSelectedTab[currentNetType] === lastSelectedTab[selectedCard]
                 ? currentOption
-                : "Different Selection"}
+                : getTranslation("different_selection", "Different Selection")}
             </p>
           </div>
         </a>
+        
         <a href="#Netcolor">
           <div className="label-type">
-            <img src={selectedColor?.image || Transparent} alt="Net color" />
-            <h6>Net color</h6>
-            <p>{selectedColor?.name || "Please choose"}</p>
+            <img src={selectedColor?.image || Transparent} alt={getTranslation("net_color", "Net Color")} />
+            <h6>{getTranslation("net_color", "Net Color")}</h6>
+            <p>{selectedColor?.name || getTranslation("please_choose", "Please choose")}</p>
           </div>
         </a>
+        
         {selectedOptions.length > 0 && (
           <a href="#PU">
             <div className="label-type PU">
               <div className="Haircolor-label">
-                <h3>
-                  {" "}
-                  <h5>PU</h5>
-                </h3>
+                <h3><h5>PU</h5></h3>
               </div>
-              <h6>PU edge</h6>
+              <h6>{getTranslation("pu_edge", "PU Edge")}</h6>
               <p>
                 {selectedOptions.map((option, index) => (
                   <span key={index}>
                     {option}
-                    {index < selectedOptions.length - 1 && " & "}{" "}
-                    {/* Add a comma if it's not the last item */}
+                    {index < selectedOptions.length - 1 && " & "}
                   </span>
                 ))}
-                <h6
-                  className={`${
-                    getPricePUedge() !== "0 SAR"
-                      ? getPricePUedge()
-                      : "zero-price"
-                  }`}
-                >
+                <h6 className={`${
+                  getPricePUedge() !== "0 SAR"
+                    ? getPricePUedge()
+                    : "zero-price"
+                }`}>
                   {getPricePUedge() !== "0 SAR" ? getPricePUedge() : null}
                 </h6>
               </p>
@@ -258,27 +247,21 @@ const Label = ({
           <a href="#BK">
             <div className="label-type BK">
               <div className="Haircolor-label">
-                <h3>
-                  {" "}
-                  <h5>BK</h5>
-                </h3>
+                <h3><h5>BK</h5></h3>
               </div>
-              <h6>Bleached knots</h6>
+              <h6>{getTranslation("bleached_knots", "Bleached Knots")}</h6>
               <p>
                 {selectedOptionsBK.map((option, index) => (
                   <span key={index}>
                     {option}
-                    {index < selectedOptionsBK.length - 1 && " & "}{" "}
-                    {/* Add a comma if it's not the last item */}
+                    {index < selectedOptionsBK.length - 1 && " & "}
                   </span>
                 ))}
-                <h6
-                  className={`${
-                    getPriceBleachedKnots() !== "0 SAR"
-                      ? getPriceBleachedKnots()
-                      : "zero-price"
-                  }`}
-                >
+                <h6 className={`${
+                  getPriceBleachedKnots() !== "0 SAR"
+                    ? getPriceBleachedKnots()
+                    : "zero-price"
+                }`}>
                   {getPriceBleachedKnots() !== "0 SAR"
                     ? getPriceBleachedKnots()
                     : null}
@@ -287,22 +270,23 @@ const Label = ({
             </div>
           </a>
         )}
+        
         <a href="#Measurements">
           <div className="label-type">
-            <img src={Measurements} />
-            <h6>Measurements</h6>
+            <img src={Measurements} alt={getTranslation("measurements", "Measurements")} />
+            <h6>{getTranslation("measurements", "Measurements")}</h6>
             <p>
               {measurements.circumference !== null ? (
                 <>
-                  {measurements.circumference || "Please choose"},
-                  {measurements.frontToNape || "Please choose"},
-                  {measurements.forehead || "Please choose"},
-                  {measurements.head || "Please choose"},
-                  {measurements.siteToSite || "Please choose"},
-                  {measurements.neckWidth || "Please choose"}
+                  {measurements.circumference || getTranslation("please_choose", "Please choose")}, 
+                  {measurements.frontToNape || getTranslation("please_choose", "Please choose")}, 
+                  {measurements.forehead || getTranslation("please_choose", "Please choose")}, 
+                  {measurements.head || getTranslation("please_choose", "Please choose")}, 
+                  {measurements.siteToSite || getTranslation("please_choose", "Please choose")}, 
+                  {measurements.neckWidth || getTranslation("please_choose", "Please choose")}
                 </>
               ) : (
-                "Please choose"
+                getTranslation("please_choose", "Please choose")
               )}
             </p>
           </div>

@@ -36,6 +36,21 @@
     text-align: left;
     color: #9D9264;
 }
+html[lang="ar"] .HairColor-alert p{
+    text-align: right;
+}
+html[lang="ar"] .HairDensity-Slider {
+    direction: ltr;
+}
+html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
+    content: "+";
+    position: absolute;
+    top: 0%;
+    left: 63%;
+    transform: translate(-50%, -50%);
+    font-size: 45px;
+    color: white;
+}
 .HairColor-image{
     position: relative;
     overflow: hidden;

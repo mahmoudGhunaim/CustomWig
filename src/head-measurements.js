@@ -20,6 +20,7 @@ import Medium from "./assets/Medium.png";
 import Large from "./assets/Large.png";
 import "./HeadMeasurements.css";
 import Bluecircle from "./assets/blue-circle.png"
+import getTranslation from './utils/translations'; // Import your translation utility
 
 
 const HeadMeasurements = ({measurements,setMeasurements}) => {
@@ -106,7 +107,7 @@ const HeadMeasurements = ({measurements,setMeasurements}) => {
     <section className="HeadMeasurements-sec">
       <div className="HeadMeasurements-container" id="Measurements">
         <div className="HeadMeasurements-head">
-          <h2>Head measurements</h2>
+        <h2>{getTranslation("head_measurements", "Head Measurements")}</h2>
         </div>
         <div className="HeadMeasurements-banner">
           <img src={Headmeasurements} alt="Head measurements" />
@@ -115,22 +116,22 @@ const HeadMeasurements = ({measurements,setMeasurements}) => {
               onClick={() => handleSizeChange("small")}
               className={size === "small" ? "active" : ""}
             >
-              <img src={Small} alt="Small" />
-              Small
+              <img src={Small} alt={getTranslation("small", "Small")} />
+              {getTranslation("small", "Small")}
             </button>
             <button
               onClick={() => handleSizeChange("medium")}
               className={size === "medium" ? "active" : ""}
             >
-              <img src={Medium} alt="Medium" />
-              Medium
+              <img src={Medium} alt={getTranslation("medium", "Medium")} />
+              {getTranslation("medium", "Medium")}
             </button>
             <button
               onClick={() => handleSizeChange("large")}
               className={size === "large" ? "active" : ""}
             >
-              <img src={Large} alt="Large" />
-              Large
+              <img src={Large} alt={getTranslation("large", "Large")} />
+              {getTranslation("large", "Large")}
             </button>
           </div>
         </div>
@@ -138,170 +139,158 @@ const HeadMeasurements = ({measurements,setMeasurements}) => {
         <div
           className="HeadMeasurements-size"
         >
-        <h6 className="blue-size-alert"><img src={Bluecircle}/>These are the brand's standard sizes. You can easily adjust them to perfectly suit your unique fit and style. We’re here to help make sure your wig feels like it was made just for you!</h6>
-          <div style={{ display: size === "" ? "none" : "" }}>
+ <h6 className="blue-size-alert">
+            <img src={Bluecircle} alt={getTranslation("alert_icon", "Alert Icon")} />
+            {getTranslation("size_alert", "These are the brand's standard sizes. You can easily adjust them to perfectly suit your unique fit and style. We’re here to help make sure your wig feels like it was made just for you!")}
+          </h6>          <div style={{ display: size === "" ? "none" : "" }}>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="head measurements table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Circumference</TableCell>
-                  <TableCell>Front to nape</TableCell>
-                  <TableCell>Forehead</TableCell>
-                  <TableCell>Head</TableCell>
-                  <TableCell>Site to site</TableCell>
-                  <TableCell>Neck width</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>{(measurements.circumference || 0).toFixed(1)} inch</TableCell>
-                  <TableCell>{(measurements.frontToNape || 0).toFixed(1)} inch</TableCell>
-                  <TableCell>{(measurements.forehead || 0).toFixed(1)} inch</TableCell>
-                  <TableCell>{(measurements.head || 0).toFixed(1)} inch</TableCell>
-                  <TableCell>{(measurements.siteToSite || 0).toFixed(1)} inch</TableCell>
-                  <TableCell>{(measurements.neckWidth || 0).toFixed(1)} inch</TableCell>
-                </TableRow>
-                <TableRow>
-                <TableCell>{convertToCm(measurements.circumference || 0)} cm</TableCell>
-                  <TableCell>{convertToCm(measurements.frontToNape || 0)} cm</TableCell>
-                  <TableCell>{convertToCm(measurements.forehead || 0)} cm</TableCell>
-                  <TableCell>{convertToCm(measurements.head || 0)} cm</TableCell>
-                  <TableCell>{convertToCm(measurements.siteToSite || 0)} cm</TableCell>
-                  <TableCell>{convertToCm(measurements.neckWidth || 0)} cm</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
+              <Table sx={{ minWidth: 650 }} aria-label="head measurements table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>{getTranslation("circumference", "Circumference")}</TableCell>
+                    <TableCell>{getTranslation("front_to_nape", "Front to nape")}</TableCell>
+                    <TableCell>{getTranslation("forehead", "Forehead")}</TableCell>
+                    <TableCell>{getTranslation("head", "Head")}</TableCell>
+                    <TableCell>{getTranslation("site_to_site", "Site to site")}</TableCell>
+                    <TableCell>{getTranslation("neck_width", "Neck width")}</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>{(measurements.circumference || 0).toFixed(1)} {unit}</TableCell>
+                    <TableCell>{(measurements.frontToNape || 0).toFixed(1)} {unit}</TableCell>
+                    <TableCell>{(measurements.forehead || 0).toFixed(1)} {unit}</TableCell>
+                    <TableCell>{(measurements.head || 0).toFixed(1)} {unit}</TableCell>
+                    <TableCell>{(measurements.siteToSite || 0).toFixed(1)} {unit}</TableCell>
+                    <TableCell>{(measurements.neckWidth || 0).toFixed(1)} {unit}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>{convertToCm(measurements.circumference || 0)} cm</TableCell>
+                    <TableCell>{convertToCm(measurements.frontToNape || 0)} cm</TableCell>
+                    <TableCell>{convertToCm(measurements.forehead || 0)} cm</TableCell>
+                    <TableCell>{convertToCm(measurements.head || 0)} cm</TableCell>
+                    <TableCell>{convertToCm(measurements.siteToSite || 0)} cm</TableCell>
+                    <TableCell>{convertToCm(measurements.neckWidth || 0)} cm</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
           <div className="HeadMeasurements-container-size">
             <div className="HeadMeasurements-alert-container">
               <div className="HeadMeasurements-alert">
-                <h6>
-                  <img src={Blackalert} alt="Alert" />
-                  You can specify the measurements in inches as well as in CM.
-                  Please note that for technical reasons, information in CM is
-                  always converted into inches.
-                </h6>
-                <p>
-                  <img src={reload} alt="Reload" />
-                  The default values for "Small" have been changed. Do you want
-                  to restore the previous values?
-                </p>
+              <h6>
+                    <img src={Blackalert} alt={getTranslation("alert_icon", "Alert Icon")} />
+                    {getTranslation("measurement_alert", "You can specify the measurements in inches as well as in CM. Please note that for technical reasons, information in CM is always converted into inches.")}
+                  </h6>
+                  <p>
+                    <img src={reload} alt={getTranslation("reload_icon", "Reload Icon")} />
+                    {getTranslation("default_values_changed", "The default values for 'Small' have been changed. Do you want to restore the previous values?")}
+                  </p>
               </div>
               <div>
-                <button
-                  className={unit === "inch" ? "active" : ""}
-                  onClick={() => handleUnitChange("inch")}
-                >
-                  inch
-                </button>
-                <button
-                  className={unit === "cm" ? "active" : ""}
-                  onClick={() => handleUnitChange("cm")}
-                >
-                  cm
-                </button>
+              <button
+                    className={unit === "inch" ? "active" : ""}
+                    onClick={() => handleUnitChange("inch")}
+                  >
+                    {getTranslation("inch", "inch")}
+                  </button>
+                  <button
+                    className={unit === "cm" ? "active" : ""}
+                    onClick={() => handleUnitChange("cm")}
+                  >
+                    {getTranslation("cm", "cm")}
+                  </button>
               </div>
             </div>
             <div className="HeadMeasurements-container-size-cards">
-              <div className="HeadMeasurements-size-cards">
-                <img src={Circumference} alt="Circumference" />
-                <h5>Circumference</h5>
-                <div className="HeadMeasurements-select">
-                  <select
-                    value={(measurements.circumference || 0).toFixed(1)}
-                    onChange={(e) =>
-                      handleMeasurementChange(e, "circumference")
-                    }
-                  >
-                    {generateOptions(18, 51)}
-                  </select>
-                  {unit === "inch" ? <h4>inch</h4> : <h4>cm</h4>}
+                <div className="HeadMeasurements-size-cards">
+                  <img src={Circumference} alt={getTranslation("circumference", "Circumference")} />
+                  <h5>{getTranslation("circumference", "Circumference")}</h5>
+                  <div className="HeadMeasurements-select">
+                    <select
+                      value={(measurements.circumference || 0).toFixed(1)}
+                      onChange={(e) => handleMeasurementChange(e, "circumference")}
+                    >
+                      {generateOptions(18, 51)}
+                    </select>
+                    <h4>{unit}</h4>
+                  </div>
+                  <p>{getTranslation("circumference_instruction", "Place the tape measure on the head behind an ear and measure in circles across the forehead along the hairline up to the hairline in the neck and back to the support point behind the ear.")}</p>
                 </div>
-                <p>
-                  Place the tape measure on the head behind an ear and measure
-                  in circles across the forehead along the hairline up to the
-                  hairline in the neck and back to the support point behind the
-                  ear.
-                </p>
-              </div>
-              <div className="HeadMeasurements-size-cards">
-                <img src={Fronttonape} alt="Front to nape" />
-                <h5>Front to nape</h5>
-                <div className="HeadMeasurements-select">
-                  <select
-                    value={(measurements.frontToNape || 0).toFixed(1)}
-                    onChange={(e) => handleMeasurementChange(e, "frontToNape")}
-                  >
-                    {generateOptions(9, 36)}
-                  </select>
-                  {unit === "inch" ? <h4>inch</h4> : <h4>cm</h4>}
+                <div className="HeadMeasurements-size-cards">
+                  <img src={Fronttonape} alt={getTranslation("front_to_nape", "Front to nape")} />
+                  <h5>{getTranslation("front_to_nape", "Front to nape")}</h5>
+                  <div className="HeadMeasurements-select">
+                    <select
+                      value={(measurements.frontToNape || 0).toFixed(1)}
+                      onChange={(e) => handleMeasurementChange(e, "frontToNape")}
+                    >
+                      {generateOptions(9, 36)}
+                    </select>
+                    <h4>{unit}</h4>
+                  </div>
+                  <p>{getTranslation("front_to_nape_instruction", "Measure over the center of your head along the hairline of the forehead to the hairline at the neck.")}</p>
                 </div>
-                <p>
-                  Measure over the center of your head along the hairline of the
-                  forehead to the hairline at the neck.
-                </p>
-              </div>
-              <div className="HeadMeasurements-size-cards">
-                <img src={Forehead} alt="Forehead" />
-                <h5>Forehead (ear to ear)</h5>
-                <div className="HeadMeasurements-select">
-                  <select
-                    value={(measurements.forehead || 0).toFixed(1)}
-                    onChange={(e) => handleMeasurementChange(e, "forehead")}
-                  >
-                    {generateOptions(8, 56)}
-                  </select>
-                  {unit === "inch" ? <h4>inch</h4> : <h4>cm</h4>}
+                <div className="HeadMeasurements-size-cards">
+                  <img src={Forehead} alt={getTranslation("forehead", "Forehead")} />
+                  <h5>{getTranslation("forehead", "Forehead")} ({getTranslation("ear_to_ear", "ear to ear")})</h5>
+                  <div className="HeadMeasurements-select">
+                    <select
+                      value={(measurements.forehead || 0).toFixed(1)}
+                      onChange={(e) => handleMeasurementChange(e, "forehead")}
+                    >
+                      {generateOptions(8, 56)}
+                    </select>
+                    <h4>{unit}</h4>
+                  </div>
+                  <p>{getTranslation("forehead_instruction", "Measure at the hairline of the forehead from ear to ear.")}</p>
                 </div>
-                <p>Measure at the hairline of the forehead from ear to ear.</p>
-              </div>
-              <div className="HeadMeasurements-size-cards">
-                <img src={Head} alt="Head" />
-                <h5>Head (ear to ear)</h5>
-                <div className="HeadMeasurements-select">
-                  <select
-                    value={(measurements.head || 0).toFixed(1)}
-                    onChange={(e) => handleMeasurementChange(e, "head")}
-                  >
-                    {generateOptions(9, 56)}
-                  </select>
-                  {unit === "inch" ? <h4>inch</h4> : <h4>cm</h4>}
+                <div className="HeadMeasurements-size-cards">
+                  <img src={Head} alt={getTranslation("head", "Head")} />
+                  <h5>{getTranslation("head", "Head")} ({getTranslation("ear_to_ear", "ear to ear")})</h5>
+                  <div className="HeadMeasurements-select">
+                    <select
+                      value={(measurements.head || 0).toFixed(1)}
+                      onChange={(e) => handleMeasurementChange(e, "head")}
+                    >
+                      {generateOptions(9, 56)}
+                    </select>
+                    <h4>{unit}</h4>
+                  </div>
+                  <p>{getTranslation("head_instruction", "Measure the hairline from ear to ear over the top head.")}</p>
                 </div>
-                <p>Measure the hairline from ear to ear over the top head.</p>
-              </div>
-              <div className="HeadMeasurements-size-cards">
-                <img src={Sitetosite} alt="Site to site" />
-                <h5>Site to site</h5>
-                <div className="HeadMeasurements-select">
-                  <select
-                    value={(measurements.siteToSite || 0).toFixed(1)}
-                    onChange={(e) => handleMeasurementChange(e, "siteToSite")}
-                  >
-                    {generateOptions(9, 31)}
-                  </select>
-                  {unit === "inch" ? <h4>inch</h4> : <h4>cm</h4>}
+                <div className="HeadMeasurements-size-cards">
+                  <img src={Sitetosite} alt={getTranslation("site_to_site", "Site to site")} />
+                  <h5>{getTranslation("site_to_site", "Site to site")}</h5>
+                  <div className="HeadMeasurements-select">
+                    <select
+                      value={(measurements.siteToSite || 0).toFixed(1)}
+                      onChange={(e) => handleMeasurementChange(e, "siteToSite")}
+                    >
+                      {generateOptions(9, 31)}
+                    </select>
+                    <h4>{unit}</h4>
+                  </div>
+                  <p>{getTranslation("site_to_site_instruction", "Measure from the hairline at the temples up to the back of the head.")}</p>
                 </div>
-                <p>
-                  Measure from the hairline at the temples up to the back of the
-                  head.
-                </p>
-              </div>
-              <div className="HeadMeasurements-size-cards">
-                <img src={Neckwidth} alt="Neck width" />
-                <h5>Neck width</h5>
-                <div className="HeadMeasurements-select">
-                  <select
-                    value={(measurements.neckWidth || 0).toFixed(1)}
-                    onChange={(e) => handleMeasurementChange(e, "neckWidth")}
-                  >
-                    {generateOptions(3, 31)}
-                  </select>
-                  {unit === "inch" ? <h4>inch</h4> : <h4>cm</h4>}
+                <div className="HeadMeasurements-size-cards">
+                  <img src={Neckwidth} alt={getTranslation("neck_width", "Neck width")} />
+                  <h5>{getTranslation("neck_width", "Neck width")}</h5>
+                  <div className="HeadMeasurements-select">
+                    <select
+                      value={(measurements.neckWidth || 0).toFixed(1)}
+                      onChange={(e) => handleMeasurementChange(e, "neckWidth")}
+                    >
+                      {generateOptions(3, 31)}
+                    </select>
+                    <h4>{unit}</h4>
+                  </div>
+                  <p>{getTranslation("neck_width_instruction", "Measure the width of the hairline in the neck.")}</p>
                 </div>
-                <p>Measure the width of the hairline in the neck.</p>
               </div>
             </div>
-          </div>
+          
+          
           </div>
         </div>
       </div>

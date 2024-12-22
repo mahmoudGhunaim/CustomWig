@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import Box from "@mui/material/Box";
@@ -26,17 +26,18 @@ import HairDensity100 from "./assets/Hair density100.jpg"
 import HairDensity120 from "./assets/Hair density120.jpg"
 import HairDensity150 from "./assets/Hair density150.jpg"
 
-
+import getTranslation from "./utils/translations";
+import SwapImage  from "./SwapImage"
 import "swiper/css";
 import "./HairDensity.css";
 import "swiper/css/navigation";
 const marks = [
-  { value: 60, label: "60%" },
-  { value: 80, label: "80%" },
-  { value: 90, label: "90%" },
-  { value: 100, label: "100%" },
-  { value: 120, label: "120%" },
-  { value: 150, label: "150%" },
+  { value: 60 },
+  { value: 80},
+  { value: 90 },
+  { value: 100 },
+  { value: 120 },
+  { value: 150 },
 ];
 
 const valuetext = (value) => `${value} %`;
@@ -61,7 +62,17 @@ const ImageViewer = ({ image, alt, onClose }) => {
 const HairDensity = ({ Density, setDensity, getPriceDensity }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [percentagePosition, setPercentagePosition] = useState(0);
+  const sliderRef = useRef(null);
+  useEffect(() => {
+    if (sliderRef.current) {
+      // Calculate percentage position based on slider value
+      const sliderWidth = sliderRef.current.clientWidth;
+      const percentage = (Density - 60) / (150 - 60); // Normalize value between 0 and 1
+      const position = percentage * (sliderWidth - 55); // 55 is thumb width
+      setPercentagePosition(position);
+    }
+  }, [Density]);
   const getHairDensityImage = (value) => {
     switch (value) {
       case 60:
@@ -106,273 +117,133 @@ const HairDensity = ({ Density, setDensity, getPriceDensity }) => {
       >
         <div className={`main-content ${showDetails ? "hidden" : ""}`}>
           <div className="HairDensity-content">
-            <h6>
-              <img src={plus} alt="Plus icon" /> Hair density{" "}
-              <h6
-                className={`${
-                  getPriceDensity() !== "0 SAR"
-                    ? getPriceDensity()
-                    : "zero-price"
-                }`}
-              >
+          <h6>
+              <img src={plus} alt={getTranslation("plus_icon", "Plus icon")} /> 
+              {getTranslation("hair_density", "Hair density")}{" "}
+              <h6 className={`${getPriceDensity() !== "0 SAR" ? getPriceDensity() : "zero-price"}`}>
                 {getPriceDensity() !== "0 SAR" ? getPriceDensity() : null}
               </h6>
             </h6>
-            <p>
-              The human hair is evenly distributed and knotted into the lace by
-              hand. Determine the desired hair density (knot density) using the
-              regulator. As a standard we use a hair density of 80%.
-            </p>
+            <p>{getTranslation("hair_density_description", "The human hair is evenly distributed and knotted into the lace by hand. Determine the desired hair density (knot density) using the   regulator. As a standard we use a hair density of 80%.")}</p>
+
             <button onClick={toggleDetails}>
-              <img src={alert} alt="alert icon" /> Show detail images
+              <img src={alert} alt={getTranslation("alert_icon", "Alert icon")} /> 
+              {getTranslation("show_detail_images", "Show detail images")}
             </button>
-            <Box className="HairDensity-Slider">
-              <Slider
-                aria-label="Hair Density Slider"
-                value={Density}
-                getAriaValueText={valuetext}
-                onChange={handleSliderChange}
-                step={null}
-                valueLabelDisplay="auto"
-                marks={marks}
-                min={60}
-                max={150}
-                disableSwap  
-                sx={{
-                  color: "#131313",
-                  "& .MuiSlider-thumb": {
-                    backgroundColor: "#131313",
-                    width: "55px",
-                    height: "55px",
-                    position: "relative",
-                    "&:hover": {
-                      boxShadow: "none",
-                    },
-                    "&::after": {
-                      content: '"+"',
-                      position: "absolute",
-                      top: "-8px",
-                      left: "32.5px",
-                      transform: "translateX(-50%)",
-                      fontSize: "45px",
-                      color: "white",
-                    },
-                  },
-                  "& .MuiSlider-track": {
-                    backgroundColor: "#131313",
-                  },
-                  "& .MuiSlider-rail": {
-                    backgroundColor: "#bbb",
-                  },
-                  "& .MuiSlider-markLabel": {
-                    top: "65px",
-                  },
-                }}
-              />
-            </Box>
+            <div className="hair-density-slider-container">
+      <h4 
+        className="hair-density-percentage"
+        style={{ 
+          left: `${percentagePosition + 27.5}px`
+        }}
+      >
+        {Density} %
+      </h4>
+      <Box 
+        className="hair-density-slider" 
+        ref={sliderRef}
+      >
+        <Slider
+          aria-label="Hair Density Slider"
+          value={Density}
+          getAriaValueText={valuetext}
+          onChange={handleSliderChange}
+          step={null}
+          valueLabelDisplay="auto"
+          marks={marks}
+          min={60}
+          max={150}
+          disableSwap
+          sx={{
+            color: "#131313",
+            "& .MuiSlider-thumb": {
+              backgroundColor: "#131313",
+              width: "55px",
+              height: "55px",
+              position: "relative",
+              "&:hover": {
+                boxShadow: "none",
+              },
+              "&::after": {
+                content: '"+"',
+                position: "absolute",
+                top: "-8px",
+                left: "32.5px",
+                transform: "translateX(-50%)",
+                fontSize: "45px",
+                color: "white",
+              },
+            },
+            "& .MuiSlider-track": {
+              backgroundColor: "#131313",
+            },
+            "& .MuiSlider-rail": {
+              backgroundColor: "#bbb",
+            },
+            "& .MuiSlider-markLabel": {
+              top: "65px",
+            },
+          }}
+        />
+      </Box>
+    </div>
           </div>
           <div className="HairDensity-image">
-          <img src={getHairDensityImage(Density)} alt={`Hair Density ${Density}%`} />
-          </div>
+          <SwapImage 
+    src={getHairDensityImage(Density)} 
+    alt={`Hair Density ${Density}%`} 
+  />   </div>
         </div>
 
         <div className={`detail-section ${showDetails ? "visible" : ""}`}>
-          <div className="detail-header">
-            <h2>Detail Images</h2>
+        <div className="detail-header">
+            <h2>{getTranslation("detail_images", "Detail Images")}</h2>
             <button className="back-button" onClick={toggleDetails}>
-              ← Back
+              ← {getTranslation("back", "Back")}
             </button>
           </div>
           <div className="image-detail-hair-density">
-            <Swiper
-              className="image-detail-hair-density-swiper"
-              modules={[Navigation, Pagination, A11y, Autoplay]}
-              spaceBetween={20}
-              slidesPerView={1}
-              navigation={{ clickable: true }}
-              initialSlide={0}
-            >
-              <SwiperSlide className="image-detail-hair-density-slide">
-                <p>Hair density 60%</p>
-                <div className="image-detail-hair-density-image">
-                  <div>
-                    <img
-                      src={density60}
-                      onClick={() =>
-                        openImageViewer(density60, "Density 60 - Mesh back")
-                      }
-                      className="clickable-image"
-                      alt="Density 60 back"
-                    />
-                    <p>Mesh back</p>
-                  </div>
-                  <div>
-                    <img
-                      src={densityhair60}
-                      onClick={() =>
-                        openImageViewer(
-                          densityhair60,
-                          "Density 60 - Front view"
-                        )
-                      }
-                      className="clickable-image"
-                      alt="Density 60 front"
-                    />
-                    <p>Front view</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="image-detail-hair-density-slide">
-                <p>Hair density 80%</p>
-                <div className="image-detail-hair-density-image">
-                  <div>
-                    <img
-                      onClick={() =>
-                        openImageViewer(density80, "Density 80 - Mesh back")
-                      }
-                      src={density80}
-                      alt="Density 80 back"
-                      className="clickable-image"
-                    />
-                    <p>Mesh back</p>
-                  </div>
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={densityhair80}
-                      onClick={() =>
-                        openImageViewer(
-                          densityhair80,
-                          "Density 80 - Front view"
-                        )
-                      }
-                      alt="Density 80 front"
-                    />
-                    <p>Front view</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="image-detail-hair-density-slide">
-                <p>Hair density 90%</p>
-                <div className="image-detail-hair-density-image">
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={density90}
-                      alt="Density 90 back"
-                      onClick={() =>
-                        openImageViewer(density90, "Density 90 - Mesh back")
-                      }
-                    />
-                    <p>Mesh back</p>
-                  </div>
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={densityhair90}
-                      alt="Density 90 front"
-                      onClick={() =>
-                        openImageViewer(
-                          densityhair90,
-                          "Density 90 - Front view"
-                        )
-                      }
-                    />
-                    <p>Front view</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="image-detail-hair-density-slide">
-                <p>Hair density 100%</p>
-                <div className="image-detail-hair-density-image">
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={density100}
-                      alt="Density 100 back"
-                      onClick={() =>
-                        openImageViewer(density100, "Density 90 - Mesh back")
-                      }
-                    />
-                    <p>Mesh back</p>
-                  </div>
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={densityhair100}
-                      alt="Density 100 front"
-                      onClick={() =>
-                        openImageViewer(
-                          densityhair100,
-                          "Density 90 - Front view"
-                        )
-                      }
-                    />
-                    <p>Front view</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="image-detail-hair-density-slide">
-                <p>Hair density 120%</p>
-                <div className="image-detail-hair-density-image">
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={density120}
-                      alt="Density 120 back"
-                      onClick={() =>
-                        openImageViewer(density120, "Density 90 - Mesh back")
-                      }
-                    />
-                    <p>Mesh back</p>
-                  </div>
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={densityhair120}
-                      alt="Density 120 front"
-                      onClick={() =>
-                        openImageViewer(
-                          densityhair120,
-                          "Density 90 - Front view"
-                        )
-                      }
-                    />
-                    <p>Front view</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="image-detail-hair-density-slide">
-                <p>Hair density 150%</p>
-                <div className="image-detail-hair-density-image">
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={density150}
-                      alt="Density 150 back"
-                      onClick={() =>
-                        openImageViewer(density150, "Density 90 - Mesh back")
-                      }
-                    />
-                    <p>Mesh back</p>
-                  </div>
-                  <div>
-                    <img
-                      className="clickable-image"
-                      src={densityhair150}
-                      alt="Density 150 front"
-                      onClick={() =>
-                        openImageViewer(
-                          densityhair150,
-                          "Density 90 - Front view"
-                        )
-                      }
-                    />
-                    <p>Front view</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+          <Swiper
+  className="image-detail-hair-density-swiper"
+  modules={[Navigation, Pagination, A11y, Autoplay]}
+  spaceBetween={20}
+  slidesPerView={1}
+  navigation={{ clickable: true }}
+  initialSlide={0}
+>
+  {[
+    { value: 60, backImage: density60, frontImage: densityhair60 },
+    { value: 80, backImage: density80, frontImage: densityhair80 },
+    { value: 90, backImage: density90, frontImage: densityhair90 },
+    { value: 100, backImage: density100, frontImage: densityhair100 },
+    { value: 120, backImage: density120, frontImage: densityhair120 },
+    { value: 150, backImage: density150, frontImage: densityhair150 }
+  ].map(({ value, backImage, frontImage }) => (
+    <SwiperSlide key={value} className="image-detail-hair-density-slide">
+      <p>{getTranslation(`hair_density_${value}`, `Hair density ${value}%`)}</p>
+      <div className="image-detail-hair-density-image">
+        <div>
+          <img
+            src={backImage}
+            onClick={() => openImageViewer(backImage, `${getTranslation(`density_${value}`, `Density ${value}`)} - ${getTranslation("mesh_back", "Mesh back")}`)}
+            className="clickable-image"
+            alt={`${getTranslation(`density_${value}`, `Density ${value}`)} - ${getTranslation("mesh_back", "Mesh back")}`}
+          />
+          <p>{getTranslation("mesh_back", "Mesh back")}</p>
+        </div>
+        <div>
+          <img
+            src={frontImage}
+            onClick={() => openImageViewer(frontImage, `${getTranslation(`density_${value}`, `Density ${value}`)} - ${getTranslation("front_view", "Front view")}`)}
+            className="clickable-image"
+            alt={`${getTranslation(`density_${value}`, `Density ${value}`)} - ${getTranslation("front_view", "Front view")}`}
+          />
+          <p>{getTranslation("front_view", "Front view")}</p>
+        </div>
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
           </div>
         </div>
         {selectedImage && (

@@ -78,6 +78,7 @@
   width: 100%;
   max-height: 370px;
   object-fit: contain;
+  opacity: 1;
 }
 .HairDensity-content{
     width: 47%;
@@ -113,6 +114,8 @@
         display: flex;
         transition: opacity 0.3s ease;
         justify-content: space-between;
+        width: 100%;
+        align-items: center;
       }
       
       .main-content.hidden {
@@ -183,6 +186,18 @@
         height: auto;
         object-fit: cover;
         width: 50%;
+      }
+      .HairDensity-content h4{
+        font-family: 'Outfit';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #282C3B;
+        top: auto;
+        bottom: -20px;
       }
       
       /* Swiper customization */
@@ -267,6 +282,82 @@
       
       .close-viewer:hover {
         opacity: 0.8;
+      }
+      .hair-density-slider-container {
+        position: relative;
+        width: 100%;
+        padding: 40px 0 20px;
+        margin: 20px 0;
+      }
+      
+      .hair-density-percentage {
+        position: absolute;
+        transform: translateX(-50%);
+        font-size: 24px;
+        font-weight: 600;
+        color: #131313;
+        transition: left 0.01s ease;
+        top: 0;
+        margin: 0;
+        white-space: nowrap;
+      }
+      
+      .hair-density-slider {
+        width: 100%;
+        padding: 0 27.5px; /* Half the thumb width to align with percentage */
+      }
+      html[lang="ar"] .hair-density-slider {
+        direction: ltr;
+      }
+      html[lang="ar"] .MuiSlider-thumb::after {
+        content: "+";
+        position: absolute;
+        top: -20px;
+        left: 35px;
+        transform: translateX(-50%);
+        font-size: 45px;
+        color: white;
+    }
+      /* Optional: Add hover effect for the percentage */
+      .hair-density-percentage:hover {
+        color: #2a2a2a;
+      }
+      .fade-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .fade-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 1;
+      }
+      
+      .fade-image.fade-in {
+        opacity: 0;
+      }
+      
+      .fade-image.fade-out {
+        opacity: 0;
+      }
+      .HairDensity-image {
+        height: 360px; /* or whatever height you need */
+      }
+      /* Optional: Add custom styles for mobile devices */
+      @media (max-width: 768px) {
+        .hair-density-slider-container {
+          padding: 50px 0 20px;
+        }
+      
+        .hair-density-percentage {
+          font-size: 20px;
+        }
       }
 @media (max-width: 1024px) {
     .main-content{

@@ -3,6 +3,8 @@ import "./HairColor.css";
 import alert from "./assets/alert.svg";
 import hairColorBasic from "./assets/hairColorBasic.jpg";
 import { brown } from "@mui/material/colors";
+import getTranslation from './utils/translations';
+
 
 import plus from "./assets/plus.svg";
 import check_circle from "./assets/check-circle.svg";
@@ -88,131 +90,131 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
   const colorOptions = {
     hairColor: {
       black: [
-        { id: "#01", name: "Jet black", color: "#000000" ,price:0},
-        { id: "#1B", name: "Off black", color: "#3B3B3B" ,price:0},
+        { id: "#01", name: getTranslation("jet_black", "Jet black"), color: "#000000", price:0 },
+        { id: "#1B", name: getTranslation("off_black", "Off black"), color: "#3B3B3B", price:0 },
       ],
       brown: [
-        { id: "#02", name: "Darkest brown", color: "#3B3B3B" ,price:0},
-        { id: "#03", name: "Medium dark brown", color: "#482D1F" ,price:0},
-        { id: "#06", name: "Chestnut brown", color: "#7B5C4D" ,price:0 },
-        { id: "#08", name: "Medium ash brown", color: "#A56A43" ,price:20 },
-        { id: "#04", name: "Medium reddish brown", color: "#C35831",price:20 },
-        { id: "#10", name: "Medium golden brown", color: "#A86A4D" ,price:20},
-        { id: "#12", name: "Light golden brown", color: "#D9B88A" ,price:20},
-        { id: "#14", name: "Light ash brown", color: "#B08B64" ,price:20},
+        { id: "#02", name: getTranslation("darkest_brown", "Darkest brown"), color: "#3B3B3B", price:0 },
+        { id: "#03", name: getTranslation("medium_dark_brown", "Medium dark brown"), color: "#482D1F", price:0 },
+        { id: "#06", name: getTranslation("chestnut_brown", "Chestnut brown"), color: "#7B5C4D", price:0 },
+        { id: "#08", name: getTranslation("medium_ash_brown", "Medium ash brown"), color: "#A56A43", price:20 },
+        { id: "#04", name: getTranslation("medium_reddish_brown", "Medium reddish brown"), color: "#C35831", price:20 },
+        { id: "#10", name: getTranslation("medium_golden_brown", "Medium golden brown"), color: "#A86A4D", price:20 },
+        { id: "#12", name: getTranslation("light_golden_brown", "Light golden brown"), color: "#D9B88A", price:20 },
+        { id: "#14", name: getTranslation("light_ash_brown", "Light ash brown"), color: "#B08B64", price:20 },
       ],
       blonde: [
-        { id: "#16", name: "Dark honey blonde", color: "#D6C16D" ,price:20},
-        { id: "#27", name: "Honey blonde", color: "#F0B23D" ,price:20},
-        { id: "#18", name: "Nerz blonde", color: "#C69C5C" ,price:20},
-        { id: "#144", name: "Bright pumpkin gold blonde", color: "#DFAF3F" ,price:20},
-        { id: "#22", name: "Light ash blonde", color: "#B5A89D" ,price:20},
-        { id: "#60", name: "White blonde", color: "#FFFFFF" ,price:20},
-        { id: "#613", name: "Platinum blonde", color: "#E5E4E2" ,price:20},
+        { id: "#16", name: getTranslation("dark_honey_blonde", "Dark honey blonde"), color: "#D6C16D", price:20 },
+        { id: "#27", name: getTranslation("honey_blonde", "Honey blonde"), color: "#F0B23D", price:20 },
+        { id: "#18", name: getTranslation("nerz_blonde", "Nerz blonde"), color: "#C69C5C", price:20 },
+        { id: "#144", name: getTranslation("bright_pumpkin_gold_blonde", "Bright pumpkin gold blonde"), color: "#DFAF3F", price:20 },
+        { id: "#22", name: getTranslation("light_ash_blonde", "Light ash blonde"), color: "#B5A89D", price:20 },
+        { id: "#60", name: getTranslation("white_blonde", "White blonde"), color: "#FFFFFF", price:20 },
+        { id: "#613", name: getTranslation("platinum_blonde", "Platinum blonde"), color: "#E5E4E2", price:20 },
       ],
       red: [
-        { id: "#99J", name: "Mahagoni red", color: "#4A0D0D",price:20 },
-        { id: "#350", name: "Ginger red", color: "#D76E38" ,price:20},
-        { id: "#30", name: "Auburn red", color: "#A52A2A" ,price:20},
-        { id: "#135", name: "Fiery red", color: "#FF4500" ,price:20},
-        { id: "#F", name: "Fucsia red", color: "#D5006D" ,price:20},
-        { id: "#P", name: "Pink red", color: "#FF1493" ,price:20},
-        { id: "#33", name: "Cooper red", color: "#a05436" ,price:20},
-        { id: "#B", name: "Burgundy red", color: "#800020" ,price:20},
+        { id: "#99J", name: getTranslation("mahagoni_red", "Mahagoni red"), color: "#4A0D0D", price:20 },
+        { id: "#350", name: getTranslation("ginger_red", "Ginger red"), color: "#D76E38", price:20 },
+        { id: "#30", name: getTranslation("auburn_red", "Auburn red"), color: "#A52A2A", price:20 },
+        { id: "#135", name: getTranslation("fiery_red", "Fiery red"), color: "#FF4500", price:20 },
+        { id: "#F", name: getTranslation("fucsia_red", "Fucsia red"), color: "#D5006D", price:20 },
+        { id: "#P", name: getTranslation("pink_red", "Pink red"), color: "#FF1493", price:20 },
+        { id: "#33", name: getTranslation("cooper_red", "Cooper red"), color: "#a05436", price:20 },
+        { id: "#B", name: getTranslation("burgundy_red", "Burgundy red"), color: "#800020", price:20 },
       ],
       more: [
-        { id: "#N", name: "Natural", color: "#000000" },
-        { id: "#PU", name: "Purple", color: "#800080" ,price:20},
-        { id: "#O", name: "Orange", color: "#FFA500" ,price:20},
-        { id: "#S", name: "Silver", color: "#C0C0C0" ,price:20},
-        { id: "#BL", name: "Blue", color: "#0000FF" ,price:20},
-        { id: "#G", name: "Green", color: "#008000" ,price:20},
+        { id: "#N", name: getTranslation("natural", "Natural"), color: "#000000", price:0 },
+        { id: "#PU", name: getTranslation("purple", "Purple"), color: "#800080", price:20 },
+        { id: "#O", name: getTranslation("orange", "Orange"), color: "#FFA500", price:20 },
+        { id: "#S", name: getTranslation("silver", "Silver"), color: "#C0C0C0", price:20 },
+        { id: "#BL", name: getTranslation("blue", "Blue"), color: "#0000FF", price:20 },
+        { id: "#G", name: getTranslation("green", "Green"), color: "#008000", price:20 },
       ],
     },
     colorGradient: {
       black: [
-        { id: "#01", name: "Jet black", color: "#000000" ,price:80},
-        { id: "#1B", name: "Off black", color: "#3B3B3B" ,price:80},
+        { id: "#01", name: getTranslation("jet_black", "Jet black"), color: "#000000", price:80 },
+        { id: "#1B", name: getTranslation("off_black", "Off black"), color: "#3B3B3B", price:80 },
       ],
       brown: [
-        { id: "#02", name: "Darkest brown", color: "#3B3B3B" ,price:80},
-        { id: "#03", name: "Medium dark brown", color: "#482D1F" ,price:80},
-        { id: "#06", name: "Chestnut brown", color: "#7B5C4D" ,price:80},
-        { id: "#08", name: "Medium ash brown", color: "#A56A43" ,price:80},
-        { id: "#04", name: "Medium reddish brown", color: "#C35831" ,price:80},
-        { id: "#10", name: "Medium golden brown", color: "#A86A4D" ,price:80},
-        { id: "#12", name: "Light golden brown", color: "#D9B88A" ,price:80},
-        { id: "#14", name: "Light ash brown", color: "#B08B64" ,price:80},
+        { id: "#02", name: getTranslation("darkest_brown", "Darkest brown"), color: "#3B3B3B", price:80 },
+        { id: "#03", name: getTranslation("medium_dark_brown", "Medium dark brown"), color: "#482D1F", price:80 },
+        { id: "#06", name: getTranslation("chestnut_brown", "Chestnut brown"), color: "#7B5C4D", price:80 },
+        { id: "#08", name: getTranslation("medium_ash_brown", "Medium ash brown"), color: "#A56A43", price:80 },
+        { id: "#04", name: getTranslation("medium_reddish_brown", "Medium reddish brown"), color: "#C35831", price:80 },
+        { id: "#10", name: getTranslation("medium_golden_brown", "Medium golden brown"), color: "#A86A4D", price:80 },
+        { id: "#12", name: getTranslation("light_golden_brown", "Light golden brown"), color: "#D9B88A", price:80 },
+        { id: "#14", name: getTranslation("light_ash_brown", "Light ash brown"), color: "#B08B64", price:80 },
       ],
       blonde: [
-        { id: "#16", name: "Dark honey blonde", color: "#D6C16D" ,price:80},
-        { id: "#27", name: "Honey blonde", color: "#F0B23D" ,price:80},
-        { id: "#18", name: "Nerz blonde", color: "#C69C5C" ,price:80},
-        { id: "#144", name: "Bright pumpkin gold blonde", color: "#DFAF3F" ,price:80},
-        { id: "#22", name: "Light ash blonde", color: "#B5A89D" ,price:80},
-        { id: "#60", name: "White blonde", color: "#FFFFFF" ,price:80},
-        { id: "#613", name: "Platinum blonde", color: "#E5E4E2" ,price:80},
+        { id: "#16", name: getTranslation("dark_honey_blonde", "Dark honey blonde"), color: "#D6C16D", price:80 },
+        { id: "#27", name: getTranslation("honey_blonde", "Honey blonde"), color: "#F0B23D", price:80 },
+        { id: "#18", name: getTranslation("nerz_blonde", "Nerz blonde"), color: "#C69C5C", price:80 },
+        { id: "#144", name: getTranslation("bright_pumpkin_gold_blonde", "Bright pumpkin gold blonde"), color: "#DFAF3F", price:80 },
+        { id: "#22", name: getTranslation("light_ash_blonde", "Light ash blonde"), color: "#B5A89D", price:80 },
+        { id: "#60", name: getTranslation("white_blonde", "White blonde"), color: "#FFFFFF", price:80 },
+        { id: "#613", name: getTranslation("platinum_blonde", "Platinum blonde"), color: "#E5E4E2", price:80 },
       ],
       red: [
-        { id: "#99J", name: "Mahagoni red", color: "#4A0D0D" ,price:80},
-        { id: "#350", name: "Ginger red", color: "#D76E38" ,price:80},
-        { id: "#30", name: "Auburn red", color: "#A52A2A" ,price:80},
-        { id: "#135", name: "Fiery red", color: "#FF4500" ,price:80},
-        { id: "#F", name: "Fucsia red", color: "#D5006D" ,price:80},
-        { id: "#P", name: "Pink red", color: "#FF1493" ,price:80},
-        { id: "#33", name: "Cooper red", color: "#a05436" ,price:80},
-        { id: "#B", name: "Burgundy red", color: "#800020" ,price:80},
+        { id: "#99J", name: getTranslation("mahagoni_red", "Mahagoni red"), color: "#4A0D0D", price:80 },
+        { id: "#350", name: getTranslation("ginger_red", "Ginger red"), color: "#D76E38", price:80 },
+        { id: "#30", name: getTranslation("auburn_red", "Auburn red"), color: "#A52A2A", price:80 },
+        { id: "#135", name: getTranslation("fiery_red", "Fiery red"), color: "#FF4500", price:80 },
+        { id: "#F", name: getTranslation("fucsia_red", "Fucsia red"), color: "#D5006D", price:80 },
+        { id: "#P", name: getTranslation("pink_red", "Pink red"), color: "#FF1493", price:80 },
+        { id: "#33", name: getTranslation("cooper_red", "Cooper red"), color: "#a05436", price:80 },
+        { id: "#B", name: getTranslation("burgundy_red", "Burgundy red"), color: "#800020", price:80 },
       ],
       more: [
-        { id: "#N", name: "Natural", color: "#000000" ,price:80},
-        { id: "#PU", name: "Purple", color: "#800080" ,price:80},
-        { id: "#O", name: "Orange", color: "#FFA500" ,price:80},
-        { id: "#S", name: "Silver", color: "#C0C0C0" ,price:80},
-        { id: "#BL", name: "Blue", color: "#0000FF" ,price:80},
-        { id: "#G", name: "Green", color: "#008000" ,price:80},
+        { id: "#N", name: getTranslation("natural", "Natural"), color: "#000000", price:80 },
+        { id: "#PU", name: getTranslation("purple", "Purple"), color: "#800080", price:80 },
+        { id: "#O", name: getTranslation("orange", "Orange"), color: "#FFA500", price:80 },
+        { id: "#S", name: getTranslation("silver", "Silver"), color: "#C0C0C0", price:80 },
+        { id: "#BL", name: getTranslation("blue", "Blue"), color: "#0000FF", price:80 },
+        { id: "#G", name: getTranslation("green", "Green"), color: "#008000", price:80 },
       ],
     },
     highlight: {
       black: [
-        { id: "#01", name: "Jet black", color: "#000000" ,price:80},
-        { id: "#1B", name: "Off black", color: "#3B3B3B" ,price:80},
+        { id: "#01", name: getTranslation("jet_black", "Jet black"), color: "#000000", price:80 },
+        { id: "#1B", name: getTranslation("off_black", "Off black"), color: "#3B3B3B", price:80 },
       ],
       brown: [
-        { id: "#02", name: "Darkest brown", color: "#3B3B3B" ,price:80},
-        { id: "#03", name: "Medium dark brown", color: "#482D1F" ,price:80},
-        { id: "#06", name: "Chestnut brown", color: "#7B5C4D" ,price:80},
-        { id: "#08", name: "Medium ash brown", color: "#A56A43" ,price:80},
-        { id: "#04", name: "Medium reddish brown", color: "#C35831" ,price:80},
-        { id: "#10", name: "Medium golden brown", color: "#A86A4D" ,price:80},
-        { id: "#12", name: "Light golden brown", color: "#D9B88A" ,price:80},
-        { id: "#14", name: "Light ash brown", color: "#B08B64" ,price:80},
+        { id: "#02", name: getTranslation("darkest_brown", "Darkest brown"), color: "#3B3B3B", price:80 },
+        { id: "#03", name: getTranslation("medium_dark_brown", "Medium dark brown"), color: "#482D1F", price:80 },
+        { id: "#06", name: getTranslation("chestnut_brown", "Chestnut brown"), color: "#7B5C4D", price:80 },
+        { id: "#08", name: getTranslation("medium_ash_brown", "Medium ash brown"), color: "#A56A43", price:80 },
+        { id: "#04", name: getTranslation("medium_reddish_brown", "Medium reddish brown"), color: "#C35831", price:80 },
+        { id: "#10", name: getTranslation("medium_golden_brown", "Medium golden brown"), color: "#A86A4D", price:80 },
+        { id: "#12", name: getTranslation("light_golden_brown", "Light golden brown"), color: "#D9B88A", price:80 },
+        { id: "#14", name: getTranslation("light_ash_brown", "Light ash brown"), color: "#B08B64", price:80 },
       ],
       blonde: [
-        { id: "#16", name: "Dark honey blonde", color: "#D6C16D" ,price:80},
-        { id: "#27", name: "Honey blonde", color: "#F0B23D" ,price:80},
-        { id: "#18", name: "Nerz blonde", color: "#C69C5C" ,price:80},
-        { id: "#144", name: "Bright pumpkin gold blonde", color: "#DFAF3F" ,price:80},
-        { id: "#22", name: "Light ash blonde", color: "#B5A89D" ,price:80},
-        { id: "#60", name: "White blonde", color: "#FFFFFF" ,price:80},
-        { id: "#613", name: "Platinum blonde", color: "#E5E4E2" ,price:80},
+        { id: "#16", name: getTranslation("dark_honey_blonde", "Dark honey blonde"), color: "#D6C16D", price:80 },
+        { id: "#27", name: getTranslation("honey_blonde", "Honey blonde"), color: "#F0B23D", price:80 },
+        { id: "#18", name: getTranslation("nerz_blonde", "Nerz blonde"), color: "#C69C5C", price:80 },
+        { id: "#144", name: getTranslation("bright_pumpkin_gold_blonde", "Bright pumpkin gold blonde"), color: "#DFAF3F", price:80 },
+        { id: "#22", name: getTranslation("light_ash_blonde", "Light ash blonde"), color: "#B5A89D", price:80 },
+        { id: "#60", name: getTranslation("white_blonde", "White blonde"), color: "#FFFFFF", price:80 },
+        { id: "#613", name: getTranslation("platinum_blonde", "Platinum blonde"), color: "#E5E4E2", price:80 },
       ],
       red: [
-        { id: "#99J", name: "Mahagoni red", color: "#4A0D0D" ,price:80},
-        { id: "#350", name: "Ginger red", color: "#D76E38" ,price:80},
-        { id: "#30", name: "Auburn red", color: "#A52A2A" ,price:80},
-        { id: "#135", name: "Fiery red", color: "#FF4500" ,price:80},
-        { id: "#F", name: "Fucsia red", color: "#D5006D" ,price:80},
-        { id: "#P", name: "Pink red", color: "#FF1493" ,price:80},
-        { id: "#33", name: "Cooper red", color: "#a05436" ,price:80},
-        { id: "#B", name: "Burgundy red", color: "#800020" ,price:80},
+        { id: "#99J", name: getTranslation("mahagoni_red", "Mahagoni red"), color: "#4A0D0D", price:80 },
+        { id: "#350", name: getTranslation("ginger_red", "Ginger red"), color: "#D76E38", price:80 },
+        { id: "#30", name: getTranslation("auburn_red", "Auburn red"), color: "#A52A2A", price:80 },
+        { id: "#135", name: getTranslation("fiery_red", "Fiery red"), color: "#FF4500", price:80 },
+        { id: "#F", name: getTranslation("fucsia_red", "Fucsia red"), color: "#D5006D", price:80 },
+        { id: "#P", name: getTranslation("pink_red", "Pink red"), color: "#FF1493", price:80 },
+        { id: "#33", name: getTranslation("cooper_red", "Cooper red"), color: "#a05436", price:80 },
+        { id: "#B", name: getTranslation("burgundy_red", "Burgundy red"), color: "#800020", price:80 },
       ],
       more: [
-        { id: "#N", name: "Natural", color: "#000000" ,price:80},
-        { id: "#PU", name: "Purple", color: "#800080" ,price:80},
-        { id: "#O", name: "Orange", color: "#FFA500" ,price:80},
-        { id: "#S", name: "Silver", color: "#C0C0C0" ,price:80},
-        { id: "#BL", name: "Blue", color: "#0000FF" ,price:80},
-        { id: "#G", name: "Green", color: "#008000" ,price:80},
+        { id: "#N", name: getTranslation("natural", "Natural"), color: "#000000", price:80 },
+        { id: "#PU", name: getTranslation("purple", "Purple"), color: "#800080", price:80 },
+        { id: "#O", name: getTranslation("orange", "Orange"), color: "#FFA500", price:80 },
+        { id: "#S", name: getTranslation("silver", "Silver"), color: "#C0C0C0", price:80 },
+        { id: "#BL", name: getTranslation("blue", "Blue"), color: "#0000FF", price:80 },
+        { id: "#G", name: getTranslation("green", "Green"), color: "#008000", price:80 },
       ],
     },
   };
@@ -223,15 +225,12 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
     <section className="HairColor-sec">
       <div className="HairColor-container" id="Haircolor">
         <div className="HairColor-head">
-          <h2>Hair Color</h2>
+        <h2>{getTranslation('hair_color', 'Hair Color')}</h2>
         </div>
         <div className="HairColor-alert">
-          <img src={alert} />
-          <p>
-            Please note that the colors shown can be displayed differently
-            depending on the output device used and only serve as orientation.
-            Our pattern color ring provides an accurate representation of the
-            hair colors.
+        <img src={alert} alt={getTranslation('alert_icon', 'Alert icon')} />
+        <p>
+            {getTranslation('color_notice', 'Please note that the colors shown can be displayed differently depending on the output device used and only serve as orientation. Our pattern color ring provides an accurate representation of the hair colors.')}
           </p>
         </div>
         <div className="HairColor-image">
@@ -364,39 +363,49 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
         <div className="HairColor-tabs">
           <button
             onClick={() => handleTabClick("hairColor")}
-            className={`tab-button ${
-              activeTab === "hairColor" ? "active" : ""
-            }`}
+            className={`tab-button ${activeTab === "hairColor" ? "active" : ""}`}
           >
-             {selectedColors.hairColor ? <div className="tab-button-color" style={{background:selectedColors.hairColor}}></div> :  <img src={pluscircle}/>} Hair color {selectedPrice.hairColor ? <h6>+{selectedPrice.hairColor} SAR</h6> :  ``}
+            {selectedColors.hairColor ? 
+              <div className="tab-button-color" style={{background:selectedColors.hairColor}}></div> : 
+              <img src={pluscircle} alt={getTranslation('add_color_alt', 'Add color')} />
+            } 
+            {getTranslation('hair_color', 'Hair color')} 
+            {selectedPrice.hairColor ? <h6>+{selectedPrice.hairColor} {getTranslation('currency_sar', 'SAR')}</h6> : ''}
           </button>
           <button
             onClick={() => handleTabClick("colorGradient")}
-            className={`tab-button ${
-              activeTab === "colorGradient" ? "active" : ""
-            }`}
+            className={`tab-button ${activeTab === "colorGradient" ? "active" : ""}`}
           >
-           {selectedColors.colorGradient ? <div className="tab-button-color" style={{background:selectedColors.colorGradient}}></div> :  <img src={pluscircle}/>}  Color gradient {selectedPrice.colorGradient ? <h6>+{selectedPrice.colorGradient} SAR</h6> :  ``}
+            {selectedColors.colorGradient ? 
+              <div className="tab-button-color" style={{background:selectedColors.colorGradient}}></div> : 
+              <img src={pluscircle} alt={getTranslation('add_color_alt', 'Add color')} />
+            } 
+            {getTranslation('color_gradient', 'Color gradient')}
+            {selectedPrice.colorGradient ? <h6>+{selectedPrice.colorGradient} {getTranslation('currency_sar', 'SAR')}</h6> : ''}
           </button>
           <button
             onClick={() => handleTabClick("highlight")}
-            className={`tab-button ${
-              activeTab === "highlight" ? "active" : ""
-            }`}
+            className={`tab-button ${activeTab === "highlight" ? "active" : ""}`}
           >
-           {selectedColors.highlight ? <div className="tab-button-color" style={{background:selectedColors.highlight}}></div> :  <img src={pluscircle}/>} Highlight {selectedPrice.highlight ? <h6>+{selectedPrice.highlight} SAR</h6> :  ``}
+            {selectedColors.highlight ? 
+              <div className="tab-button-color" style={{background:selectedColors.highlight}}></div> : 
+              <img src={pluscircle} alt={getTranslation('add_color_alt', 'Add color')} />
+            } 
+            {getTranslation('highlight', 'Highlight')}
+            {selectedPrice.highlight ? <h6>+{selectedPrice.highlight} {getTranslation('currency_sar', 'SAR')}</h6> : ''}
           </button>
         </div>
-        <div className="white-bg">
         {activeTab === "colorGradient" ? (
             <div className="colorGradient-container">
               
                 <div className="colorGradient-container-des">
-                  <h2>
-                    <img src={colorGradient ? check_circle : plus} alt="icon" />
-                    Ombre colour gradient  {colorGradient ? `- ${colorGradient}%` : ""}
-                  </h2>
-                  <p>Here you can optionally choose a Ombre gradient. The main color (hairline) blends into the hair gradient color (hair tips). Use the percentage slider to determine the position of the color transition.</p>
+                <h2>
+                <img src={colorGradient ? check_circle : plus} alt={getTranslation('icon_alt', 'icon')} />
+                {getTranslation('ombre_gradient', 'Ombre colour gradient')} {colorGradient ? `- ${colorGradient}%` : ""}
+              </h2>
+              <p>
+                {getTranslation('ombre_gradient_description', 'Here you can optionally choose a Ombre gradient. The main color (hairline) blends into the hair gradient color (hair tips). Use the percentage slider to determine the position of the color transition.')}
+              </p>
                   <Box className="HairDensity-Slider">
             <Slider
               aria-label="colorGradientSlider"
@@ -457,39 +466,38 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
                 </div>
             </div>
           ) : (<p style={{display:'none'}}></p> )}
-          <div className="HairColor-filters">
-            <button
-              onClick={() => handleFilterChange("black")}
-              className={activeFilter === "black" ? "filter-active" : ""}
-            >
-              Black
-            </button>
-            <button
-              onClick={() => handleFilterChange("brown")}
-              className={activeFilter === "brown" ? "filter-active" : ""}
-            >
-              Brown
-            </button>
-            <button
-              onClick={() => handleFilterChange("blonde")}
-              className={activeFilter === "blonde" ? "filter-active" : ""}
-            >
-              Blonde
-            </button>
-            <button
-              onClick={() => handleFilterChange("red")}
-              className={activeFilter === "red" ? "filter-active" : ""}
-            >
-              Red
-            </button>
-            <button
-              onClick={() => handleFilterChange("more")}
-              className={activeFilter === "more" ? "filter-active" : ""}
-            >
-              More
-            </button>
-          </div>
-
+        <div className="HairColor-filters">
+          <button
+            onClick={() => handleFilterChange("black")}
+            className={activeFilter === "black" ? "filter-active" : ""}
+          >
+            {getTranslation('black', 'Black')}
+          </button>
+          <button
+            onClick={() => handleFilterChange("brown")}
+            className={activeFilter === "brown" ? "filter-active" : ""}
+          >
+            {getTranslation('brown', 'Brown')}
+          </button>
+          <button
+            onClick={() => handleFilterChange("blonde")}
+            className={activeFilter === "blonde" ? "filter-active" : ""}
+          >
+            {getTranslation('blonde', 'Blonde')}
+          </button>
+          <button
+            onClick={() => handleFilterChange("red")}
+            className={activeFilter === "red" ? "filter-active" : ""}
+          >
+            {getTranslation('red', 'Red')}
+          </button>
+          <button
+            onClick={() => handleFilterChange("more")}
+            className={activeFilter === "more" ? "filter-active" : ""}
+          >
+            {getTranslation('more', 'More')}
+          </button>
+        </div>
           {/* Color Options */}
           <div className="HairColor-colors">
             {Object.keys(colorOptions[activeTab]).map(
@@ -514,7 +522,6 @@ const HairColor = ({ setSelectedColors, selectedColors,colorGradient,setcolorGra
             )}
           </div>
         </div>
-      </div>
     </section>
   );
 };

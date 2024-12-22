@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import plus from "./assets/plus.svg";
 import Straight from "./assets/HairLength.png"; 
-import Wavy from "./assets/WavyLingth.png"
-import Curly from "./assets/CurlyLingth.png"
+import Wavy from "./assets/WavyLingth.png";
+import Curly from "./assets/CurlyLingth.png";
 import "./HairLength.css";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-
+import getTranslation from './utils/translations'; // Import your translation utility
+import SwapImage from './SwapImage';
 const inchMarks = [
     { value: 12, label: '12' },
     { value: 14, label: '14' },
@@ -35,12 +36,12 @@ const valuetext = (value, isCm) => {
     return (
         <>
             {isCm ? value.toFixed(1) : Math.round(value)}<br />
-            <span>{isCm ? 'cm' : 'inches'}</span>
+            <span>{isCm ? getTranslation('cm', 'cm') : getTranslation('inches', 'inches')}</span>
         </>
     );
 };
 
-const HairLength = ({setLength,length,setIsCm,isCm,lastSelected,getPriceLength}) => {
+const HairLength = ({ setLength, length, setIsCm, isCm, lastSelected, getPriceLength }) => {
     const marks = isCm ? cmMarks : inchMarks; // Get marks based on the selected unit
     const handleSliderChange = (event, newValue) => {
         setLength(newValue);
@@ -55,12 +56,14 @@ const HairLength = ({setLength,length,setIsCm,isCm,lastSelected,getPriceLength})
             setLength(Math.round(length / 2.54)); // Convert to inches
         }
     };
+
     const getLengthIndicatorPosition = (currentLength) => {
         const maxSliderValue = isCm ? 75 : 30; // Maximum length based on selected unit
         const imageWidth = 400; // Image width in pixels
         const percentage = currentLength / maxSliderValue; // Calculate percentage of the length
         return `${percentage * imageWidth}px`; // Return pixel value for positioning
     };
+
     let hairImage;
     if (lastSelected.type === 'Straight') {
         hairImage = Straight;
@@ -69,8 +72,7 @@ const HairLength = ({setLength,length,setIsCm,isCm,lastSelected,getPriceLength})
     } else if (lastSelected.type === 'Curly') {
         hairImage = Curly;
     } else {
-        // Default image if type is not recognized
-        hairImage = Straight; // or any default image
+        hairImage = Straight; // Default image
     }
    
     return (
@@ -78,27 +80,31 @@ const HairLength = ({setLength,length,setIsCm,isCm,lastSelected,getPriceLength})
             <div className='HairLength-container' id='Length'>
                 <div className='HairLength-content'>
                     <h6>
-                        <img src={plus} alt="Plus icon" /> Hair length - {valuetext(length, isCm)} <h6 className={`${getPriceLength() !== '0 SAR' ? getPriceLength() : 'zero-price'}`}>{getPriceLength() !== '0 SAR' ? getPriceLength() : null}</h6>
+                        <img src={plus} alt="Plus icon" /> 
+                        {getTranslation("hair_length", "Hair length")} - {valuetext(length, isCm)} 
+                        <h6 className={`${getPriceLength() !== '0 SAR' ? getPriceLength() : 'zero-price'}`}>
+                            {getPriceLength() !== '0 SAR' ? getPriceLength() : null}
+                        </h6>
                     </h6>
-                    <h5>Determine the desired hair length with the help of the regulator.</h5>
+                    <h5>{getTranslation("determine_hair_length", "Determine the desired hair length with the help of the regulator.")}</h5>
                     <p>
-                        Please note that the hair length is measured in the straight state, regardless of the selected<br />
-                        hair structure.
+                        {getTranslation("hair_length_measurement_note", 
+                          "Please note that the hair length is measured in the straight state, regardless of the selected hair structure.")}
                     </p>
 
                     <div className='HairLength-buttons'>
                         <button className={`${isCm ? 'unactivebutton' : 'activebutton'}`} onClick={toggleUnit}>
-                            Inch
+                            {getTranslation("inch_button", "Inch")}
                         </button>
                         <button className={`${isCm ? 'activebutton' : 'unactivebutton'}`} onClick={toggleUnit}>
-                            Cm
+                            {getTranslation("cm_button", "Cm")}
                         </button>
                     </div>
 
                     <Box className="HairLength-Slider">
                         <Slider
-                            aria-label="Hair Length Slider"
-                            value={isCm ? length : length} // Keep length value, convert it later for display
+                            aria-label={getTranslation("hair_length_slider", "Hair Length Slider")}
+                            value={length}
                             onChange={handleSliderChange}
                             min={isCm ? 30 : 12} // Adjust min for cm
                             max={isCm ? 71 : 28} // Adjust max for cm
@@ -123,7 +129,7 @@ const HairLength = ({setLength,length,setIsCm,isCm,lastSelected,getPriceLength})
                                         left: '32.5px',
                                         transform: 'translateX(-50%)',
                                         fontSize: '45px',
-                                        color: 'white', // Or any suitable color to stand out
+                                        color: 'white',
                                     }
                                 },
                                 '& .MuiSlider-track': {
@@ -140,11 +146,13 @@ const HairLength = ({setLength,length,setIsCm,isCm,lastSelected,getPriceLength})
                     </Box>
                 </div>
                 <div className='HairLength-image'>
-                    <img src={hairImage} alt="Hair Length" />
+                    <SwapImage src={hairImage} alt={getTranslation("hair_length_image", "Hair Length")} />
                     <div className='HairLength-Length' style={{ top: getLengthIndicatorPosition(length) }}>
                         <div className='HairLength-Length-divider'></div>
                         <p>{valuetext(length, isCm)}</p> {/* Display formatted length */}
-                        <h6 className={`${getPriceLength() !== '0 SAR' ? getPriceLength() : 'zero-price'}`}>{getPriceLength() !== '0 SAR' ? getPriceLength() : null}</h6>
+                        <h6 className={`${getPriceLength() !== '0 SAR' ? getPriceLength() : 'zero-price'}`}>
+                            {getPriceLength() !== '0 SAR' ? getPriceLength() : null}
+                        </h6>
                     </div>
                 </div>
             </div>

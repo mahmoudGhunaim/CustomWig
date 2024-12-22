@@ -11,6 +11,7 @@ import puback1 from "./assets/PU edge back 1.png";
 import puback2 from "./assets/PU edge back 2.png";
 import pufront1 from "./assets/PU edge front 1.png";
 import pufront2 from "./assets/PU edge front 2.png";
+import getTranslation from './utils/translations'; // Import your translation utility
 
 const ImageViewer = ({ image, alt, onClose }) => {
   return (
@@ -18,10 +19,7 @@ const ImageViewer = ({ image, alt, onClose }) => {
       <button className="close-viewer" onClick={onClose}>
         ×
       </button>
-      <div
-        className="image-viewer-content"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="image-viewer-content" onClick={(e) => e.stopPropagation()}>
         <img src={image} alt={alt} />
         <p>{alt}</p>
       </div>
@@ -51,45 +49,37 @@ const PUedge = ({ setSelectedOptions, selectedOptions, getPricePUedge }) => {
       <div className="PUedge-container">
         <div className="PUedge-content">
           <h2>
-            <img src={plus} alt="Plus icon" />
-            PU edge
-            {selectedOptions.length === 0 && <span>*optional</span>}
+            <img src={plus} alt={getTranslation("plus_icon", "Plus icon")} />
+            {getTranslation("pu_edge", "PU Edge")}
+            {selectedOptions.length === 0 && <span>*{getTranslation("optional", "optional")}</span>}
             {selectedOptions.length > 0 && <h6>{getPricePUedge()}</h6>}
           </h2>
           <p>
-            Optionally select a PU edge for the hair line. A PU edge makes it
-            easier to apply your lace wig with adhesive or adhesive strips and
-            ensures a high strength.
+            {getTranslation("pu_description", "Optionally select a PU edge for the hair line. A PU edge makes it easier to apply your lace wig with adhesive or adhesive strips and ensures a high strength.")}
           </p>
           <button onClick={() => setShowDetails(!showDetails)}>
-            <img style={{ width: "24px" }} src={alert} alt="alert icon" />{" "}
-            Show detail images
+            <img style={{ width: "24px" }} src={alert} alt={getTranslation("alert_icon", "Alert icon")} />
+            {getTranslation("show_detail_images", "Show detail images")}
           </button>
         </div>
         <div className="PUedge-select">
           <button
-            className={
-              selectedOptions.length === 0 ? "PUedge-button-selected" : ""
-            }
+            className={selectedOptions.length === 0 ? "PUedge-button-selected" : ""}
             onClick={() => handleSelect("Without")}
           >
-            Without
+            {getTranslation("without", "Without")}
           </button>
           <button
-            className={
-              selectedOptions.includes("Front") ? "PUedge-button-selected" : ""
-            }
+            className={selectedOptions.includes("Front") ? "PUedge-button-selected" : ""}
             onClick={() => handleSelect("Front")}
           >
-            Front
+            {getTranslation("front", "Front")}
           </button>
           <button
-            className={
-              selectedOptions.includes("Back") ? "PUedge-button-selected" : ""
-            }
+            className={selectedOptions.includes("Back") ? "PUedge-button-selected" : ""}
             onClick={() => handleSelect("Back")}
           >
-            Back
+            {getTranslation("head_back", "Back")}
           </button>
         </div>
 
@@ -104,17 +94,17 @@ const PUedge = ({ setSelectedOptions, selectedOptions, getPricePUedge }) => {
               initialSlide={0}
             >
               <SwiperSlide className="SwiperSlide-pu">
-                <p>PU edge front</p>
+                <p>{getTranslation("pu_edge_front", "PU Edge Front")}</p>
                 <div>
-                  <img src={pufront1} alt="PU edge front 1" onClick={() => setSelectedImage({ src: pufront1, alt: "PU edge front 1" })} />
-                  <img src={pufront2} alt="PU edge front 2" onClick={() => setSelectedImage({ src: pufront2, alt: "PU edge front 2" })} />
+                  <img src={pufront1} alt={getTranslation("pu_edge_front_1", "PU Edge Front 1")} onClick={() => setSelectedImage({ src: pufront1, alt: getTranslation("pu_edge_front_1", "PU Edge Front 1") })} />
+                  <img src={pufront2} alt={getTranslation("pu_edge_front_2", "PU Edge Front 2")} onClick={() => setSelectedImage({ src: pufront2, alt: getTranslation("pu_edge_front_2", "PU Edge Front 2") })} />
                 </div>
               </SwiperSlide>
               <SwiperSlide className="SwiperSlide-pu">
-                <p>PU edge back</p>
+                <p>{getTranslation("pu_edge_back", "PU Edge Back")}</p>
                 <div>
-                  <img src={puback1} alt="PU edge back 1" onClick={() => setSelectedImage({ src: puback1, alt: "PU edge back 1" })} />
-                  <img src={puback2} alt="PU edge back 2" onClick={() => setSelectedImage({ src: puback2, alt: "PU edge back 2" })} />
+                  <img src={puback1} alt={getTranslation("pu_edge_back_1", "PU Edge Back 1")} onClick={() => setSelectedImage({ src: puback1, alt: getTranslation("pu_edge_back_1", "PU Edge Back 1") })} />
+                  <img src={puback2} alt={getTranslation("pu_edge_back_2", "PU Edge Back 2")} onClick={() => setSelectedImage({ src: puback2, alt: getTranslation("pu_edge_back_2", "PU Edge Back 2") })} />
                 </div>
               </SwiperSlide>
             </Swiper>
@@ -124,6 +114,7 @@ const PUedge = ({ setSelectedOptions, selectedOptions, getPricePUedge }) => {
         {selectedImage && (
           <ImageViewer
             image={selectedImage.src}
+            alt={selectedImage.alt}
             onClose={closeImageViewer}
           />
         )}
