@@ -277,8 +277,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
             unmountOnExit
           >
             <div className="card-tabs">
-              <p><strong>Straight:</strong> Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet.</p>
-            </div>
+            <p>{getTranslation("straight_description_smooth", "Straight: Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet.")}</p>            </div>
           </CSSTransition>
         )}
 
@@ -291,8 +290,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
             unmountOnExit
           >
             <div className="card-tabs">
-            <p><strong>Wave:</strong>Wavy hair flowing from the root to the top. More defined and wavy than body wave. This texture can be styled to determine the intensity of the waves.</p>
-            </div>
+            <p>{getTranslation("wave_description_flowing", "Wave: Wavy hair flowing from the root to the top. More defined and wavy than body wave. This texture can be styled to determine the intensity of the waves.")}</p>            </div>
           </CSSTransition>
         )}
 
@@ -305,8 +303,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
             unmountOnExit
           >
             <div className="card-tabs">
-            <p><strong>Curly:</strong> Nappy hair that is extremely thick and resistant. The structure resembles Afro-American hair.</p>
-            </div>
+            <p>{getTranslation("curly_description_nappy", "Curly: Nappy hair that is extremely thick and resistant. The structure resembles Afro-American hair.")}</p>            </div>
           </CSSTransition>
         )}
       </div>
