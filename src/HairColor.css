@@ -55,21 +55,71 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     position: relative;
     overflow: hidden;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    background: white;
 }
-.haircolor{
+.haircolor {
+    position: absolute;
+    top: 0; /* Ensures that both SVGs align at the top */
+    width: 385px; /* Width matches the SVG sizes */
+    height: 570px; /* Height to ensure consistency */
+    mix-blend-mode: soft-light; /* Apply blend mode to the SVGs */
+    filter: blur(50px); /* Blur effect */
+    opacity: 1; /* Full opacity */
+    pointer-events: none; /* Allows clicking through if needed */
+  }
+  .hairhighlight1 {
     position: absolute;
     top: 0;
-    right: 0;
-    mix-blend-mode: color;
-    filter: blur(50px);
-    opacity: .5;
+    width: 385px;
+    height: 570px;
+    clip-path: inset(20% 55% 40% 40%);
+        mix-blend-mode: overlay;
+    filter: blur(30px);
+    border-radius: 999px;
 }
+/* .hairhighlight2 {
+    position: absolute;
+    top: 0;
+    width: 385px;
+    height: 570px;
+    clip-path: inset(20% 10% 40% 76%);
+    mix-blend-mode: overlay;
+    filter: blur(30px);
+} */
+.hairhighlight3 {
+    position: absolute;
+    top: 0;
+    width: 385px;
+    height: 570px;
+    clip-path: inset(20% 40% 40% 55%);
+        mix-blend-mode: overlay;
+    filter: blur(100px);
+    border-radius: 999px;
+}
+/* .hairhighlight4 {
+    position: absolute;
+    top: 0;
+    width: 385px;
+    height: 570px;
+    clip-path: inset(20% 10% 40% 76%);
+    mix-blend-mode: overlay;
+    filter: blur(30px);
+}
+.hairhighlight5 {
+    position: absolute;
+    top: 0;
+    width: 385px;
+    height: 570px;
+    clip-path: inset(20% 10% 40% 76%);
+    mix-blend-mode: overlay;
+    filter: blur(30px);
+} */
 .hairlinearGradient{
     position: absolute;
-    top: 7%;
-    left: 20%;
     mix-blend-mode: color;
-    filter: blur(10px);
+    filter: blur(100px);
     opacity: .6;
 }
 .lasthear{
