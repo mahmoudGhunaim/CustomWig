@@ -5,220 +5,79 @@
 }
 .HairType-container{
     display: flex;
-    flex-direction: column;
-    max-width: 1280px;
+    justify-content: space-between;
+    max-width: 1711px;
     width: 90%;
+    gap: 50px;
+    align-items: center;
 }
-.HairType-head h2{
+.HairType-image{
+    width: 50%;
+    max-width: 756px;
+}
+.HairType-image img{
+    width: 100%;
+}
+.HairType-image-type{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+}
+.HairType-image-type-buttons{
+    display: flex;
+    gap: 14px;
+}
+.HairType-image-type-buttons button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 180px;
+    height: 120px;
+    justify-content: center;
+    padding: 0;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+    border: 1px solid #E8E8E8;
+    background: white;
+}
+.HairType-image-type-buttons-active span{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.HairType-image-type-buttons-active span::after{
+    content: "";
+    background: url("./assets/greencheck.png");
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
+.HairType-image-type p{
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #282C3B;
+}
+.HairType-image-type h2{
     font-family: 'Outfit';
     font-size: 43.8px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 52.62px;
-    text-align: center;
-    color: #000000;
-    margin-bottom: 40px;
-}
-.HairType-cards {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.HairType-card {
-  position: relative;
-  width: 33.3%;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: center center;
-  flex-shrink: 1;
-  opacity: 1;
-}
-
-.HairType-card img {
-  width: 100%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.HairType-card-active {
-  width: 40% !important;
-  min-width: 40%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1;
-  flex-shrink: 0;
-  opacity: 1;
-}
-
-.HairType-card:not(.HairType-card-active) {
-  width: 30%;
-}
-.HairType-card img{
-    width: 100%;
-    height: 440px;
-    object-fit: cover;
-    opacity: 1;
-}
-.HairType-card-active{
-    width: 40% !important;
-}
-.HairType-label{
-    position: absolute;
-    bottom: 0px;
-    background: #ffffff99;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 0;
-}
-.HairType-card  .HairType-label p{
-    display: none;
-}
-.HairType-card-active  .HairType-label p{
-    display: inline-block;
-}
-.HairType-label img{
-    width: auto;
-    height: auto;
-}
-.HairType-label h6,.HairType-label p{
-    font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
     text-align: left;
-    color: #131313;
-}
-.HairType-label p {
-    color: #505050 !important;
-}
-/* HairTypeAnimations.css */
-.fade-enter {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  
-  .fade-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-  }
-  .card-tabs .MuiTabs-flexContainer {
-    justify-content: flex-start;
-    gap: 5.3%;
-  }
-  .card-tabs .MuiTabs-flexContainer button{
-    width: 33%;
-    border: 1px solid #131313;
-    font-family: Outfit;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #131313;
-    position: relative;
-  }
-  .card-tabs .MuiTabs-flexContainer button.Mui-selected{
-    background: #131313;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
-  .card-tabs .MuiTabs-flexContainer button.Mui-selected::before{
-    content: "";
-    background: url("./assets/check.svg");
-    width: 24px;
-    height: 24px;
-    background-size: contain;
-  }
-  .card-tabs .MuiTabs-indicator{
-    display: none;
-  }
-  .card-tabs .MuiBox-root .MuiBox-root {
-    border-bottom: none;
-  }
-  .card-tabs{
-    background: white;
-    padding: 30px 35px ;
-  }
-  .HairType-label >div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card-tabs p{
-    font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 25.6px;
-    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
 
-  }
-  html[lang="ar"] .card-tabs p,  html[lang="ar"] .HairType-label h6,  html[lang="ar"] .HairType-label p,html[lang="ar"] .HairLength-content h5,html[lang="ar"] .HairLength-content p{
-    text-align: right;
-  }
-  html[lang="ar"] .HairLength-Slider{
-    direction: ltr !important;
-  }
-  .mobile{
-    display: none !important;
-  }
-  @media (max-width: 1024px) {
-    .HairType-cards{
-      flex-direction: column;
-    }
-    .btn-sliider button{
-      background: none;
-      border: none;
-    }
-    .btn-sliider{
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 75px;
-    }
-    .btn-sliider button{
-      z-index: 11;
-      position: absolute;
-      top: 29.5%;
-    }
-    .btn-sliider button:last-child{
-      right: 15px;
-    }
-    .btn-sliider button:first-child{
-      left: 15px;
-    }
-    .desktop{
-      display: none !important;
-    }
-    .mobile{
-      display: block !important;
-    }
-    .HairType-card {
-      width: 100%;
-    }
-    .HairType-card-active{
-      width: 100% !important;
-    }.card-tabs .MuiTabs-flexContainer{
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
-    .card-tabs .MuiTabs-flexContainer button{
-      width: 100%;
-    }
-    .card-swiper{
-      max-width: 100%;
-    }
-  }
+}

@@ -5,11 +5,10 @@
 }
 .HairColor-container{
     display: flex;
-    flex-direction: column;
-    max-width: 1280px;
+    max-width: 1711px;
     width: 90%;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
 
 }
 .HairColor-head h2{
@@ -54,31 +53,15 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
 .HairColor-image{
     position: relative;
     overflow: hidden;
-    width: 100%;
+    width:756px ;
     display: flex;
     justify-content: center;
     background: white;
 }
-.haircolor {
-    position: absolute;
-    top: 0; /* Ensures that both SVGs align at the top */
-    width: 385px; /* Width matches the SVG sizes */
-    height: 570px; /* Height to ensure consistency */
-    mix-blend-mode: soft-light; /* Apply blend mode to the SVGs */
-    filter: blur(50px); /* Blur effect */
-    opacity: 1; /* Full opacity */
-    pointer-events: none; /* Allows clicking through if needed */
-  }
-  .hairhighlight1 {
-    position: absolute;
-    top: 0;
-    width: 385px;
-    height: 570px;
-    clip-path: inset(20% 55% 40% 40%);
-        mix-blend-mode: overlay;
-    filter: blur(30px);
-    border-radius: 999px;
+.HairColor-image img{
+    width: 100%;
 }
+
 /* .hairhighlight2 {
     position: absolute;
     top: 0;
@@ -130,28 +113,38 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     filter: blur(50px);
 }
 .HairColor-tabs{
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin-top: -94px;
-    z-index: 4;
-    gap: 2px;
+        gap: 14px;
 }
 .HairColor-tabs .tab-button{
-    width: 100%;
-    height: 70px;
-    background: #FFFFFFBF;
-    border: none !important;
-    font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: #282C3B;
     display: flex;
-    gap: 10px;
     align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 150px;
+    height: 45px;
     justify-content: center;
-    cursor: pointer;
+    padding: 0;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+    border: 1px solid #E8E8E8;
+    background: white;
+    position: relative;
+
+}
+.tab-button > div{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.HairColor-tabs .tab-button.active{
+    border: 1px solid #636363 !important;
 }
 .HairColor-tabs .tab-button h6{
     font-family: 'Outfit';
@@ -161,22 +154,24 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     background: #131313;
     color: #FFFFFF;
     padding: 5px;
+    position: absolute;
+    top: -30px;
+    right: 0;
 }
-.HairColor-tabs .tab-button.active{
-    background: #FFF6E4E5;
-}
+
 .tab-button-color{
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border-radius: 99px;
-    border: 3px solid #00CD1F;
+    border: 1px solid #00CD1F;
+    transition: all .3ms ease;
 }
 
 .HairColor-filters{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    gap: 5px;
 }
 .HairColor-filters button{
     width: 100%;
@@ -247,11 +242,24 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     color: #282C3B;
 }
 .HairColor-colors{
-    padding: 30px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 20px;
+    gap: 10px;
+}
+.haircolor-svg{
+    position: absolute;
+    
+    width: 100%;
+    mix-blend-mode: soft-light;
+    filter: blur(50px);
+}
+.hairGradient-svg{
+    position: absolute;
+    mix-blend-mode: soft-light;
+    filter: blur(100px);
+
+    width: 100%;
 }
 .white-bg{
     width: 100%;
@@ -260,7 +268,6 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
 }
 .colorGradient-container{
     display: flex;
-    padding: 30px;
     gap: 100px;
 }
 .colorGradientSlider{
@@ -285,11 +292,14 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
 .colorr-active{
     border:3px solid #00CD1F;
 }
+.HairColor-detail{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 50%;
+}
 @media (max-width: 1024px) {
-    .HairColor-image img{
-        width: 100%;
-        height: 250px;
-    }
+  
     .lasthear{
         max-width: 80%;
     }

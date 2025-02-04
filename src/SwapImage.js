@@ -23,9 +23,6 @@ const SwapImage = ({ src, alt }) => {
         }
         
         .swap-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
           animation: fadeIn 0.9s ease-in-out;
            opacity: 1;
         }

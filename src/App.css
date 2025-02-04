@@ -3,18 +3,55 @@
   box-sizing: border-box; /* Optional: aligning box sizing */
 
 }
-body{
-  background-color: #F6F6F6;
+
+
+
+
+.Page-stipper-SwiperSlide-container{
+  min-height: 100vh;
 }
 
+.Page-stipper-SwiperSlide-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.btn-sliider {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 90%;
+  max-width: 1711px;
+}
+.btn-sliider button:first-child{
+  background: none;
+  border: none;
+}
+.btn-sliider button:last-child{
+  background: #131313;
+  border: none;
+  border-radius: 0;
+  color: white;
+}
+.btn-sliider button{
+  display: flex;
+  gap: 6px;
 
-
-
-
-
-
-
-
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit';
+  font-size: 17.44px;
+  font-weight: 600;
+  line-height: 21.97px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 110px;
+  height: 62px;
+  cursor: pointer;
+}
 .Customize-sec{
   display: flex;
   justify-content: center;

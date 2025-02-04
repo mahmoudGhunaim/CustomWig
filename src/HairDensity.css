@@ -4,13 +4,12 @@
     justify-content: center;
 }
 .HairDensity-container{
-    max-width: 1280px;
+    max-width: 1711px;
     width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
-    border: 1px solid #DDDDDD;
+
     position: relative;
     background: white;
 }
@@ -20,27 +19,7 @@
     gap: 30px;
     align-items: flex-start;
 }
-.HairDensity-container button{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    font-family: 'Lato';
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-    color: #131313;
-    cursor: pointer;
-    padding: 0;
-    font-family: 'Outfit';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    text-align: left;
-    color: #131313;
-}
+
 .swiper-button-next,.swiper-button-prev{
     color: #131313 !important;
 }
@@ -52,15 +31,18 @@
     height: 24px;
 }
 .HairDensity-content h6{
-    font-family: 'Outfit';
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 20px;
-    text-align: left;
-    color: #131313;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  font-family: Outfit;
+  font-size: 43.8px;
+  font-weight: 600;
+  line-height: 52.62px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
 }
 .zero-price{
     display: none !important;
@@ -76,8 +58,6 @@
 }
 .HairDensity-image img{
   width: 100%;
-  max-height: 370px;
-  object-fit: contain;
   opacity: 1;
 }
 .HairDensity-content{
@@ -346,8 +326,48 @@
       .fade-image.fade-out {
         opacity: 0;
       }
-      .HairDensity-image {
-        height: 360px; /* or whatever height you need */
+      .HairDensity-content-button-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;  
+        width: 100%;
+      }
+      .HairDensity-content-button-container button{ 
+        flex-basis: 195px;
+        height: 70px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        background: #FCF7EE;
+        border: none;
+        cursor: pointer;
+        font-family: Outfit;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #000000;
+      }
+      .HairDensity-content-button-container button.active{
+        border: 1px solid #000000;
+      }
+      .HairDensity-content-button-container button.active span::after{
+        content: "";
+        background: url("./assets/greencheck.png");
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+      }
+      .HairDensity-content-button-container button span{
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
       }
       /* Optional: Add custom styles for mobile devices */
       @media (max-width: 768px) {

@@ -15,8 +15,70 @@ import HairColor from "./Hair-Color";
 import AlmostDone from "./almost-done";
 import HeadMeasurements from "./head-measurements";
 import CartHandler from "./CartHandler.js";
+
+import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
+import "swiper/css";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+
+const SliderButtons = ({ children }) => {
+  const swiper = useSwiper();
+  return (
+    <div style={{display:"flex", alignItems:"center", justifyContent:"center",background:"#F9F9F9",padding:"20px 0"}}>
+    <div className="btn-sliider">
+      <button onClick={() => swiper.slidePrev()}>
+        PREV
+        <svg
+          width="60"
+          height="12"
+          viewBox="0 0 60 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="59.3627"
+            y1="6.00003"
+            x2="5.56047"
+            y2="6.00003"
+            stroke="#000000"
+            stroke-width="1.74359"
+          />
+          <path
+            d="M6.55676 0.769236L6.55676 11.2308L0.57874 6.00001L6.55676 0.769236Z"
+            fill="#000000"
+          />
+        </svg>
+      </button>
+      {children}
+      <button onClick={() => swiper.slideNext()} className="">
+        NEXT
+        <svg
+          width="60"
+          height="12"
+          viewBox="0 0 60 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="0.970703"
+            y1="6.00003"
+            x2="54.7729"
+            y2="6.00003"
+            stroke="white"
+            stroke-width="1.74359"
+          />
+          <path
+            d="M53.7765 11.2308V0.769226L59.7545 6L53.7765 11.2308Z"
+            fill="white"
+          />
+        </svg>
+      </button>
+    </div>
+    </div>
+  );
+};
+
 function App() {
-  const [Density, setDensity] = useState(60); // State to track selected length
+  const [Density, setDensity] = useState(100); // State to track selected length
   const [colorGradient, setcolorGradient] = useState(null); // State to track selected length
 
   const [selectedColor, setSelectedColor] = useState(null);
@@ -59,14 +121,14 @@ function App() {
   );
 
   const [selectedCard, setSelectedCard] = React.useState(
-    window.innerWidth <= 1024 ? "Front" : null
+    window.innerWidth <= 1024 ? "Front Lace-Wig" : null
   );
   const [lastSelectedTab, setLastSelectedTab] = React.useState({
     Front: 0,
     Full: 0,
     Silk: 0,
   });
-
+  const [hairLace , setHairLace] = useState("Front Lace-Wig")
   const [selectedColors, setSelectedColors] = useState({
     hairColor: null, // Default color for hair color
     colorGradient: null, // Default color for color gradient
@@ -88,7 +150,7 @@ function App() {
 
   useEffect(() => {
     fetchProductData();
-}, []);
+  }, []);
 
   useEffect(() => {
     calculateTotalPrice();
@@ -144,16 +206,15 @@ function App() {
   };
   const fetchProductData = async () => {
     // try {
-        const response = await fetch('/wp-json/wc/v3/product-info/801');
-        const data = await response.json();
-        if (data.price) {
-         
-            setBasePrice(parseFloat(data.price));
-        }
+    const response = await fetch("/wp-json/wc/v3/product-info/801");
+    const data = await response.json();
+    if (data.price) {
+      setBasePrice(parseFloat(data.price));
+    }
     // } catch (error) {
-        // console.error('Error fetching product data:', error);
+    // console.error('Error fetching product data:', error);
     // }
-};
+  };
   const getPriceLength = () => {
     const priceMap = {
       16: "+50 SAR",
@@ -174,15 +235,13 @@ function App() {
     return priceMap[length] || "0 SAR";
   };
   const getPriceDensity = () => {
-    if (Density === 90) {
+    if (Density === 150) {
       return "+50 SAR";
-    } else if (Density === 100) {
+    } else if (Density === 180) {
       return "+100 SAR";
-    } else if (Density === 120) {
+    } else if (Density === 200) {
       return "+150 SAR";
-    } else if (Density === 150) {
-      return "+200 SAR";
-    }
+    } 
     return "0 SAR"; // For 60% and 80%
   };
   const getPricePUedge = () => {
@@ -228,109 +287,190 @@ function App() {
     />
   );
   return (
-    <React.Fragment>
-      <Header CartHandlerComponent={cartHandler} totalPrice={totalPrice} />
-      <Label
-        selectedNameColors={selectedNameColors}
-        selectedPrice={selectedPrice}
-        getPriceBleachedKnots={getPriceBleachedKnots}
-        // getPriceSilkTop={getPriceSilkTop}
-        getPricePUedge={getPricePUedge}
-        getPriceDensity={getPriceDensity}
-        getPriceLength={getPriceLength}
-        selectedOptions={selectedOptions}
-        Density={Density}
-        // selectedOptionsSilkTop={selectedOptionsSilkTop}
-        selectedOptionsBK={selectedOptionsBK}
-        selectedColor={selectedColor}
-        length={length}
-        isCm={isCm}
-        measurements={measurements}
-        lastSelected={lastSelected}
-        selectedCard={selectedCard}
-        lastSelectedTab={lastSelectedTab}
-        selectedColors={selectedColors}
-      />
-      <Customize />
-      <HairColor
-        selectedNameColors={selectedNameColors}
-        setSelectedNameColors={setSelectedNameColors}
-        setSelectedPrice={setSelectedPrice}
-        selectedPrice={selectedPrice}
-        selectedColors={selectedColors}
-        setSelectedColors={setSelectedColors}
-        colorGradient={colorGradient}
-        setcolorGradient={setcolorGradient}
-      />
-      <HairType lastSelected={lastSelected} setLastSelected={setLastSelected} />
-      <HairLength
-        length={length}
-        setLength={setLength}
-        isCm={isCm}
-        setIsCm={setIsCm}
-        lastSelected={lastSelected}
-        getPriceLength={getPriceLength}
-      />
-      <HairDensity
-        getPriceDensity={getPriceDensity}
-        Density={Density}
-        setDensity={setDensity}
-      />
-      <HairLace
-        selectedCard={selectedCard}
-        setSelectedCard={setSelectedCard}
-        lastSelectedTab={lastSelectedTab}
-        setLastSelectedTab={setLastSelectedTab}
-      />
-      <LaceTone
-        selectedColor={selectedColor}
-        setSelectedColor={setSelectedColor}
-      />
-      <PUedge
-        getPricePUedge={getPricePUedge}
-        selectedOptions={selectedOptions}
-        setSelectedOptions={setSelectedOptions}
-      />
+    <div className="body-page">
+      <Swiper
+        className="Page-stipper"
+        modules={[Navigation, Pagination, A11y, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        initialSlide={0}
+        allowTouchMove={false}
+      >
+        {/* <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <Header
+              CartHandlerComponent={cartHandler}
+              totalPrice={totalPrice}
+            />
+
+            <SliderButtons />
+          </div>
+        </SwiperSlide> */}
+        {/* <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <Label
+              selectedNameColors={selectedNameColors}
+              selectedPrice={selectedPrice}
+              getPriceBleachedKnots={getPriceBleachedKnots}
+              // getPriceSilkTop={getPriceSilkTop}
+              getPricePUedge={getPricePUedge}
+              getPriceDensity={getPriceDensity}
+              getPriceLength={getPriceLength}
+              selectedOptions={selectedOptions}
+              Density={Density}
+              // selectedOptionsSilkTop={selectedOptionsSilkTop}
+              selectedOptionsBK={selectedOptionsBK}
+              selectedColor={selectedColor}
+              length={length}
+              isCm={isCm}
+              measurements={measurements}
+              lastSelected={lastSelected}
+              selectedCard={selectedCard}
+              lastSelectedTab={lastSelectedTab}
+              selectedColors={selectedColors}
+            />
+            <SliderButtons />
+          </div>
+        </SwiperSlide> */}
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairType
+              lastSelected={lastSelected}
+              setLastSelected={setLastSelected}
+            />
+            <SliderButtons />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairColor
+              selectedNameColors={selectedNameColors}
+              setSelectedNameColors={setSelectedNameColors}
+              setSelectedPrice={setSelectedPrice}
+              selectedPrice={selectedPrice}
+              lastSelected={lastSelected}
+              selectedColors={selectedColors}
+              setSelectedColors={setSelectedColors}
+              colorGradient={colorGradient}
+              setcolorGradient={setcolorGradient}
+            />
+            <SliderButtons />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairLength
+              length={length}
+              setLength={setLength}
+              isCm={isCm}
+              setIsCm={setIsCm}
+              lastSelected={lastSelected}
+              getPriceLength={getPriceLength}
+            />{" "}
+            <SliderButtons />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairDensity
+              getPriceDensity={getPriceDensity}
+              Density={Density}
+              setDensity={setDensity}
+              lastSelected={lastSelected}
+
+            />{" "}
+            <SliderButtons />
+          </div>
+        </SwiperSlide>
+        {/* <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <Customize />
+            <SliderButtons />
+          </div>
+        </SwiperSlide> */}
+        
+        
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairLace
+              selectedCard={selectedCard}
+              setSelectedCard={setSelectedCard}
+              hairLace={hairLace}
+              setHairLace={setHairLace}
+              lastSelectedTab={lastSelectedTab}
+              setLastSelectedTab={setLastSelectedTab}
+            />
+            <SliderButtons />
+          </div>
+        </SwiperSlide>
+        {/* <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <LaceTone
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+            />{" "}
+            <SliderButtons />
+          </div>
+        </SwiperSlide> */}
+        {selectedOptionsBK.length > 0 && (
+          <SwiperSlide>
+            <div className="Page-stipper-SwiperSlide-container">
+              <BleachedKnots
+                selectedCard={selectedCard}
+                getPriceBleachedKnots={getPriceBleachedKnots}
+                selectedOptionsBK={selectedOptionsBK}
+                setSelectedOptionsBK={setSelectedOptionsBK}
+              />
+              <SliderButtons />
+            </div>
+          </SwiperSlide>
+        )}
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HeadMeasurements
+              measurements={measurements}
+              setMeasurements={setMeasurements}
+            />
+            <SliderButtons />
+          </div>
+        </SwiperSlide>
+        {/* <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <AlmostDone
+              selectedPrice={selectedPrice}
+              getPriceBleachedKnots={getPriceBleachedKnots}
+              // getPriceSilkTop={getPriceSilkTop}
+              getPricePUedge={getPricePUedge}
+              getPriceDensity={getPriceDensity}
+              getPriceLength={getPriceLength}
+              selectedOptions={selectedOptions}
+              Density={Density}
+              // selectedOptionsSilkTop={selectedOptionsSilkTop}
+              selectedOptionsBK={selectedOptionsBK}
+              selectedColor={selectedColor}
+              length={length}
+              isCm={isCm}
+              measurements={measurements}
+              lastSelected={lastSelected}
+              selectedCard={selectedCard}
+              lastSelectedTab={lastSelectedTab}
+              selectedColors={selectedColors}
+              selectedNameColors={selectedNameColors}
+              CartHandlerComponent={cartHandler}
+              totalPrice={totalPrice}
+            />
+            <SliderButtons />
+          </div>
+        </SwiperSlide> */}
+      </Swiper>
+
       {/* <SilkTop
         getPriceSilkTop={getPriceSilkTop}
         selectedOptionsSilkTop={selectedOptionsSilkTop}
         setSelectedOptionsSilkTop={setSelectedOptionsSilkTop}
       /> */}
-      <BleachedKnots
-        selectedCard={selectedCard}
-        getPriceBleachedKnots={getPriceBleachedKnots}
-        selectedOptionsBK={selectedOptionsBK}
-        setSelectedOptionsBK={setSelectedOptionsBK}
-      />
-      <HeadMeasurements
-        measurements={measurements}
-        setMeasurements={setMeasurements}
-      />
-
-      <AlmostDone
-        selectedPrice={selectedPrice}
-        getPriceBleachedKnots={getPriceBleachedKnots}
-        // getPriceSilkTop={getPriceSilkTop}
-        getPricePUedge={getPricePUedge}
-        getPriceDensity={getPriceDensity}
-        getPriceLength={getPriceLength}
-        selectedOptions={selectedOptions}
-        Density={Density}
-        // selectedOptionsSilkTop={selectedOptionsSilkTop}
-        selectedOptionsBK={selectedOptionsBK}
-        selectedColor={selectedColor}
-        length={length}
-        isCm={isCm}
-        measurements={measurements}
-        lastSelected={lastSelected}
-        selectedCard={selectedCard}
-        lastSelectedTab={lastSelectedTab}
-        selectedColors={selectedColors}
-        selectedNameColors={selectedNameColors}
-        CartHandlerComponent={cartHandler}
-        totalPrice={totalPrice}
-      />
-    </React.Fragment>
+    </div>
   );
 }
 

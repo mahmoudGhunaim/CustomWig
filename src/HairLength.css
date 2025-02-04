@@ -6,24 +6,24 @@
 .HairLength-container{
     display: flex;
     justify-content: space-between;
-    max-width: 1280px;
+    max-width: 1711px;
     width: 90%;
     align-items: center;
-    padding: 30px;
-    border: 1px solid #DDDDDD;
-    background-color: white;
 }
 .HairLength-content{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 .HairLength-content h6{
-    font-family: 'Outfit';
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 20px;
+    font-family: Outfit;
+    font-size: 43.8px;
+    font-weight: 600;
+    line-height: 52.62px;
     text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
     color: #131313;
     display: flex;
     align-items: center;
@@ -116,6 +116,7 @@
 }
 .HairLength-Slider{
     margin:0 20px ;
+    margin-top: 20px;
 }
 .HairLength-Length h6{
     background: #a9aab1bd;
