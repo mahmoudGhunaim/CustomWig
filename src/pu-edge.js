@@ -57,10 +57,10 @@ const PUedge = ({ setSelectedOptions, selectedOptions, getPricePUedge }) => {
           <p>
             {getTranslation("pu_description", "Optionally select a PU edge for the hair line. A PU edge makes it easier to apply your lace wig with adhesive or adhesive strips and ensures a high strength.")}
           </p>
-          <button onClick={() => setShowDetails(!showDetails)}>
+          {/* <button onClick={() => setShowDetails(!showDetails)}>
             <img style={{ width: "24px" }} src={alert} alt={getTranslation("alert_icon", "Alert icon")} />
             {getTranslation("show_detail_images", "Show detail images")}
-          </button>
+          </button> */}
         </div>
         <div className="PUedge-select">
           <button

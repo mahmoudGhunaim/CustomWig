@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AlmostDone.css";
 import deliveryIcon from "./assets/Groupqqq.svg";
 import confidenceIcon from "./assets/aaaaaaaaaaa.svg";
@@ -25,22 +25,13 @@ import fullBr from "./assets/full_br.png";
 import silkBr from "./assets/silk_br.png";
 import getTranslation from "./utils/translations";
 
-const hairTypeImages = {
-  Straight: [SilkStraight, KinkyStraight, YakiStraight],
-  Wavy: [DeepWave, BodyWave, WaterWave],
-  Curly: [Curly, KinkyCurly],
-};
+import FrontLaceWig from "./assets/Front Lace-Wig.png";
+import SilkTop from "./assets/Silk top.png";
+import FullLaceWig from "./assets/Full Lace-Wig.png";
 
-const labels = {
-  Front: [getTranslation("front_lace_wig_title", "Front Lace-Wig"),""],
-  Full: [getTranslation("full_lace_wig_title", "Full Lace-Wig"),""],
-  Silk: [getTranslation("front_lace_silk_top", "Front lace silk top"), getTranslation("folded_seamless_hairline", "Folded seamless hairline")],
-};
-const imageMap = {
-  Front: frontBr,
-  Full: fullBr,
-  Silk: silkBr,
-};
+
+
+
 const AlmostDone = ({
   selectedOptionsBK,
   Density,
@@ -62,32 +53,36 @@ const AlmostDone = ({
   selectedPrice,
   CartHandlerComponent,
   totalPrice,
-  selectedNameColors
+  selectedNameColors,
+  setHairLace,
+  hairLace
 }) => {
-  const hairTypes = {
-    Straight: ["Straight", "Kinky Straight", "Yaki Straight"],
-    Wavy: ["Wave", "Body Wave", "Water Wave"],
-    Curly: ["Curly", "Jerry/Kinky Curl"],
-  };
-
-  const currentHairImage =
-    lastSelected.type && hairTypeImages[lastSelected.type]
-      ? hairTypeImages[lastSelected.type][lastSelected.index]
-      : SilkStraight;
-  const currentNetType = React.useMemo(() => {
-    const lastNonZeroType = Object.entries(lastSelectedTab)
-      .reverse()
-      .find(([_, value]) => value !== 0);
-
-    if (lastNonZeroType) {
-      return lastNonZeroType[0];
+const [HairImage,setHairImage] = useState("https://hairs.softylus.com/wp-content/uploads/2025/02/StraightImage.png")
+useEffect(() => {
+    if (lastSelected === 'Wavy') {
+      setHairImage("https://hairs.softylus.com/wp-content/uploads/2025/02/WavyImage.png");
+   
+    
+    } else if (lastSelected === 'Curly') {
+      setHairImage("https://hairs.softylus.com/wp-content/uploads/2025/02/CurlyImage.png");
+      
+    } else if (lastSelected === 'Straight') {
+      setHairImage("https://hairs.softylus.com/wp-content/uploads/2025/02/StraightImage.png");
+      
     }
+  }, [lastSelected]);
+ 
+  const [imageLace, setImageLace] = useState(FrontLaceWig);
 
-    return selectedCard || "Front";
-  }, [lastSelectedTab, selectedCard]);
-
-  const currentOption = labels[currentNetType][lastSelectedTab[currentNetType]];
-
+  useEffect(() => {
+    if (hairLace === "Front Lace-Wig") {
+      setImageLace(FrontLaceWig);
+    } else if (hairLace === "Silk top") {
+      setImageLace(SilkTop);
+    } else if (hairLace === "Full Lace-Wig") {
+      setImageLace(FullLaceWig);
+    }
+  }, [hairLace]);
   return (
     <section className="AlmostDone-sec">
       <div className="AlmostDone-container">
@@ -165,13 +160,11 @@ const AlmostDone = ({
             <a href="#Hairtype">
               <div className="AlmostDone-card">
                 <div>
-                  <img src={currentHairImage} />
+                  <img src={HairImage} />
                 </div>
                 <h6>{getTranslation('hair_type', 'Hair type')}</h6>
                   <p>
-                    {lastSelected.type
-                      ? getTranslation(hairTypes[lastSelected.type][lastSelected.index].toLowerCase().replace('/', '_'), hairTypes[lastSelected.type][lastSelected.index])
-                      : getTranslation('please_choose', 'Please choose')}
+                   {lastSelected}
                   </p>
               </div>
             </a>
@@ -222,14 +215,10 @@ const AlmostDone = ({
 
             <a href="#NetType">
               <div className="AlmostDone-card">
-                <img src={imageMap[currentNetType]} alt={currentNetType} />
+                <img src={imageLace}  />
                 <h6>{getTranslation('base_type', 'Base Type')}</h6>
 <p>
-  {lastSelectedTab[selectedCard] === undefined
-    ? getTranslation('please_choose', 'Please choose')
-    : lastSelectedTab[currentNetType] === lastSelectedTab[selectedCard]
-    ? getTranslation(currentOption.toLowerCase().replace(/ /g, '_'), currentOption)
-    : getTranslation('different_selection', 'Different Selection')}
+  {hairLace}
 </p>
               </div>
             </a>

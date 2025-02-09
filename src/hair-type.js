@@ -11,7 +11,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
   const [hairDescription, setHairDescription] = useState(
     "Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet."
   );
-  const [hairImage, setHairImage] = useState(StraightImage); // Default image to StraightImage
+  const [hairImage, setHairImage] = useState("https://hairs.softylus.com/wp-content/uploads/2025/02/StraightImage.png"); // Default image to StraightImage
   const [activeButton, setActiveButton] = useState("Straight"); // Track the active button
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
                 handleHairTypeSelect(
                   "Straight",
                   "Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet.",
-                  StraightImage
+                  "https://hairs.softylus.com/wp-content/uploads/2025/02/StraightImage.png"
                 )
               }
             >
@@ -57,7 +57,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
                 handleHairTypeSelect(
                   "Wavy",
                   "Wavy hair flowing from the root to the top. More defined and wavy than body wave. This texture can be styled to determine the intensity of the waves.",
-                  WavyImage
+                  "https://hairs.softylus.com/wp-content/uploads/2025/02/WavyImage.png"
                 )
               }
             >
@@ -72,7 +72,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
                 handleHairTypeSelect(
                   "Curly",
                   "Nappy hair that is extremely thick and resistant. The structure resembles Afro-American hair.",
-                  CurlyImage
+                  "https://hairs.softylus.com/wp-content/uploads/2025/02/CurlyImage.png"
                 )
               }
             >

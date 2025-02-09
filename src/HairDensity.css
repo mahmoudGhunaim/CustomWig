@@ -86,7 +86,7 @@
     max-width: 100%;}
     .HairDensity-container {
         position: relative;
-        width: 100%;
+        width: 90%;
         overflow: hidden;
       }
       
@@ -381,7 +381,7 @@
       }
 @media (max-width: 1024px) {
     .main-content{
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 30px;
         }
     .HairDensity-Slider{
@@ -392,6 +392,9 @@
     }
     .HairDensity-content,.HairDensity-image{
         width: 100%;
+    }
+    .HairDensity-content-button-container button{
+      flex-basis: 150px;
     }
 }
 @media (max-width: 767px) {

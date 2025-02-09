@@ -99,26 +99,16 @@ function App() {
           neckWidth: 5.5,
         }
       : {
-          circumference: null,
-          frontToNape: null,
-          forehead: null,
-          head: null,
-          siteToSite: null,
-          neckWidth: null,
+        circumference: 19.0,
+        frontToNape: 10.5,
+        forehead: 11.5,
+        head: 12.5,
+        siteToSite: 10.0,
+        neckWidth: 5.0,
         }
   );
 
-  const [lastSelected, setLastSelected] = useState(
-    window.innerWidth <= 1024
-      ? {
-          type: "Straight",
-          index: 0,
-        }
-      : {
-          type: "",
-          index: 0,
-        }
-  );
+  const [lastSelected, setLastSelected] = useState();
 
   const [selectedCard, setSelectedCard] = React.useState(
     window.innerWidth <= 1024 ? "Front Lace-Wig" : null
@@ -404,28 +394,33 @@ function App() {
             <SliderButtons />
           </div>
         </SwiperSlide>
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
             <LaceTone
               selectedColor={selectedColor}
               setSelectedColor={setSelectedColor}
             />{" "}
+            <PUedge
+            selectedOptions={selectedOptions}
+            setSelectedOptions={setSelectedOptions}
+            getPricePUedge={getPricePUedge}
+
+            />
+            
+              {selectedOptionsBK.length > 0 && (
+          
+          <BleachedKnots
+            selectedCard={selectedCard}
+            getPriceBleachedKnots={getPriceBleachedKnots}
+            selectedOptionsBK={selectedOptionsBK}
+            setSelectedOptionsBK={setSelectedOptionsBK}
+          />
+        
+    )}
             <SliderButtons />
           </div>
-        </SwiperSlide> */}
-        {selectedOptionsBK.length > 0 && (
-          <SwiperSlide>
-            <div className="Page-stipper-SwiperSlide-container">
-              <BleachedKnots
-                selectedCard={selectedCard}
-                getPriceBleachedKnots={getPriceBleachedKnots}
-                selectedOptionsBK={selectedOptionsBK}
-                setSelectedOptionsBK={setSelectedOptionsBK}
-              />
-              <SliderButtons />
-            </div>
-          </SwiperSlide>
-        )}
+        </SwiperSlide>
+      
         <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
             <HeadMeasurements
@@ -435,7 +430,7 @@ function App() {
             <SliderButtons />
           </div>
         </SwiperSlide>
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
             <AlmostDone
               selectedPrice={selectedPrice}
@@ -459,10 +454,12 @@ function App() {
               selectedNameColors={selectedNameColors}
               CartHandlerComponent={cartHandler}
               totalPrice={totalPrice}
+              hairLace={hairLace}
+              setHairLace={setHairLace}
             />
             <SliderButtons />
           </div>
-        </SwiperSlide> */}
+        </SwiperSlide>
       </Swiper>
 
       {/* <SilkTop

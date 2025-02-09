@@ -35,6 +35,7 @@
 .HairLace-container-image img{
     width: 725px;
     height: 730px;
+    object-fit: contain;
 }
 .HairLace-container-buttons button{
     display: flex;
@@ -68,4 +69,27 @@
     width: 20px;
     height: 20px;
     background-size: contain;
+}
+@media (max-width:1024px){
+    .HairLace-container-image,.HairLace-container-image img{
+        width: 100%;
+        height: auto;
+    }
+    .HairLace-container{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .HairLace-container-content{
+        width: 100%;
+        gap: 30px;
+    }
+    .HairLace-container-content h2{
+        font-size: 32px;
+    }
+    .HairLace-container-buttons{
+        flex-wrap: wrap;
+    }
+    .HairLace-container-buttons button{
+        min-width: 150px;
+    }
 }

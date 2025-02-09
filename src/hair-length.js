@@ -76,13 +76,13 @@ const HairLength = ({
 
   let hairImage;
   if (lastSelected === "Straight") {
-    hairImage = Straight;
+    hairImage = "https://hairs.softylus.com/wp-content/uploads/2025/02/HairLength.png";
   } else if (lastSelected === "Wavy") {
-    hairImage = Wavy;
+    hairImage = "https://hairs.softylus.com/wp-content/uploads/2025/02/WavyLingth.png";
   } else if (lastSelected === "Curly") {
-    hairImage = Curly;
+    hairImage = "https://hairs.softylus.com/wp-content/uploads/2025/02/CurlyLingth.png";
   } else {
-    hairImage = Straight; 
+    hairImage = "https://hairs.softylus.com/wp-content/uploads/2025/02/HairLength.png"; 
   }
 
   return (
