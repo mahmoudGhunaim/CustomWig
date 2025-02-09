@@ -17,33 +17,18 @@ const CartHandler = ({
   selectedOptionsBK,
   measurements,
   basePrice,
-  totalPrice
+  totalPrice,
+  hairLace
 }) => {
   const [error, setError] = useState(null);
 
-  const hairTypes = {
-    Straight: [
-      getTranslation("silk_straight", "Straight"),
-      getTranslation("kinky_straight", "Kinky Straight"),
-      getTranslation("yaki_straight", "Yaki Straight")
-    ],
-    Wavy: [
-      getTranslation("deep_wave", "Wave"),
-      getTranslation("body_wave", "Body Wave"),
-      getTranslation("water_wave", "Water Wave")
-    ],
-    Curly: [
-      getTranslation("curly", "Curly"),
-      getTranslation("jerry_kinky_curl", "Jerry/Kinky Curl")
-    ],
-  };
-  
-  const labels = {
-    Front: [getTranslation("premium_front_lace_wig", "Premium Front Lace Wig"), ""],
-    Full: [getTranslation("premium_full_lace_wig", "Premium Full Lace Wig"), ""],
-    Silk: [getTranslation("front_lace_silk_top", "Front lace silk top"), getTranslation("folded_seamless_hairline", "Folded seamless hairline")],
-  };
 
+  // const labels = {
+  //   Front: [getTranslation("premium_front_lace_wig", "Premium Front Lace Wig"), ""],
+  //   Full: [getTranslation("premium_full_lace_wig", "Premium Full Lace Wig"), ""],
+  //   Silk: [getTranslation("front_lace_silk_top", "Front lace silk top"), getTranslation("folded_seamless_hairline", "Folded seamless hairline")],
+  // };
+  console.log(hairLace,"hairLace")
   const validateFields = () => {
     if (!measurements.circumference || 
         !measurements.frontToNape || 
@@ -70,7 +55,7 @@ const CartHandler = ({
       return false;
     }
 
-    if (!lastSelected?.type || !hairTypes[lastSelected.type]) {
+    if (!lastSelected) {
       setError(getTranslation("hair_type_required", "Hair type is required"));
       return false;
     }
@@ -89,10 +74,10 @@ const CartHandler = ({
       return;
     }
 
-    const currentNetType = Object.entries(lastSelectedTab)
-      .reverse()
-      .find(([_, value]) => value !== 0)?.[0] || selectedCard || "Front";
-    const currentOption = labels[currentNetType][lastSelectedTab[currentNetType]];
+    // const currentNetType = Object.entries(lastSelectedTab)
+    //   .reverse()
+    //   .find(([_, value]) => value !== 0)?.[0] || selectedCard || "Front";
+    // const currentOption = labels[currentNetType][lastSelectedTab[currentNetType]];
 
     const addons = [
       {
@@ -103,8 +88,8 @@ const CartHandler = ({
       },
       {
         name: getTranslation("hair_type", "Hair Type"),
-        value: lastSelected.type ? 
-          `${hairTypes[lastSelected.type][lastSelected.index]}` : "",
+        value: lastSelected ? 
+          `${lastSelected}` : "",
         price: "",
         field_type: "custom_text"
       },
@@ -122,7 +107,7 @@ const CartHandler = ({
       },
       {
         name: getTranslation("hair_lace", "Hair Lace"),
-        value: currentOption || "",
+        value: hairLace || "",
         price: "",
         field_type: "custom_text"
       },

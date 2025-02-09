@@ -76,7 +76,7 @@
         height: auto;
     }
     .HairLace-container{
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 50px;
     }
     .HairLace-container-content{
@@ -87,9 +87,9 @@
         font-size: 32px;
     }
     .HairLace-container-buttons{
-        flex-wrap: wrap;
+        overflow-x: auto;
     }
     .HairLace-container-buttons button{
-        min-width: 150px;
+        min-width: 200px;
     }
 }

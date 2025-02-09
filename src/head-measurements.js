@@ -23,7 +23,7 @@ import "./HeadMeasurements.css";
 import Bluecircle from "./assets/blue-circle.png";
 import getTranslation from "./utils/translations"; // Import your translation utility
 import info from "./assets/info.png";
-const HeadMeasurements = ({ measurements, setMeasurements }) => {
+const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible}) => {
   const [unit, setUnit] = useState("inch");
   const [size, setSize] = useState("small");
 
@@ -34,7 +34,7 @@ const HeadMeasurements = ({ measurements, setMeasurements }) => {
   const handleSizeChange = (newSize) => {
     setSize(newSize);
     let newMeasurements;
-
+    setMoreItemsVisible(size)
     if (newSize === "small") {
       newMeasurements = {
         circumference: 19.0,

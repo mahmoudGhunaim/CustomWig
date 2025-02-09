@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import plus from "./assets/plus.svg";
+import whiteplus from "./assets/whiteplus.svg"
 import Straight from "./assets/HairLength.png";
 import Wavy from "./assets/WavyLingth.png";
 import Curly from "./assets/CurlyLingth.png";
@@ -173,11 +174,22 @@ const HairLength = ({
                     boxShadow: "none", // No shadow on hover
                   },
                   "&::after": {
-                    content: '"+"',
+                    content: '" "',
+                    backgroundImage: `url(${whiteplus})`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    width:"25px",
+                    height:"25px",
+                    backgroundPosition:"center",
                     position: "absolute",
-                    top: "-8px",
-                    left: "32.5px",
-                    transform: "translateX(-50%)",
+                    // top: "50%",
+                    // left: "50%",
+                    transform: "none",
+                    inset:0,
+                    margin:"auto",
+                    display:"flex",
+                    justifyContent:"center",
+                    alignItems:"center",
                     fontSize: "45px",
                     color: "white",
                   },

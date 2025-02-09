@@ -84,7 +84,7 @@
 }
 @media (max-width:1024px) {
     .HairType-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .HairType-image{
         width: 100%;
@@ -94,10 +94,10 @@
         gap: 30px;
     }
     .HairType-image-type-buttons{
-        flex-wrap: wrap;
+        overflow-x: auto;
     }
     .HairType-image-type-buttons button{
-        min-width: 150px;
+        min-width: 125px;
     }
     .HairType-image-type h2{
         font-size: 32px;

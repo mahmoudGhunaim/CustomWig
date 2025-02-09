@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react"; // Ensure to import useState
+import React, { useState, useEffect,useRef } from "react"; // Ensure to import useState
 import Header from "./header";
 import Label from "./Label";
 import Customize from "./customize";
@@ -20,62 +20,92 @@ import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
-const SliderButtons = ({ children }) => {
+
+const SliderButtons = ({ children,className }) => {
   const swiper = useSwiper();
+
+  // Scroll to the top when a slide is changed
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scroll effect
+    });
+  };
+
   return (
-    <div style={{display:"flex", alignItems:"center", justifyContent:"center",background:"#F9F9F9",padding:"20px 0"}}>
-    <div className="btn-sliider">
-      <button onClick={() => swiper.slidePrev()}>
-        PREV
-        <svg
-          width="60"
-          height="12"
-          viewBox="0 0 60 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <div
+      className={`btn-sliider-container ${className}`}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#F9F9F9",
+        padding: "20px 0",
+      }}
+    >
+      <div className="btn-sliider">
+        <button
+          onClick={() => {
+            swiper.slidePrev();
+            scrollToTop(); // Scroll to the top when navigating to the previous slide
+          }}
         >
-          <line
-            x1="59.3627"
-            y1="6.00003"
-            x2="5.56047"
-            y2="6.00003"
-            stroke="#000000"
-            stroke-width="1.74359"
-          />
-          <path
-            d="M6.55676 0.769236L6.55676 11.2308L0.57874 6.00001L6.55676 0.769236Z"
-            fill="#000000"
-          />
-        </svg>
-      </button>
-      {children}
-      <button onClick={() => swiper.slideNext()} className="">
-        NEXT
-        <svg
-          width="60"
-          height="12"
-          viewBox="0 0 60 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          PREV
+          <svg
+            width="60"
+            height="12"
+            viewBox="0 0 60 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="59.3627"
+              y1="6.00003"
+              x2="5.56047"
+              y2="6.00003"
+              stroke="#000000"
+              stroke-width="1.74359"
+            />
+            <path
+              d="M6.55676 0.769236L6.55676 11.2308L0.57874 6.00001L6.55676 0.769236Z"
+              fill="#000000"
+            />
+          </svg>
+        </button>
+        {children}
+        <button
+          onClick={() => {
+            swiper.slideNext();
+            scrollToTop(); // Scroll to the top when navigating to the next slide
+          }}
         >
-          <line
-            x1="0.970703"
-            y1="6.00003"
-            x2="54.7729"
-            y2="6.00003"
-            stroke="white"
-            stroke-width="1.74359"
-          />
-          <path
-            d="M53.7765 11.2308V0.769226L59.7545 6L53.7765 11.2308Z"
-            fill="white"
-          />
-        </svg>
-      </button>
-    </div>
+          NEXT
+          <svg
+            width="60"
+            height="12"
+            viewBox="0 0 60 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="0.970703"
+              y1="6.00003"
+              x2="54.7729"
+              y2="6.00003"
+              stroke="white"
+              stroke-width="1.74359"
+            />
+            <path
+              d="M53.7765 11.2308V0.769226L59.7545 6L53.7765 11.2308Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 };
+
 
 function App() {
   const [Density, setDensity] = useState(100); // State to track selected length
@@ -137,6 +167,12 @@ function App() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   // const [selectedOptionsSilkTop, setSelectedOptionsSilkTop] = useState([]);
   const [selectedOptionsBK, setSelectedOptionsBK] = useState([]);
+
+
+  const swiperRef = useRef(null);
+  const swiperContainerRef = useRef(null);
+  const [swiperHeight, setSwiperHeight] = useState("auto");
+  const [moreItemsVisible, setMoreItemsVisible] = useState(false); // Track visibility of more items
 
   useEffect(() => {
     fetchProductData();
@@ -274,10 +310,39 @@ function App() {
       measurements={measurements}
       basePrice={basePrice}
       totalPrice={totalPrice}
+      hairLace={hairLace}
     />
   );
+  const updateSwiperHeight = () => {
+    if (!swiperRef.current) return;
+    const activeSlide = swiperRef.current.slides[swiperRef.current.activeIndex];
+
+    if (activeSlide) {
+      const newHeight = activeSlide.offsetHeight;
+      setSwiperHeight(newHeight ? `${newHeight}px` : "auto");
+    }
+  };
+
+  useEffect(() => {
+    const swiperInstance = swiperRef.current;
+    if (!swiperInstance) return;
+
+    // Initial height adjustment
+    updateSwiperHeight();
+
+    // Update on slide change
+    swiperInstance.on("slideChangeTransitionEnd", updateSwiperHeight);
+
+    // Cleanup event listener on unmount
+    return () => {
+      swiperInstance.off("slideChangeTransitionEnd", updateSwiperHeight);
+    };
+  }, [moreItemsVisible]);
+  useEffect(() => {
+    updateSwiperHeight();
+  }, [moreItemsVisible]);
   return (
-    <div className="body-page">
+    <div className="body-page" ref={swiperContainerRef} style={{ height: swiperHeight, transition: "height 0.3s ease-in-out", overflow: "hidden" }}>
       <Swiper
         className="Page-stipper"
         modules={[Navigation, Pagination, A11y, Autoplay]}
@@ -286,6 +351,10 @@ function App() {
         pagination={{ clickable: true }}
         initialSlide={0}
         allowTouchMove={false}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          updateSwiperHeight();
+        }}
       >
         {/* <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
@@ -294,7 +363,7 @@ function App() {
               totalPrice={totalPrice}
             />
 
-            <SliderButtons />
+            
           </div>
         </SwiperSlide> */}
         {/* <SwiperSlide>
@@ -320,7 +389,7 @@ function App() {
               lastSelectedTab={lastSelectedTab}
               selectedColors={selectedColors}
             />
-            <SliderButtons />
+            
           </div>
         </SwiperSlide> */}
         <SwiperSlide>
@@ -329,7 +398,7 @@ function App() {
               lastSelected={lastSelected}
               setLastSelected={setLastSelected}
             />
-            <SliderButtons />
+            <SliderButtons className="SliderButtons-desktop" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -344,8 +413,10 @@ function App() {
               setSelectedColors={setSelectedColors}
               colorGradient={colorGradient}
               setcolorGradient={setcolorGradient}
+              setMoreItemsVisible={setMoreItemsVisible}
             />
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -358,7 +429,8 @@ function App() {
               lastSelected={lastSelected}
               getPriceLength={getPriceLength}
             />{" "}
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -370,13 +442,14 @@ function App() {
               lastSelected={lastSelected}
 
             />{" "}
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
         {/* <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
             <Customize />
-            <SliderButtons />
+            
           </div>
         </SwiperSlide> */}
         
@@ -391,7 +464,8 @@ function App() {
               lastSelectedTab={lastSelectedTab}
               setLastSelectedTab={setLastSelectedTab}
             />
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -417,7 +491,8 @@ function App() {
           />
         
     )}
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
       
@@ -426,8 +501,11 @@ function App() {
             <HeadMeasurements
               measurements={measurements}
               setMeasurements={setMeasurements}
+              setMoreItemsVisible={setMoreItemsVisible}
+
             />
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -457,9 +535,11 @@ function App() {
               hairLace={hairLace}
               setHairLace={setHairLace}
             />
-            <SliderButtons />
+                        <SliderButtons className="SliderButtons-desktop" />
+
           </div>
         </SwiperSlide>
+        <SliderButtons className="SliderButtons-mobile" />
       </Swiper>
 
       {/* <SilkTop

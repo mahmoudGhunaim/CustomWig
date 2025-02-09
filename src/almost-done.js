@@ -183,7 +183,7 @@ useEffect(() => {
   >
     {getPriceLength() !== "0 SAR" ? (
       <>
-        +{getPriceLength().replace(' SAR', '')} {getTranslation('currency_sar', 'SAR')}
+        {getPriceLength().replace(' SAR', '')} {getTranslation('currency_sar', 'SAR')}
       </>
     ) : null}
   </h6>
@@ -205,7 +205,7 @@ useEffect(() => {
   >
     {getPriceDensity() !== "0 SAR" ? (
       <>
-        +{getPriceDensity().replace(' SAR', '')} {getTranslation('currency_sar', 'SAR')}
+        {getPriceDensity().replace(' SAR', '')} {getTranslation('currency_sar', 'SAR')}
       </>
     ) : null}
   </h6>

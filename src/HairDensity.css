@@ -380,8 +380,12 @@
         }
       }
 @media (max-width: 1024px) {
+  .HairDensity-content-button-container{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
     .main-content{
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 30px;
         }
     .HairDensity-Slider{
@@ -395,6 +399,7 @@
     }
     .HairDensity-content-button-container button{
       flex-basis: 150px;
+      min-width: 120px;
     }
 }
 @media (max-width: 767px) {

@@ -129,7 +129,7 @@
 }
 @media (max-width: 1024px) {
     .HairLength-container{
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 30px;
     }
     .HairLength-image img{
