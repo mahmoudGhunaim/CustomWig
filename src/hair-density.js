@@ -94,7 +94,7 @@ const HairDensity = ({
             </h6>
             <p>
               {getTranslation(
-                "hair_density_description",
+                "density_notice",
                 "The human hair is evenly distributed and knotted into the lace by hand. Determine the desired hair density (knot density) using the regulator. As a standard we use a hair density of 80%."
               )}
             </p>
@@ -105,7 +105,7 @@ const HairDensity = ({
                   onClick={() => handleDensityChange(value)}
                   className={destiny === value ? "active" : ""}
                 >
-                  {value}% <span>DENSITY</span>
+                  {value}% <span> {getTranslation("density", "DENSITY")}</span>
                 </button>
               ))}
             </div>

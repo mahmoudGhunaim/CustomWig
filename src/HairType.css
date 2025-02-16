@@ -82,6 +82,10 @@
     text-decoration-skip-ink: none;
 
 }
+html[lang="ar"] .HairType-image-type h2,html[lang="ar"] .HairType-image-type p{
+    text-align: right;
+}
+
 @media (max-width:1024px) {
     .HairType-container {
         flex-direction: column-reverse;

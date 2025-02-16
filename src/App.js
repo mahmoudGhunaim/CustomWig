@@ -15,13 +15,14 @@ import HairColor from "./Hair-Color";
 import AlmostDone from "./almost-done";
 import HeadMeasurements from "./head-measurements";
 import CartHandler from "./CartHandler.js";
+import getTranslation from "./utils/translations"; // Import your translation utility
 
 import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 
-const SliderButtons = ({ children,className }) => {
+const SliderButtons = ({ children,className,value }) => {
   const swiper = useSwiper();
 
   // Scroll to the top when a slide is changed
@@ -50,7 +51,8 @@ const SliderButtons = ({ children,className }) => {
             scrollToTop(); // Scroll to the top when navigating to the previous slide
           }}
         >
-          PREV
+                    {getTranslation("prev", "PREV")}
+
           <svg
             width="60"
             height="12"
@@ -78,8 +80,10 @@ const SliderButtons = ({ children,className }) => {
             swiper.slideNext();
             scrollToTop(); // Scroll to the top when navigating to the next slide
           }}
-        >
-          NEXT
+          disabled={value === null || value === "null"} 
+          >
+                    {getTranslation("next", "NEXT")}
+
           <svg
             width="60"
             height="12"
@@ -398,7 +402,7 @@ function App() {
               lastSelected={lastSelected}
               setLastSelected={setLastSelected}
             />
-            <SliderButtons className="SliderButtons-desktop" />
+            <SliderButtons className="SliderButtons-desktop" value={lastSelected} />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -415,7 +419,7 @@ function App() {
               setcolorGradient={setcolorGradient}
               setMoreItemsVisible={setMoreItemsVisible}
             />
-                        <SliderButtons className="SliderButtons-desktop" />
+            <SliderButtons className="SliderButtons-desktop" value={selectedColors.hairColor} />
 
           </div>
         </SwiperSlide>
@@ -429,7 +433,7 @@ function App() {
               lastSelected={lastSelected}
               getPriceLength={getPriceLength}
             />{" "}
-                        <SliderButtons className="SliderButtons-desktop" />
+            <SliderButtons className="SliderButtons-desktop" value={length}/>
 
           </div>
         </SwiperSlide>
@@ -442,7 +446,7 @@ function App() {
               lastSelected={lastSelected}
 
             />{" "}
-                        <SliderButtons className="SliderButtons-desktop" />
+           <SliderButtons className="SliderButtons-desktop" value={Density} />
 
           </div>
         </SwiperSlide>
@@ -464,7 +468,7 @@ function App() {
               lastSelectedTab={lastSelectedTab}
               setLastSelectedTab={setLastSelectedTab}
             />
-                        <SliderButtons className="SliderButtons-desktop" />
+                        <SliderButtons className="SliderButtons-desktop" value={hairLace} />
 
           </div>
         </SwiperSlide>
@@ -491,7 +495,7 @@ function App() {
           />
         
     )}
-                        <SliderButtons className="SliderButtons-desktop" />
+                        <SliderButtons className="SliderButtons-desktop" value={selectedColor} />
 
           </div>
         </SwiperSlide>
@@ -535,7 +539,7 @@ function App() {
               hairLace={hairLace}
               setHairLace={setHairLace}
             />
-                        <SliderButtons className="SliderButtons-desktop" />
+                        <SliderButtons className="SliderButtons-desktop" value="null" />
 
           </div>
         </SwiperSlide>

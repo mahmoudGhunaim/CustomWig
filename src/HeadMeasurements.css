@@ -27,6 +27,7 @@
     position: relative;
 
 }
+
 .HeadMeasurements-options{
     bottom: 0px;
     width: 100%;
@@ -99,6 +100,9 @@ text-decoration-skip-ink: none;
     align-items: center;
     gap: 10px;
 
+}
+html[lang="ar"] .blue-size-alert,html[lang="ar"]  .HeadMeasurements-alert h6{
+    text-align: right;
 }
 .HeadMeasurements-alert p{
     display: flex;
@@ -188,7 +192,9 @@ text-decoration-skip-ink: none;
     text-decoration-skip-ink: none;
 
   }
-  
+  html[lang="ar"] .HeadMeasurements-size-cards-info-content div::after{
+    text-align: right;
+  }
   .HeadMeasurements-size-cards-info:hover .HeadMeasurements-size-cards-info-content div::after {
     opacity: 1;
     visibility: visible;
@@ -274,6 +280,9 @@ text-decoration-skip-ink: none;
     font-weight: 500;
     line-height: 27px;
     color: #282B3B;
+}
+.HeadMeasurements-banner > img{
+    width: 100%;
 }
 @media (max-width: 1024px) {
     .HeadMeasurements-container{

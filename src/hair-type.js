@@ -6,21 +6,22 @@ import CurlyIcon from "./assets/Curlyy.png";
 import StraightImage from "./assets/StraightImage.png";
 import WavyImage from "./assets/WavyImage.png";
 import CurlyImage from "./assets/CurlyImage.png";
+import getTranslation from "./utils/translations"; // Import your translation utility
 
 const HairType = ({ lastSelected, setLastSelected }) => {
   const [hairDescription, setHairDescription] = useState(
-    "Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet."
+    getTranslation("straight_hair_description", "Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet.")
   );
-  const [hairImage, setHairImage] = useState("https://hairs.softylus.com/wp-content/uploads/2025/02/StraightImage.png"); // Default image to StraightImage
+  const [hairImage, setHairImage] = useState(StraightImage); // Default image to StraightImage
   const [activeButton, setActiveButton] = useState("Straight"); // Track the active button
 
   useEffect(() => {
     setLastSelected("Straight");
   }, [setLastSelected]);
 
-  const handleHairTypeSelect = (type, description, image) => {
+  const handleHairTypeSelect = (type, descriptionKey, image) => {
     setLastSelected(type);
-    setHairDescription(description);
+    setHairDescription(getTranslation(descriptionKey, ""));
     setHairImage(image);
     setActiveButton(type); // Set the active button type
   };
@@ -29,25 +30,29 @@ const HairType = ({ lastSelected, setLastSelected }) => {
     <section className="HairType-sec">
       <div className="HairType-container" id="Hairtype">
         <div className="HairType-image">
-          <img src={hairImage} alt={`${lastSelected} Hair`} />
+          <img src={hairImage} alt={getTranslation(`${lastSelected}_hair`, `${lastSelected} Hair`)} />
         </div>
         <div className="HairType-image-type">
-          <h2>Select Hair Type</h2>
+          <h2>
+            {getTranslation("select_hair_type", "Select Hair Type")} 
+          </h2>
           <div className="HairType-image-type-buttons">
             <button
               className={`HairType-image-type-buttons ${
-                activeButton === "Straight" ? "HairType-image-type-buttons-active" : ""
+                activeButton === "Straight"
+                  ? "HairType-image-type-buttons-active"
+                  : ""
               }`}
               onClick={() =>
                 handleHairTypeSelect(
                   "Straight",
-                  "Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet.",
-                  "https://hairs.softylus.com/wp-content/uploads/2025/02/StraightImage.png"
+                  "straight_hair_description",
+                  StraightImage
                 )
               }
             >
-              <img src={StraightIcon} alt="Straight Hair" />
-              <span>Straight</span>
+              <img src={StraightIcon} alt={getTranslation("straight_hair", "Straight Hair")} />
+              <span>{getTranslation("straight", "Straight")}</span>
             </button>
             <button
               className={`HairType-image-type-buttons ${
@@ -56,13 +61,13 @@ const HairType = ({ lastSelected, setLastSelected }) => {
               onClick={() =>
                 handleHairTypeSelect(
                   "Wavy",
-                  "Wavy hair flowing from the root to the top. More defined and wavy than body wave. This texture can be styled to determine the intensity of the waves.",
-                  "https://hairs.softylus.com/wp-content/uploads/2025/02/WavyImage.png"
+                  "wavy_hair_description",
+                  WavyImage
                 )
               }
             >
-              <img src={WavyIcon} alt="Wavy Hair" />
-              <span>Wavy</span>
+              <img src={WavyIcon} alt={getTranslation("wavy_hair", "Wavy Hair")} />
+              <span>{getTranslation("wavy", "Wavy")}</span>
             </button>
             <button
               className={`HairType-image-type-buttons ${
@@ -71,13 +76,13 @@ const HairType = ({ lastSelected, setLastSelected }) => {
               onClick={() =>
                 handleHairTypeSelect(
                   "Curly",
-                  "Nappy hair that is extremely thick and resistant. The structure resembles Afro-American hair.",
-                  "https://hairs.softylus.com/wp-content/uploads/2025/02/CurlyImage.png"
+                  "curly_hair_description",
+                  CurlyImage
                 )
               }
             >
-              <img src={CurlyIcon} alt="Curly Hair" />
-              <span>Curly</span>
+              <img src={CurlyIcon} alt={getTranslation("curly_hair", "Curly Hair")} />
+              <span>{getTranslation("curly", "Curly")}</span>
             </button>
           </div>
           <p>{hairDescription}</p>

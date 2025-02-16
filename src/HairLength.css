@@ -118,6 +118,19 @@
     margin:0 20px ;
     margin-top: 20px;
 }
+html[lang="ar"] .HairLength-Slider {
+    direction: ltr;
+}
+html[lang="ar"] .HairLength-content h5, html[lang="ar"] .HairLength-content p{
+    text-align: right;
+}
+.btn-sliider button:disabled{
+    opacity: .5;
+}
+.btn-sliider button{
+    opacity: 1;
+    transition: all .3s ease;
+}
 .HairLength-Length h6{
     background: #a9aab1bd;
     padding: 10px;

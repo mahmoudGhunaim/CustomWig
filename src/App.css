@@ -91,6 +91,9 @@ img {
 .SliderButtons-mobile{
   display: none !important;
 }
+html[lang="ar"] .btn-sliider button svg{
+  transform: rotate(180deg);
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

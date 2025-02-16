@@ -75,6 +75,9 @@
     text-align: left;
     color: #131313;
 }
+html[lang="ar"] .HairDensity-content p{
+  text-align: right;
+}
 .image-detail-hair-density{
     max-width: -webkit-fill-available;
     position: absolute;
@@ -289,15 +292,6 @@
       html[lang="ar"] .hair-density-slider {
         direction: ltr;
       }
-      html[lang="ar"] .MuiSlider-thumb::after {
-        content: "+";
-        position: absolute;
-        top: -20px;
-        left: 35px;
-        transform: translateX(-50%);
-        font-size: 45px;
-        color: white;
-    }
       /* Optional: Add hover effect for the percentage */
       .hair-density-percentage:hover {
         color: #2a2a2a;
