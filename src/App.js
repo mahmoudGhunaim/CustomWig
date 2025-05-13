@@ -114,6 +114,7 @@ const SliderButtons = ({ children,className,value }) => {
 function App() {
   const [Density, setDensity] = useState(100); // State to track selected length
   const [colorGradient, setcolorGradient] = useState(null); // State to track selected length
+  const [silkTopOption, setSilkTopOption] = useState("Silk-top without front lace");
 
   const [selectedColor, setSelectedColor] = useState(null);
   const [length, setLength] = useState(12); // Initial length state in inches
@@ -315,6 +316,7 @@ function App() {
       basePrice={basePrice}
       totalPrice={totalPrice}
       hairLace={hairLace}
+      silkTopOption={silkTopOption}
     />
   );
   const updateSwiperHeight = () => {
@@ -467,6 +469,8 @@ function App() {
               setHairLace={setHairLace}
               lastSelectedTab={lastSelectedTab}
               setLastSelectedTab={setLastSelectedTab}
+              silkTopOption={silkTopOption}
+              setSilkTopOption={setSilkTopOption}
             />
                         <SliderButtons className="SliderButtons-desktop" value={hairLace} />
 

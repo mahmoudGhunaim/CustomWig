@@ -12,6 +12,8 @@ const HairLace = ({
   selectedCard,
   setHairLace,
   hairLace,
+  silkTopOption,
+  setSilkTopOption,
 }) => {
   const [image, setImage] = useState("https://hairs.softylus.com/wp-content/uploads/2025/02/Front-Lace-Wig.png");
 
@@ -19,11 +21,15 @@ const HairLace = ({
     if (hairLace === "Front Lace-Wig") {
       setImage("https://hairs.softylus.com/wp-content/uploads/2025/02/Front-Lace-Wig.png");
     } else if (hairLace === "Silk top") {
-      setImage("https://hairs.softylus.com/wp-content/uploads/2025/02/Silk-top.png");
+      if (silkTopOption === "Silk-top with front lace") {
+        setImage("https://hairs.softylus.com/wp-content/uploads/2025/05/Silk-top-with-front.png");
+      } else {
+        setImage("https://hairs.softylus.com/wp-content/uploads/2025/02/Silk-top.png");
+      }
     } else if (hairLace === "Full Lace-Wig") {
-      setImage("https://hairs.softylus.com/wp-content/uploads/2025/02/Full-Lace-Wig.png");
+      setImage("https://hairs.softylus.com/wp-content/uploads/2025/05/Full-Lace-Wig-2.png");
     }
-  }, [hairLace]);
+  }, [hairLace, silkTopOption]);
 
   return (
     <section className="HairLace-sec">
@@ -56,6 +62,31 @@ const HairLace = ({
               <span>{getTranslation("full_lace_wig", "Full Lace-Wig")}</span>
             </button>
           </div>
+          
+          {hairLace === "Silk top" && (
+            <div className="silk-top-options">
+              <label>
+                <input 
+                  type="radio" 
+                  name="silkTopOption" 
+                  value="Silk-top with front lace" 
+                  checked={silkTopOption === "Silk-top with front lace"}
+                  onChange={() => setSilkTopOption("Silk-top with front lace")}
+                />
+                {getTranslation("silk_top_with_front_lace", "Silk-top with front lace")}
+              </label>
+              <label>
+                <input 
+                  type="radio" 
+                  name="silkTopOption" 
+                  value="Silk-top without front lace" 
+                  checked={silkTopOption === "Silk-top without front lace"}
+                  onChange={() => setSilkTopOption("Silk-top without front lace")}
+                />
+                {getTranslation("silk_top_without_front_lace", "Silk-top without front lace")}
+              </label>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -74,6 +74,85 @@ html[lang="ar"] .HairLace-container-content h2{
     height: 20px;
     background-size: contain;
 }
+
+.silk-top-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+    position: relative;
+    max-width: 400px;
+}
+
+.silk-top-options label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Outfit';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #000000;
+    cursor: pointer;
+    padding: 12px 20px;
+    border: 1px solid #E8E8E8;
+    /* border-radius: 50px; */
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.silk-top-options label:hover {
+    border-color: #38B449;
+    box-shadow: 0 3px 10px rgba(56, 180, 73, 0.1);
+    transform: translateY(-2px);
+}
+
+.silk-top-options input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #E8E8E8;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.silk-top-options input[type="radio"]:checked {
+    border-color: #38B449;
+    background-color: #38B449;
+    border: 2px solid #E8E8E8;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.silk-top-options input[type="radio"]:checked {
+    border-color: #38B449;
+    background-color: #38B449;
+}
+
+.silk-top-options input[type="radio"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.silk-top-options label:has(input[type="radio"]:checked) {
+    border-color: #38B449;
+    background-color: rgba(56, 180, 73, 0.05);
+    font-weight: 500;
+}
+
 @media (max-width:1024px){
     .HairLace-container-image,.HairLace-container-image img{
         width: 100%;
@@ -95,5 +174,14 @@ html[lang="ar"] .HairLace-container-content h2{
     }
     .HairLace-container-buttons button{
         min-width: 200px;
+    }
+    
+    .silk-top-options {
+        padding: 0 10px;
+        margin: 10px 0;
+    }
+    
+    .silk-top-options label {
+        padding: 10px 15px;
     }
 }

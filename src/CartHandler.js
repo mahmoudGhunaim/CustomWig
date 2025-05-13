@@ -16,8 +16,7 @@ const CartHandler = ({
   selectedOptions,
   selectedOptionsBK,
   measurements,
-  basePrice,
-  totalPrice,
+  silkTopOption,
   hairLace
 }) => {
   const [error, setError] = useState(null);
@@ -136,6 +135,15 @@ const CartHandler = ({
         value: selectedOptionsBK[0],
         price: "30",
         field_type: "checkbox"
+      });
+    }
+
+    if (silkTopOption) {
+      addons.push({
+        name: getTranslation("silk_top_option", "Silk Top Option"),
+        value: silkTopOption,
+        price: "",
+        field_type: "custom_text"
       });
     }
 
