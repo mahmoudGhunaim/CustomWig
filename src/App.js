@@ -22,7 +22,7 @@ import "swiper/css";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 
-const SliderButtons = ({ children,className,value }) => {
+const SliderButtons = ({ children, className, value }) => {
   const swiper = useSwiper();
 
   // Scroll to the top when a slide is changed
@@ -110,6 +110,96 @@ const SliderButtons = ({ children,className,value }) => {
   );
 };
 
+// Create a fixed slider buttons component that doesn't use useSwiper
+const SliderButtonsFixed = ({ children, className, value, swiper }) => {
+  // Scroll to the top when a slide is changed
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scroll effect
+    });
+  };
+
+  return (
+    <div
+      className={`btn-sliider-container ${className}`}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#F9F9F9",
+        padding: "20px 0",
+      }}
+    >
+      <div className="btn-sliider">
+        <button
+          onClick={() => {
+            if (swiper) {
+              swiper.slidePrev();
+              scrollToTop();
+            }
+          }}
+        >
+          {getTranslation("prev", "PREV")}
+
+          <svg
+            width="60"
+            height="12"
+            viewBox="0 0 60 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="59.3627"
+              y1="6.00003"
+              x2="5.56047"
+              y2="6.00003"
+              stroke="#000000"
+              stroke-width="1.74359"
+            />
+            <path
+              d="M6.55676 0.769236L6.55676 11.2308L0.57874 6.00001L6.55676 0.769236Z"
+              fill="#000000"
+            />
+          </svg>
+        </button>
+        {children}
+        <button
+          onClick={() => {
+            if (swiper) {
+              swiper.slideNext();
+              scrollToTop();
+            }
+          }}
+          disabled={value === null || value === "null"} 
+        >
+          {getTranslation("next", "NEXT")}
+
+          <svg
+            width="60"
+            height="12"
+            viewBox="0 0 60 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="0.970703"
+              y1="6.00003"
+              x2="54.7729"
+              y2="6.00003"
+              stroke="white"
+              stroke-width="1.74359"
+            />
+            <path
+              d="M53.7765 11.2308V0.769226L59.7545 6L53.7765 11.2308Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};
 
 function App() {
   const [Density, setDensity] = useState(100); // State to track selected length
@@ -173,11 +263,12 @@ function App() {
   // const [selectedOptionsSilkTop, setSelectedOptionsSilkTop] = useState([]);
   const [selectedOptionsBK, setSelectedOptionsBK] = useState([]);
 
-
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const swiperRef = useRef(null);
   const swiperContainerRef = useRef(null);
   const [swiperHeight, setSwiperHeight] = useState("auto");
   const [moreItemsVisible, setMoreItemsVisible] = useState(false); // Track visibility of more items
+  const [swiperInstance, setSwiperInstance] = useState(null);
 
   useEffect(() => {
     fetchProductData();
@@ -329,6 +420,21 @@ function App() {
     }
   };
 
+  // Function to get the current slide's value for the SliderButtons
+  const getCurrentSlideValue = () => {
+    switch(activeSlideIndex) {
+      case 0: return lastSelected;
+      case 1: return selectedColors.hairColor;
+      case 2: return length;
+      case 3: return Density;
+      case 4: return hairLace;
+      case 5: return selectedColor;
+      case 6: return measurements ? "valid" : null; // Head measurements
+      case 7: return "null"; // Almost done
+      default: return "null";
+    }
+  };
+
   useEffect(() => {
     const swiperInstance = swiperRef.current;
     if (!swiperInstance) return;
@@ -338,10 +444,14 @@ function App() {
 
     // Update on slide change
     swiperInstance.on("slideChangeTransitionEnd", updateSwiperHeight);
+    swiperInstance.on("slideChange", () => {
+      setActiveSlideIndex(swiperInstance.activeIndex);
+    });
 
     // Cleanup event listener on unmount
     return () => {
       swiperInstance.off("slideChangeTransitionEnd", updateSwiperHeight);
+      swiperInstance.off("slideChange");
     };
   }, [moreItemsVisible]);
   useEffect(() => {
@@ -359,6 +469,7 @@ function App() {
         allowTouchMove={false}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
+          setSwiperInstance(swiper);
           updateSwiperHeight();
         }}
       >
@@ -404,7 +515,6 @@ function App() {
               lastSelected={lastSelected}
               setLastSelected={setLastSelected}
             />
-            <SliderButtons className="SliderButtons-desktop" value={lastSelected} />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -421,8 +531,6 @@ function App() {
               setcolorGradient={setcolorGradient}
               setMoreItemsVisible={setMoreItemsVisible}
             />
-            <SliderButtons className="SliderButtons-desktop" value={selectedColors.hairColor} />
-
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -434,9 +542,7 @@ function App() {
               setIsCm={setIsCm}
               lastSelected={lastSelected}
               getPriceLength={getPriceLength}
-            />{" "}
-            <SliderButtons className="SliderButtons-desktop" value={length}/>
-
+            />
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -446,10 +552,7 @@ function App() {
               Density={Density}
               setDensity={setDensity}
               lastSelected={lastSelected}
-
-            />{" "}
-           <SliderButtons className="SliderButtons-desktop" value={Density} />
-
+            />
           </div>
         </SwiperSlide>
         {/* <SwiperSlide>
@@ -472,8 +575,6 @@ function App() {
               silkTopOption={silkTopOption}
               setSilkTopOption={setSilkTopOption}
             />
-                        <SliderButtons className="SliderButtons-desktop" value={hairLace} />
-
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -499,8 +600,6 @@ function App() {
           />
         
     )}
-                        <SliderButtons className="SliderButtons-desktop" value={selectedColor} />
-
           </div>
         </SwiperSlide>
       
@@ -510,10 +609,7 @@ function App() {
               measurements={measurements}
               setMeasurements={setMeasurements}
               setMoreItemsVisible={setMoreItemsVisible}
-
             />
-                        <SliderButtons className="SliderButtons-desktop" />
-
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -543,12 +639,21 @@ function App() {
               hairLace={hairLace}
               setHairLace={setHairLace}
             />
-                        <SliderButtons className="SliderButtons-desktop" value="null" />
-
           </div>
         </SwiperSlide>
-        <SliderButtons className="SliderButtons-mobile" />
+        
+        {/* SliderButtons component for mobile view */}
+        <SliderButtons className="SliderButtons-mobile" value={getCurrentSlideValue()} />
       </Swiper>
+
+      {/* Fixed SliderButtons for desktop view */}
+      <div className="fixed-desktop-slider">
+        <SliderButtonsFixed 
+          className="SliderButtons-desktop" 
+          value={getCurrentSlideValue()} 
+          swiper={swiperInstance}
+        />
+      </div>
 
       {/* <SilkTop
         getPriceSilkTop={getPriceSilkTop}

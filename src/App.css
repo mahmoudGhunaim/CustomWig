@@ -125,3 +125,25 @@ html[lang="ar"] .btn-sliider button svg{
     padding-bottom: 100px;
   }
 }
+
+/* Add these styles for the fixed desktop slider buttons */
+.fixed-desktop-slider {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #F9F9F9;
+}
+
+/* Hide the fixed desktop buttons on mobile */
+@media (max-width: 767px) {
+  .fixed-desktop-slider {
+    display: none;
+  }
+}
+
+/* Ensure there's enough padding at the bottom of the page to accommodate the fixed buttons */
+.body-page {
+  padding-bottom: 80px;
+}
