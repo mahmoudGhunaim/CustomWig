@@ -458,7 +458,7 @@ function App() {
     updateSwiperHeight();
   }, [moreItemsVisible]);
   return (
-    <div className="body-page" ref={swiperContainerRef} style={{ height: swiperHeight, transition: "height 0.3s ease-in-out", overflow: "hidden" }}>
+    <div className="body-page" ref={swiperContainerRef} style={{ height: swiperHeight, transition: "min-height 0.3s ease-in-out", overflow: "hidden" }}>
       <Swiper
         className="Page-stipper"
         modules={[Navigation, Pagination, A11y, Autoplay]}

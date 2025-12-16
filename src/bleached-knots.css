@@ -1,22 +1,22 @@
 .BleachedKnots-sec{
-    margin-top: 75px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 .BleachedKnots-container{
-    padding: 30px;
+    padding: 25px;
     max-width: 1280px;
     width: 90%;
     border: 1px solid #DDDDDD;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 .BleachedKnots-content{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
 }
 .BleachedKnots-content h2{
     font-family: 'Outfit';

@@ -261,25 +261,17 @@ html[lang="ar"] .blue-size-alert,html[lang="ar"]  .HeadMeasurements-alert h6{
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 10px;
     justify-content: center;
 }
 .HeadMeasurements-select h4{
-    font-family: 'Lato';
-    font-size: 15.13px;
-    font-weight: 700;
+    font-family: 'Outfit';
+    font-size: 14px;
+    font-weight: 600;
     line-height: 25px;
     text-align: left;
-    color: #282C3B;
-}
-.HeadMeasurements-select select{
-    border: none;
-    background: #63667633;
-    font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 27px;
-    color: #282B3B;
+    color: #131313;
+    text-transform: uppercase;
 }
 .HeadMeasurements-banner > img{
     width: 100%;
@@ -315,6 +307,19 @@ html[lang="ar"] .blue-size-alert,html[lang="ar"]  .HeadMeasurements-alert h6{
         bottom: 0;
         left:-30%;
     }
+    .HeadMeasurements-container-size-cards{
+        grid-template-columns: repeat(2,1fr);
+        gap: 25px;
+    }
+    .HeadMeasurements-select h4{
+        font-size: 13px;
+    }
+    .HeadMeasurements-select .MuiFormControl-root{
+        min-width: 90px;
+    }
+}
+
+@media (max-width: 600px) {
     .HeadMeasurements-container-size-cards{
         grid-template-columns: repeat(1,1fr);
     }

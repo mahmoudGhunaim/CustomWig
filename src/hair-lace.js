@@ -17,6 +17,47 @@ const HairLace = ({
 }) => {
   const [image, setImage] = useState("https://hairs.softylus.com/wp-content/uploads/2025/02/Front-Lace-Wig.png");
 
+  const laceDescriptions = {
+    "Front Lace-Wig": {
+      title: getTranslation("front_lace_best_for", "Best For"),
+      points: [
+        getTranslation("front_lace_point_1", "First-Time Wearers: Perfect for beginners seeking a natural hairline without the advanced commitment of a full lace cap."),
+        getTranslation("front_lace_point_2", "Ideal for wearers who would like to use adhesives, and prefer a lighter weight at the crown area."),
+        getTranslation("front_lace_point_3", "Protective Styling: Ideal for those who wish to completely conceal their natural hair (using a cap) for a fresh, protective style or total look transformation.")
+      ]
+    },
+    "Silk top": {
+      "Silk-top with front lace": {
+        title: getTranslation("silk_top_with_lace_best_for", "Best For (androgenic alopecia & cancer hair loss)"),
+        points: [
+          getTranslation("silk_top_with_lace_point_1", "Crown & Parting Realism: The ultimate choice for covering thinning or loss specifically at the crown, providing a flawless, skin-like part."),
+          getTranslation("silk_top_with_lace_point_2", "Natural Hairline Solution: Perfect for those who cannot or do not wish to blend their real hair at the front, offering a realistic, ready-to-wear front hairline.")
+        ]
+      },
+      "Silk-top without front lace": {
+        title: getTranslation("silk_top_without_lace_best_for", "Best For (androgenic alopecia & cancer hair loss)"),
+        points: [
+          getTranslation("silk_top_without_lace_point_1", "Crown & Parting Realism: The ultimate choice for covering thinning or loss specifically at the crown, providing a flawless, skin-like part."),
+          getTranslation("silk_top_without_lace_point_2", "Ideal for women who wish to show and blend their own natural hairline at the front for a highly personalized look.")
+        ]
+      }
+    },
+    "Full Lace-Wig": {
+      title: getTranslation("full_lace_best_for", "Best For (Alopecia Totalis)"),
+      points: [
+        getTranslation("full_lace_point_1", "Total Hair Loss: The superior choice for individuals with complete hair loss (such as Alopecia Totalis) or those who wish to cover their natural hair fully underneath using a wig cap and adhesive."),
+        getTranslation("full_lace_point_2", "Ultimate Styling Freedom: Essential for clients who want the option to wear their hair in high ponytails, elaborate braids, or complete up-dos, as the perimeter (nape and sides) hairline is recreated.")
+      ]
+    }
+  };
+
+  const getCurrentDescription = () => {
+    if (hairLace === "Silk top") {
+      return laceDescriptions["Silk top"][silkTopOption];
+    }
+    return laceDescriptions[hairLace];
+  };
+
   useEffect(() => {
     if (hairLace === "Front Lace-Wig") {
       setImage("https://hairs.softylus.com/wp-content/uploads/2025/02/Front-Lace-Wig.png");
@@ -66,25 +107,36 @@ const HairLace = ({
           {hairLace === "Silk top" && (
             <div className="silk-top-options">
               <label>
-                <input 
-                  type="radio" 
-                  name="silkTopOption" 
-                  value="Silk-top with front lace" 
+                <input
+                  type="radio"
+                  name="silkTopOption"
+                  value="Silk-top with front lace"
                   checked={silkTopOption === "Silk-top with front lace"}
                   onChange={() => setSilkTopOption("Silk-top with front lace")}
                 />
                 {getTranslation("silk_top_with_front_lace", "Silk-top with front lace")}
               </label>
               <label>
-                <input 
-                  type="radio" 
-                  name="silkTopOption" 
-                  value="Silk-top without front lace" 
+                <input
+                  type="radio"
+                  name="silkTopOption"
+                  value="Silk-top without front lace"
                   checked={silkTopOption === "Silk-top without front lace"}
                   onChange={() => setSilkTopOption("Silk-top without front lace")}
                 />
                 {getTranslation("silk_top_without_front_lace", "Silk-top without front lace")}
               </label>
+            </div>
+          )}
+
+          {getCurrentDescription() && (
+            <div className="lace-description">
+              <h3>{getCurrentDescription().title}</h3>
+              <ul>
+                {getCurrentDescription().points.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
             </div>
           )}
         </div>

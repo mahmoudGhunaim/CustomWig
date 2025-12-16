@@ -1,22 +1,22 @@
 .PUedge-sec{
-    margin-top: 75px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 .PUedge-container{
-    padding: 30px;
+    padding: 25px;
     max-width: 1280px;
     width: 90%;
     border: 1px solid #DDDDDD;
     background: #FFFFFF;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 .PUedge-content{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
     align-items: flex-start;
 }
 .PUedge-content button{
@@ -138,6 +138,9 @@ color: #131313;
         max-width: 350px;
     }
     .PUedge-sec{
+        margin-top: 15px;
+    }
+    .LaceTone-sec{
         margin-top: 30px;
     }
 }

@@ -6,6 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 import Headmeasurements from "./assets/Headmeasurements.png";
 import Fronttonape from "./assets/Fronttonape.png";
 import Circumference from "./assets/Circumference.png";
@@ -97,11 +100,68 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
       const displayValue =
         unit === "inch" ? value : convertToCm(parseFloat(value));
       return (
-        <option key={i} value={value}>
+        <MenuItem key={i} value={value} sx={{
+          fontFamily: 'Outfit',
+          fontSize: '15px',
+          padding: '10px 16px',
+          '&:hover': {
+            backgroundColor: '#FCF7EE',
+          },
+          '&.Mui-selected': {
+            backgroundColor: '#131313',
+            color: '#FFFFFF',
+            '&:hover': {
+              backgroundColor: '#333333',
+            },
+          },
+        }}>
           {displayValue}
-        </option>
+        </MenuItem>
       );
     });
+  };
+
+  const selectStyles = {
+    fontFamily: 'Outfit',
+    fontSize: '16px',
+    fontWeight: 600,
+    color: '#131313',
+    backgroundColor: '#FFFFFF',
+    borderRadius: '8px',
+    minWidth: '100px',
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#E8E8E8',
+    },
+    '&:hover .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#131313',
+    },
+    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#131313',
+      borderWidth: '1px',
+    },
+    '& .MuiSelect-select': {
+      padding: '12px 16px',
+    },
+  };
+
+  const menuProps = {
+    PaperProps: {
+      sx: {
+        maxHeight: 250,
+        borderRadius: '8px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+        '&::-webkit-scrollbar': {
+          width: '6px',
+        },
+        '&::-webkit-scrollbar-track': {
+          background: '#f1f1f1',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: '#c1c1c1',
+          borderRadius: '3px',
+        },
+      },
+    },
   };
 
   useEffect(() => {
@@ -141,12 +201,16 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
               />
               <h5>{getTranslation("circumference", "Circumference")}</h5>
               <div className="HeadMeasurements-select">
-                <select
-                  value={(measurements.circumference || 0).toFixed(1)}
-                  onChange={(e) => handleMeasurementChange(e, "circumference")}
-                >
-                  {generateOptions(18, 51)}
-                </select>
+                <FormControl size="small">
+                  <Select
+                    value={(measurements.circumference || 0).toFixed(1)}
+                    onChange={(e) => handleMeasurementChange(e, "circumference")}
+                    sx={selectStyles}
+                    MenuProps={menuProps}
+                  >
+                    {generateOptions(18, 51)}
+                  </Select>
+                </FormControl>
                 <h4>{unit}</h4>
               </div>
               {/* <p>
@@ -172,12 +236,16 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
               />
               <h5>{getTranslation("front_to_nape", "Front to nape")}</h5>
               <div className="HeadMeasurements-select">
-                <select
-                  value={(measurements.frontToNape || 0).toFixed(1)}
-                  onChange={(e) => handleMeasurementChange(e, "frontToNape")}
-                >
-                  {generateOptions(9, 36)}
-                </select>
+                <FormControl size="small">
+                  <Select
+                    value={(measurements.frontToNape || 0).toFixed(1)}
+                    onChange={(e) => handleMeasurementChange(e, "frontToNape")}
+                    sx={selectStyles}
+                    MenuProps={menuProps}
+                  >
+                    {generateOptions(9, 36)}
+                  </Select>
+                </FormControl>
                 <h4>{unit}</h4>
               </div>
             </div>
@@ -202,12 +270,16 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
                 {getTranslation("ear_to_ear", "ear to ear")})
               </h5>
               <div className="HeadMeasurements-select">
-                <select
-                  value={(measurements.forehead || 0).toFixed(1)}
-                  onChange={(e) => handleMeasurementChange(e, "forehead")}
-                >
-                  {generateOptions(8, 56)}
-                </select>
+                <FormControl size="small">
+                  <Select
+                    value={(measurements.forehead || 0).toFixed(1)}
+                    onChange={(e) => handleMeasurementChange(e, "forehead")}
+                    sx={selectStyles}
+                    MenuProps={menuProps}
+                  >
+                    {generateOptions(8, 56)}
+                  </Select>
+                </FormControl>
                 <h4>{unit}</h4>
               </div>
             </div>
@@ -229,12 +301,16 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
                 {getTranslation("ear_to_ear", "ear to ear")})
               </h5>
               <div className="HeadMeasurements-select">
-                <select
-                  value={(measurements.head || 0).toFixed(1)}
-                  onChange={(e) => handleMeasurementChange(e, "head")}
-                >
-                  {generateOptions(9, 56)}
-                </select>
+                <FormControl size="small">
+                  <Select
+                    value={(measurements.head || 0).toFixed(1)}
+                    onChange={(e) => handleMeasurementChange(e, "head")}
+                    sx={selectStyles}
+                    MenuProps={menuProps}
+                  >
+                    {generateOptions(9, 56)}
+                  </Select>
+                </FormControl>
                 <h4>{unit}</h4>
               </div>
             </div>
@@ -256,12 +332,16 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
               />
               <h5>{getTranslation("site_to_site", "Site to site")}</h5>
               <div className="HeadMeasurements-select">
-                <select
-                  value={(measurements.siteToSite || 0).toFixed(1)}
-                  onChange={(e) => handleMeasurementChange(e, "siteToSite")}
-                >
-                  {generateOptions(9, 31)}
-                </select>
+                <FormControl size="small">
+                  <Select
+                    value={(measurements.siteToSite || 0).toFixed(1)}
+                    onChange={(e) => handleMeasurementChange(e, "siteToSite")}
+                    sx={selectStyles}
+                    MenuProps={menuProps}
+                  >
+                    {generateOptions(9, 31)}
+                  </Select>
+                </FormControl>
                 <h4>{unit}</h4>
               </div>
             </div>
@@ -283,12 +363,16 @@ const HeadMeasurements = ({ measurements, setMeasurements ,setMoreItemsVisible})
               />
               <h5>{getTranslation("neck_width", "Neck width")}</h5>
               <div className="HeadMeasurements-select">
-                <select
-                  value={(measurements.neckWidth || 0).toFixed(1)}
-                  onChange={(e) => handleMeasurementChange(e, "neckWidth")}
-                >
-                  {generateOptions(3, 31)}
-                </select>
+                <FormControl size="small">
+                  <Select
+                    value={(measurements.neckWidth || 0).toFixed(1)}
+                    onChange={(e) => handleMeasurementChange(e, "neckWidth")}
+                    sx={selectStyles}
+                    MenuProps={menuProps}
+                  >
+                    {generateOptions(3, 31)}
+                  </Select>
+                </FormControl>
                 <h4>{unit}</h4>
               </div>
             </div>
