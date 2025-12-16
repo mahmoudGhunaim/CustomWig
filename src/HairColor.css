@@ -16,8 +16,75 @@
     font-size: 43.8px;
     font-weight: 500;
     line-height: 52.62px;
-    text-align: center;
+    text-align: left;
     color: #000000;
+}
+.HairColor-head{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.HairColor-subtitle{
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #7A7A7A;
+}
+.HairColor-selected-info{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: #FCF7EE;
+    border-radius: 8px;
+}
+.HairColor-selected-info .selected-color-preview{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #00CD1F;
+}
+.HairColor-selected-info span{
+    font-family: 'Outfit';
+    font-size: 16px;
+    font-weight: 500;
+    color: #282C3B;
+}
+.HairColor-selected-info .selected-price{
+    font-family: 'Outfit';
+    font-size: 14px;
+    font-weight: 600;
+    color: #131313;
+    background: #131313;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.HairColor-base-preview{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+.HairColor-base-preview .base-color-chip{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+.HairColor-base-preview span{
+    font-family: 'Outfit';
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+}
+html[lang="ar"] .HairColor-head h2,
+html[lang="ar"] .HairColor-subtitle{
+    text-align: right;
 }
 .HairColor-alert{
     display: flex;

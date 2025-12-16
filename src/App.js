@@ -11,7 +11,9 @@ import LaceTone from "./lace-tone";
 import PUedge from "./pu-edge";
 import SilkTop from "./Silk-Top";
 import BleachedKnots from "./bleached-knots";
-import HairColor from "./Hair-Color";
+import HairColorBase from "./HairColorBase";
+import HairColorGradient from "./HairColorGradient";
+import HairColorHighlight from "./HairColorHighlight";
 import AlmostDone from "./almost-done";
 import HeadMeasurements from "./head-measurements";
 import CartHandler from "./CartHandler.js";
@@ -423,14 +425,16 @@ function App() {
   // Function to get the current slide's value for the SliderButtons
   const getCurrentSlideValue = () => {
     switch(activeSlideIndex) {
-      case 0: return lastSelected;
-      case 1: return selectedColors.hairColor;
-      case 2: return length;
-      case 3: return Density;
-      case 4: return hairLace;
-      case 5: return selectedColor;
-      case 6: return measurements ? "valid" : null; // Head measurements
-      case 7: return "null"; // Almost done
+      case 0: return lastSelected; // Hair Type
+      case 1: return selectedColors.hairColor; // Base Color
+      case 2: return "valid"; // Gradient Color (optional, always allow next)
+      case 3: return "valid"; // Highlight Color (optional, always allow next)
+      case 4: return length; // Hair Length
+      case 5: return Density; // Hair Density
+      case 6: return hairLace; // Hair Lace
+      case 7: return selectedColor; // Lace Tone + PU Edge
+      case 8: return measurements ? "valid" : null; // Head measurements
+      case 9: return "null"; // Almost done
       default: return "null";
     }
   };
@@ -519,7 +523,7 @@ function App() {
         </SwiperSlide>
         <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
-            <HairColor
+            <HairColorBase
               selectedNameColors={selectedNameColors}
               setSelectedNameColors={setSelectedNameColors}
               setSelectedPrice={setSelectedPrice}
@@ -527,8 +531,34 @@ function App() {
               lastSelected={lastSelected}
               selectedColors={selectedColors}
               setSelectedColors={setSelectedColors}
-              colorGradient={colorGradient}
-              setcolorGradient={setcolorGradient}
+              setMoreItemsVisible={setMoreItemsVisible}
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairColorGradient
+              selectedNameColors={selectedNameColors}
+              setSelectedNameColors={setSelectedNameColors}
+              setSelectedPrice={setSelectedPrice}
+              selectedPrice={selectedPrice}
+              lastSelected={lastSelected}
+              selectedColors={selectedColors}
+              setSelectedColors={setSelectedColors}
+              setMoreItemsVisible={setMoreItemsVisible}
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="Page-stipper-SwiperSlide-container">
+            <HairColorHighlight
+              selectedNameColors={selectedNameColors}
+              setSelectedNameColors={setSelectedNameColors}
+              setSelectedPrice={setSelectedPrice}
+              selectedPrice={selectedPrice}
+              lastSelected={lastSelected}
+              selectedColors={selectedColors}
+              setSelectedColors={setSelectedColors}
               setMoreItemsVisible={setMoreItemsVisible}
             />
           </div>
