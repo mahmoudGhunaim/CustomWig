@@ -17,7 +17,7 @@
   padding-top: 20px;
 }
 
-.Page-stipper-SwiperSlide-container:has(.LaceTone-sec) {
+.Page-stipper-SwiperSlide-container:has(.LaceTone-sec, .HeadMeasurements-sec, .AlmostDone-sec) {
   justify-content: center;
 }
 
