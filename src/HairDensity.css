@@ -320,13 +320,130 @@ html[lang="ar"] .HairDensity-content p{
       .fade-image.fade-out {
         opacity: 0;
       }
-      .HairDensity-content-button-container{
+      /* Density Slider Styles */
+      .density-slider-wrapper {
+        width: 100%;
         display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .density-current-value {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .density-value-number {
+        font-family: Outfit;
+        font-size: 48px;
+        font-weight: 700;
+        color: #131313;
+        line-height: 1;
+      }
+
+      .density-value-label {
+        font-family: Outfit;
+        font-size: 16px;
+        font-weight: 400;
+        color: #666;
+        text-transform: uppercase;
+      }
+
+      .density-slider-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .density-slider-labels {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 5px;
+      }
+
+      .density-label {
+        font-family: Outfit;
+        font-size: 14px;
+        font-weight: 500;
+        color: #999;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        padding: 5px 8px;
+        border-radius: 4px;
+      }
+
+      .density-label:hover {
+        color: #131313;
+        background: #f5f5f5;
+      }
+
+      .density-label.active {
+        color: #131313;
+        font-weight: 700;
+        background: #FCF7EE;
+      }
+
+      .density-slider {
+        width: 100%;
+        height: 8px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: linear-gradient(to right, #E8DFD0 0%, #131313 var(--slider-progress, 0%));
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .density-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 32px;
+        height: 32px;
+        background: #131313;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .density-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.1);
+      }
+
+      .density-slider::-moz-range-thumb {
+        width: 32px;
+        height: 32px;
+        background: #131313;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .density-slider::-moz-range-thumb:hover {
+        transform: scale(1.1);
+      }
+
+      .density-slider::-moz-range-track {
+        background: linear-gradient(to right, #131313 var(--slider-progress, 0%), #E8DFD0 var(--slider-progress, 0%));
+        border-radius: 4px;
+        height: 8px;
+      }
+
+      /* Keep button styles for backward compatibility but hide them */
+      .HairDensity-content-button-container{
+        display: none;
         flex-wrap: wrap;
-        gap: 20px;  
+        gap: 20px;
         width: 100%;
       }
-      .HairDensity-content-button-container button{ 
+      .HairDensity-content-button-container button{
         flex-basis: 195px;
         height: 70px;
         display: flex;
@@ -368,9 +485,28 @@ html[lang="ar"] .HairDensity-content p{
         .hair-density-slider-container {
           padding: 50px 0 20px;
         }
-      
+
         .hair-density-percentage {
           font-size: 20px;
+        }
+
+        .density-value-number {
+          font-size: 36px;
+        }
+
+        .density-label {
+          font-size: 11px;
+          padding: 4px 5px;
+        }
+
+        .density-slider::-webkit-slider-thumb {
+          width: 26px;
+          height: 26px;
+        }
+
+        .density-slider::-moz-range-thumb {
+          width: 26px;
+          height: 26px;
         }
       }
 @media (max-width: 1024px) {
@@ -394,6 +530,10 @@ html[lang="ar"] .HairDensity-content p{
     .HairDensity-content-button-container button{
       flex-basis: 150px;
       min-width: 120px;
+    }
+
+    .density-slider-labels {
+      padding: 0;
     }
 }
 @media (max-width: 767px) {

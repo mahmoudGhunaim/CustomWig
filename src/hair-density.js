@@ -31,7 +31,8 @@ const HairDensity = ({
   lastSelected,
 }) => {
   const [currentImage, setCurrentImage] = useState("");
-  const [destiny, setDestiny] = useState(100);
+  const densityValues = [100, 110, 120, 150, 180, 200];
+  const [sliderIndex, setSliderIndex] = useState(0);
 
   const imageMap = {
     Wavy: {
@@ -66,9 +67,26 @@ const HairDensity = ({
     }
   }, [lastSelected, Density]);
 
-  const handleDensityChange = (newDensity) => {
+  useEffect(() => {
+    // Sync slider index with Density value
+    const index = densityValues.indexOf(Density);
+    if (index !== -1) {
+      setSliderIndex(index);
+    }
+  }, [Density]);
+
+  const handleSliderChange = (e) => {
+    const index = parseInt(e.target.value);
+    setSliderIndex(index);
+    const newDensity = densityValues[index];
     setDensity(newDensity);
-    setDestiny(newDensity);
+    setCurrentImage(imageMap[lastSelected][newDensity]);
+  };
+
+  const handleDensityChange = (newDensity) => {
+    const index = densityValues.indexOf(newDensity);
+    setSliderIndex(index);
+    setDensity(newDensity);
     setCurrentImage(imageMap[lastSelected][newDensity]);
   };
 
@@ -98,16 +116,35 @@ const HairDensity = ({
                 "The human hair is evenly distributed and knotted into the lace by hand. Determine the desired hair density (knot density) using the regulator. As a standard we use a hair density of 80%."
               )}
             </p>
-            <div className="HairDensity-content-button-container">
-              {[100, 110, 120, 150, 180, 200].map((value) => (
-                <button
-                  key={value}
-                  onClick={() => handleDensityChange(value)}
-                  className={destiny === value ? "active" : ""}
-                >
-                  {value}% <span> {getTranslation("density", "DENSITY")}</span>
-                </button>
-              ))}
+            <div className="density-slider-wrapper">
+              <div className="density-current-value">
+                <span className="density-value-number">{Density}%</span>
+                <span className="density-value-label">{getTranslation("density", "DENSITY")}</span>
+              </div>
+              <div className="density-slider-container">
+                <input
+                  type="range"
+                  min="0"
+                  max={densityValues.length - 1}
+                  value={sliderIndex}
+                  onChange={handleSliderChange}
+                  className="density-slider"
+                  style={{
+                    background: `linear-gradient(to right, #131313 0%, #131313 ${(sliderIndex / (densityValues.length - 1)) * 100}%, #E8DFD0 ${(sliderIndex / (densityValues.length - 1)) * 100}%, #E8DFD0 100%)`
+                  }}
+                />
+                <div className="density-slider-labels">
+                  {densityValues.map((value, index) => (
+                    <span
+                      key={value}
+                      className={`density-label ${Density === value ? 'active' : ''}`}
+                      onClick={() => handleDensityChange(value)}
+                    >
+                      {value}%
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
