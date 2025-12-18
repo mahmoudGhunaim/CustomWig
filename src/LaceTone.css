@@ -149,6 +149,50 @@ html[lang="ar"] .LaceTone-container p {
     background: linear-gradient(145deg, #f0fff3 0%, #FFFFFF 100%);
 }
 
+/* Laptop screens (1024px - 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .LaceTone-sec {
+        margin-top: 35px;
+    }
+
+    .LaceTone-container {
+        padding: 28px 32px;
+        max-width: 1100px;
+        gap: 20px;
+    }
+
+    .LaceTone-container h2 {
+        font-size: 20px;
+    }
+
+    .LaceTone-container > p {
+        font-size: 14px;
+    }
+
+    .LaceTone-colors {
+        gap: 16px;
+    }
+
+    .LaceTone-color {
+        min-width: 180px;
+        max-width: 220px;
+        padding: 14px 16px;
+    }
+
+    .LaceTone-color > div:first-child img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .LaceTone-color h6 {
+        font-size: 15px;
+    }
+
+    .LaceTone-color p {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 1024px) {
     .LaceTone-sec {
         margin-top: 24px;

@@ -108,33 +108,158 @@ align-items: center;
 .header-image img{
     width: 100%;
 }
-@media (max-width: 1024px) {
-    .header-container{
-        gap: 30px;
+
+/* Laptop screens (1024px - 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .header-container {
+        max-width: 1100px;
     }
 
-    .header-image,.header-content{
+    .header-content h1 {
+        font-size: 42px;
+        line-height: 1.3;
+    }
+
+    .header-content p {
+        font-size: 15px;
+    }
+
+    .header-content {
+        gap: 24px;
+    }
+
+    .header-pricing h2 {
+        font-size: 26px;
+        padding: 14px 50px;
+    }
+
+    .header-pricing button {
+        font-size: 16px;
+    }
+
+    .header-card h5 {
+        font-size: 13px;
+    }
+
+    .header-card p {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-sec {
+        padding: 24px 0;
+    }
+
+    .header-container {
+        gap: 24px;
+    }
+
+    .header-image, .header-content {
         width: 100%;
     }
-    .header-image img{
+
+    .header-image img {
         width: 100%;
+        max-height: 350px;
+        object-fit: contain;
     }
-    .header-content h1{
-        font-size: 32px;
-        line-height: normal;
+
+    .header-content {
+        gap: 20px;
+        align-items: center;
     }
-    .header-pricing{
+
+    .header-content h1 {
+        font-size: 28px;
+        line-height: 1.3;
+        text-align: center;
+    }
+
+    .header-content p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .header-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .header-card {
         flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
     }
-    .header-sec{
-        padding-bottom: 34px;
+
+    .header-card > div {
+        align-items: center;
     }
-    .label-container a{
+
+    .header-card h5, .header-card p {
+        text-align: center;
+    }
+
+    .header-pricing {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .header-pricing h2 {
+        font-size: 24px;
+        padding: 14px 40px;
+    }
+
+    .header-pricing button {
+        font-size: 15px;
+    }
+
+    .label-container a {
         width: 49%;
     }
 }
+
 @media (max-width: 767px) {
-    .header-container{
+    .header-container {
         flex-direction: column;
+    }
+
+    .header-content h1 {
+        font-size: 26px;
+    }
+
+    .header-image img {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content h1 {
+        font-size: 24px;
+    }
+
+    .header-pricing h2 {
+        font-size: 22px;
+        padding: 12px 35px;
+    }
+
+    .header-cards {
+        gap: 12px;
+    }
+
+    .header-card img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-card h5 {
+        font-size: 13px;
+    }
+
+    .header-card p {
+        font-size: 11px;
     }
 }

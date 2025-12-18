@@ -276,6 +276,50 @@ html[lang="ar"] .blue-size-alert,html[lang="ar"]  .HeadMeasurements-alert h6{
 .HeadMeasurements-banner > img{
     width: 100%;
 }
+
+/* Laptop screens (1024px - 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .HeadMeasurements-sec {
+        margin-top: 50px;
+    }
+
+    .HeadMeasurements-container {
+        gap: 35px;
+    }
+
+    .HeadMeasurements-head h2 {
+        font-size: 32px;
+        line-height: 1.3;
+    }
+
+    .HeadMeasurements-size {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .HeadMeasurements-size h2 {
+        font-size: 32px;
+        line-height: 1.3;
+    }
+
+    .HeadMeasurements-container-size-cards {
+        gap: 35px;
+    }
+
+    .HeadMeasurements-size-cards p {
+        font-size: 13px;
+    }
+
+    .HeadMeasurements-size-cards h5 {
+        font-size: 14px;
+    }
+
+    .HeadMeasurements-options button {
+        font-size: 14px;
+        height: 45px;
+    }
+}
+
 @media (max-width: 1024px) {
     .HeadMeasurements-sec {
         margin-top: 24px;

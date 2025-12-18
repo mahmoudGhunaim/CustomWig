@@ -405,6 +405,58 @@ html[lang="ar"] .lace-description h3::before {
     order: 1;
 }
 
+/* Laptop screens (1024px - 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .HairLace-sec {
+        margin-top: 50px;
+    }
+
+    .HairLace-container {
+        gap: 40px;
+    }
+
+    .HairLace-container-content {
+        gap: 20px;
+    }
+
+    .HairLace-container-content h2 {
+        font-size: 32px;
+    }
+
+    .HairLace-container-image img {
+        width: 500px;
+        height: 505px;
+    }
+
+    .HairLace-container-buttons button {
+        min-width: 130px;
+        height: 110px;
+        font-size: 14px;
+    }
+
+    .HairLace-container-buttons button img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .silk-top-options label {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    .lace-description {
+        padding: 24px 28px;
+    }
+
+    .lace-description h3 {
+        font-size: 16px;
+    }
+
+    .lace-description li {
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 1024px) {
     .HairLace-sec {
         margin-top: 24px;

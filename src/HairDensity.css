@@ -480,6 +480,43 @@ html[lang="ar"] .HairDensity-content p{
         justify-content: center;
         gap: 5px;
       }
+      /* Laptop screens (1024px - 1400px) */
+      @media (min-width: 1025px) and (max-width: 1400px) {
+        .HairDensity-sec {
+            margin-top: 50px;
+        }
+
+        .HairDensity-container {
+            width: 92%;
+        }
+
+        .HairDensity-content {
+            width: 50%;
+            gap: 25px;
+        }
+
+        .HairDensity-image {
+            width: 45%;
+        }
+
+        .HairDensity-content h6 {
+            font-size: 32px;
+            line-height: 1.3;
+        }
+
+        .HairDensity-content p {
+            font-size: 15px;
+        }
+
+        .density-value-number {
+            font-size: 42px;
+        }
+
+        .density-label {
+            font-size: 13px;
+        }
+      }
+
       /* Mobile styles for density */
       @media (max-width: 768px) {
         .hair-density-slider-container {

@@ -137,6 +137,28 @@
   color: #282C3B;
 }
 
+/* Laptop screens (1024px - 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .Customize-sec {
+    margin-top: 50px;
+  }
+
+  .Customize-container h2 {
+    font-size: 36px;
+    line-height: 1.3;
+  }
+
+  .Customize-container p {
+    font-size: 15px;
+  }
+
+  .btn-sliider button {
+    width: 110px;
+    height: 62px;
+    font-size: 15px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -280,8 +302,8 @@ html[lang="ar"] .btn-sliider button:last-child:hover svg {
   align-items: center;
 }
 
-/* Hide the fixed desktop buttons on mobile */
-@media (max-width: 767px) {
+/* Hide the fixed desktop buttons on tablet and mobile */
+@media (max-width: 1024px) {
   .fixed-desktop-slider {
     display: none;
   }

@@ -224,6 +224,45 @@ html[lang="ar"] .HairType-image-type p {
     border-right: 4px solid #00CD1F;
 }
 
+/* Laptop screens (1024px - 1400px) */
+@media (min-width: 1025px) and (max-width: 1400px) {
+    .HairType-sec {
+        margin-top: 50px;
+    }
+
+    .HairType-container {
+        gap: 40px;
+    }
+
+    .HairType-image {
+        max-width: 500px;
+    }
+
+    .HairType-image-type {
+        gap: 25px;
+    }
+
+    .HairType-image-type h2 {
+        font-size: 32px;
+    }
+
+    .HairType-image-type-buttons button {
+        min-width: 130px;
+        height: 110px;
+        font-size: 14px;
+    }
+
+    .HairType-image-type-buttons button img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .HairType-image-type p {
+        font-size: 15px;
+        padding: 16px 20px;
+    }
+}
+
 @media (max-width: 1024px) {
     .HairType-sec {
         margin-top: 24px;
