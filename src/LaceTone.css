@@ -1,102 +1,163 @@
-.LaceTone-sec{
+.LaceTone-sec {
     margin-top: 50px;
     display: flex;
     justify-content: center;
 }
-.LaceTone-container{
-    padding: 25px;
+
+.LaceTone-container {
+    padding: 35px 40px;
     max-width: 1280px;
     width: 90%;
-    border: 1px solid #DDDDDD;
-    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
 }
-.LaceTone-container h2{
+
+.LaceTone-container:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+}
+
+.LaceTone-container h2 {
     font-family: 'Outfit';
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
     text-align: left;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    color: #1a1a1a;
 }
-.LaceTone-container p{
+
+.LaceTone-container h2 img {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%);
+    border-radius: 8px;
+}
+
+.LaceTone-container > p {
     font-family: 'Lato';
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
-    color: #131313;
+    color: #666666;
+    max-width: 800px;
 }
-html[lang="ar"] .LaceTone-container p{
+
+html[lang="ar"] .LaceTone-container p {
     text-align: right;
 }
-.LaceTone-container h2 img{
-    width: 24px;
-    height: 24px;
-}
-.LaceTone-colors{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 990px;
-}
-.LaceTone-color{
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-.LaceTone-color h6{
-    font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    text-align: left;
-    color: #282C3B;
-}
-.LaceTone-color p{
-    font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-    color: #282C3B;
-}
-.LaceTone-color-select img{
-    border: 3px solid #54c18f;
-    border-radius: 99px;
-    object-fit: cover;
-    width: 50px;
-    height: 50px;
-}
-.LaceTone-color-select{
-    position: relative;
 
+.LaceTone-colors {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
 }
-.LaceTone-color-select::after{
-    content: " ";
-    width: 20px;
+
+.LaceTone-color {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 20px;
+    background: #FFFFFF;
+    border: 2px solid #f0f0f0;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    min-width: 220px;
+    flex: 1;
+    max-width: 280px;
+}
+
+.LaceTone-color:hover {
+    border-color: #d4d4d4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.LaceTone-color h6 {
+    font-family: 'Outfit';
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: left;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.LaceTone-color p {
+    font-family: 'Lato';
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+    color: #888888;
+}
+
+.LaceTone-color > div:first-child img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.LaceTone-color:hover > div:first-child img {
+    transform: scale(1.05);
+}
+
+.LaceTone-color-select {
+    position: relative;
+}
+
+.LaceTone-color-select img {
+    border: 3px solid #00CD1F !important;
+    box-shadow: 0 0 0 4px rgba(0, 205, 31, 0.15), 0 4px 12px rgba(0, 205, 31, 0.2) !important;
+}
+
+.LaceTone-color-select::after {
+    content: "";
+    width: 22px;
     position: absolute;
-    height: 20px;
-    left: 0;
-    top: 0;
-    background-color: white;
-    background: url("./assets/SVGRepo_iconCarrier.svg");
-    background-size: contain;
+    height: 22px;
+    right: -4px;
+    top: -4px;
+    background-color: #00CD1F;
+    background-image: url("./assets/SVGRepo_iconCarrier.svg");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 205, 31, 0.3);
 }
+
+/* Selected state for the entire card */
+.LaceTone-color:has(.LaceTone-color-select) {
+    border-color: #00CD1F;
+    background: linear-gradient(145deg, #f0fff3 0%, #FFFFFF 100%);
+}
+
 @media (max-width: 1024px) {
     .LaceTone-sec {
         margin-top: 24px;
     }
 
     .LaceTone-container {
-        padding: 20px;
+        padding: 24px 20px;
         border-radius: 16px;
-        border-color: var(--border-color);
-        gap: 16px;
+        gap: 20px;
     }
 
     .LaceTone-container h2 {
@@ -105,11 +166,12 @@ html[lang="ar"] .LaceTone-container p{
     }
 
     .LaceTone-container h2 img {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
+        padding: 5px;
     }
 
-    .LaceTone-container p {
+    .LaceTone-container > p {
         font-size: 14px;
         text-align: center;
         line-height: 1.5;
@@ -118,56 +180,60 @@ html[lang="ar"] .LaceTone-container p{
     .LaceTone-colors {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 12px;
     }
 
     .LaceTone-color {
         flex-direction: column;
         text-align: center;
-        padding: 12px;
-        background: var(--accent-bg);
-        border-radius: 12px;
-        gap: 8px;
-        transition: var(--transition-smooth);
+        padding: 16px 12px;
+        min-width: unset;
+        max-width: unset;
+        gap: 10px;
     }
 
     .LaceTone-color:active {
         transform: scale(0.98);
     }
 
-    .LaceTone-color-select img {
-        width: 44px;
-        height: 44px;
+    .LaceTone-color > div:first-child img {
+        width: 50px;
+        height: 50px;
     }
 
     .LaceTone-color h6 {
         font-size: 14px;
+        text-align: center;
     }
 
     .LaceTone-color p {
         font-size: 12px;
-        color: var(--text-secondary);
+        text-align: center;
+        color: #999;
     }
 
     .LaceTone-color-select::after {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
+        background-size: 12px;
+        right: -2px;
+        top: -2px;
     }
 }
 
 @media (max-width: 480px) {
     .LaceTone-colors {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        gap: 10px;
     }
 
     .LaceTone-color {
-        padding: 10px;
+        padding: 14px 10px;
     }
 
-    .LaceTone-color-select img {
-        width: 40px;
-        height: 40px;
+    .LaceTone-color > div:first-child img {
+        width: 44px;
+        height: 44px;
     }
 
     .LaceTone-color h6 {

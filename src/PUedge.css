@@ -5,64 +5,82 @@
 }
 
 .PUedge-container {
-    padding: 25px;
+    padding: 35px 40px;
     max-width: 1280px;
     width: 90%;
-    border: 1px solid #DDDDDD;
-    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    background: linear-gradient(145deg, #FFFFFF 0%, #FAFAFA 100%);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
+}
+
+.PUedge-container:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
 }
 
 .PUedge-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
     align-items: flex-start;
 }
 
 .PUedge-content button {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     background: none;
     border: none;
-    font-family: 'Lato';
-    font-size: 16px;
-    font-weight: 400;
+    font-family: 'Outfit';
+    font-size: 15px;
+    font-weight: 500;
     line-height: 24px;
     text-align: left;
-    color: #131313;
+    color: #555555;
     cursor: pointer;
-    padding: 0;
-    font-family: 'Outfit';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    text-align: left;
-    color: #131313;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+}
+
+.PUedge-content button:hover {
+    color: #1a1a1a;
 }
 
 .PUedge-content h2 {
     font-family: 'Outfit';
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
     text-align: left;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    color: #1a1a1a;
+    flex-wrap: wrap;
+}
+
+.PUedge-content h2 img {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+    background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%);
+    border-radius: 8px;
 }
 
 .PUedge-content h2 h6 {
     font-family: 'Outfit';
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    background: #131313;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
     color: #FFFFFF;
-    padding: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
 }
 
 .PUedge-content h2 span {
@@ -71,44 +89,67 @@
     font-weight: 400;
     line-height: 20px;
     text-align: left;
-    color: #9A9A9A;
+    color: #999999;
+    font-style: italic;
 }
 
-.PUedge-content p {
+.PUedge-content > p {
     font-family: 'Lato';
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 24px;
     text-align: left;
-    color: #131313;
+    color: #666666;
+    max-width: 800px;
 }
 
 .PUedge-select {
     display: flex;
-    justify-content: space-between;
+    gap: 14px;
 }
 
 .PUedge-select button {
-    width: 33%;
-    height: 44px;
-    background: #A9A9A9;
-    border: none;
+    flex: 1;
+    max-width: 200px;
+    height: 52px;
+    background: #f5f5f5;
+    border: 2px solid #e8e8e8;
     font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
     line-height: 24px;
-    color: #FFFFFF;
-    border-radius: 5px;
+    color: #555555;
+    border-radius: 12px;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.PUedge-select button:hover {
+    background: #ebebeb;
+    border-color: #d4d4d4;
+    transform: translateY(-1px);
+}
+
+.PUedge-select button:active {
+    transform: translateY(0);
 }
 
 .PUedge-button-selected {
-    position: relative;
-    background: #131313 !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    border-color: #1a1a1a !important;
+    color: #FFFFFF !important;
     display: flex;
     justify-content: center;
     gap: 10px;
     align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.PUedge-button-selected:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%) !important;
+    transform: translateY(-1px);
 }
 
 .PUedge-button-selected::before {
@@ -117,26 +158,91 @@
     height: 18px;
     background: url("https://hairs.softylus.com/wp-content/uploads/2025/12/whiteChech.svg");
     background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
 }
 
 .SwiperSlide-pu p {
     font-family: 'Outfit';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
     text-align: center;
-    color: #131313;
+    color: #1a1a1a;
+    margin-bottom: 16px;
 }
 
-.SwiperSlide-pu>div {
+.SwiperSlide-pu > div {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 16px;
 }
 
-.SwiperSlide-pu>div img {
-    width: 50%;
-    max-width: 350px;
+.SwiperSlide-pu > div img {
+    width: 45%;
+    max-width: 320px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.SwiperSlide-pu > div img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Image viewer styles */
+.image-viewer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+.image-viewer-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.image-viewer-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+}
+
+.image-viewer-content p {
+    color: white;
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'Outfit';
+}
+
+.close-viewer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.close-viewer:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 @media (max-width: 1024px) {
@@ -145,10 +251,9 @@
     }
 
     .PUedge-container {
-        padding: 20px;
+        padding: 24px 20px;
         border-radius: 16px;
-        border-color: var(--border-color);
-        gap: 16px;
+        gap: 20px;
     }
 
     .PUedge-content {
@@ -159,24 +264,28 @@
     .PUedge-content h2 {
         font-size: 18px;
         justify-content: center;
-        flex-wrap: wrap;
         text-align: center;
+    }
+
+    .PUedge-content h2 img {
+        width: 24px;
+        height: 24px;
+        padding: 5px;
     }
 
     .PUedge-content h2 h6 {
         font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 4px;
+        padding: 5px 10px;
     }
 
     .PUedge-content h2 span {
         font-size: 13px;
     }
 
-    .PUedge-content p {
+    .PUedge-content > p {
         font-size: 14px;
         text-align: center;
-        line-height: 1.5;
+        line-height: 1.6;
     }
 
     .PUedge-content button {
@@ -185,38 +294,29 @@
     }
 
     .PUedge-select {
-        display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 100%;
     }
 
     .PUedge-select button {
-        width: 100%;
-        height: 48px;
+        max-width: 100%;
+        height: 50px;
         border-radius: 12px;
         font-size: 15px;
-        transition: var(--transition-smooth);
     }
 
     .PUedge-select button:active {
         transform: scale(0.98);
     }
 
-    .PUedge-button-selected {
-        border-radius: 12px !important;
-    }
-
-    .SwiperSlide-pu>div img {
+    .SwiperSlide-pu > div img {
         width: 40%;
-        max-width: 350px;
+        max-width: 280px;
     }
 
     .SwiperSlide-pu p {
         font-size: 14px;
-    }
-
-    .LaceTone-sec {
-        margin-top: 24px;
     }
 }
 
@@ -226,7 +326,17 @@
     }
 
     .PUedge-select button {
-        height: 44px;
+        height: 48px;
         font-size: 14px;
+    }
+
+    .SwiperSlide-pu > div {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .SwiperSlide-pu > div img {
+        width: 80%;
+        max-width: 250px;
     }
 }
