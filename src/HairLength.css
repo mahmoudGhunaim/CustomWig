@@ -380,6 +380,27 @@ html[lang="ar"] .HairLength-content h5, html[lang="ar"] .HairLength-content p{
     .length-label.active {
         font-weight: 600;
     }
+
+    .HairLength-Length {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .HairLength-Length p {
+        font-size: 14px;
+        padding: 20px;
+        width: 85px;
+        background-size: contain;
+    }
+
+    .HairLength-Length-divider {
+        width: 25px;
+    }
+
+    .HairLength-Length h6 {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
@@ -407,6 +428,16 @@ html[lang="ar"] .HairLength-content h5, html[lang="ar"] .HairLength-content p{
     .HairLength-image img {
         height: 350px;
     }
+
+    .HairLength-Length p {
+        font-size: 13px;
+        padding: 18px;
+        width: 75px;
+    }
+
+    .HairLength-Length-divider {
+        width: 22px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -421,5 +452,15 @@ html[lang="ar"] .HairLength-content h5, html[lang="ar"] .HairLength-content p{
 
     .HairLength-image img {
         height: 300px;
+    }
+
+    .HairLength-Length p {
+        font-size: 12px;
+        padding: 16px;
+        width: 68px;
+    }
+
+    .HairLength-Length-divider {
+        width: 20px;
     }
 }

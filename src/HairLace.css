@@ -503,6 +503,7 @@ html[lang="ar"] .lace-description h3::before {
 
     .HairLace-container-buttons {
         display: flex;
+        flex-wrap: wrap;
         gap: 12px;
         overflow-x: auto;
         padding: 4px 0;

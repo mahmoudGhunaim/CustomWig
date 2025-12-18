@@ -358,6 +358,7 @@
 
     .PUedge-select button {
         height: 48px;
+        min-height: 48px;
         font-size: 14px;
     }
 

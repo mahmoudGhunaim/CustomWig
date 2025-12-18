@@ -78,9 +78,8 @@ const HairLength = ({
 
   const getLengthIndicatorPosition = (currentLength) => {
     const maxSliderValue = isCm ? 75 : 30; // Maximum length based on selected unit
-    const imageWidth = 600; // Image width in pixels
-    const percentage = currentLength / maxSliderValue; // Calculate percentage of the length
-    return `${percentage * imageWidth}px`; // Return pixel value for positioning
+    const percentage = (currentLength / maxSliderValue) * 100; // Calculate percentage of the length
+    return `${percentage}%`; // Return percentage value for responsive positioning
   };
 
   let hairImage;
