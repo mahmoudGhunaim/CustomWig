@@ -19,9 +19,15 @@ const HairType = ({ lastSelected, setLastSelected }) => {
     setLastSelected("Straight");
   }, [setLastSelected]);
 
+  const descriptions = {
+    straight_hair_description: "Smooth unprocessed hair with beautiful natural shine. The hair can easily swell when wet.",
+    wavy_hair_description: "Natural flowing waves that add volume and movement. Perfect for a relaxed, effortless look.",
+    curly_hair_description: "Beautiful bouncy curls with natural texture. Adds volume and a playful, dynamic style."
+  };
+
   const handleHairTypeSelect = (type, descriptionKey, image) => {
     setLastSelected(type);
-    setHairDescription(getTranslation(descriptionKey, ""));
+    setHairDescription(getTranslation(descriptionKey, descriptions[descriptionKey]));
     setHairImage(image);
     setActiveButton(type); // Set the active button type
   };
@@ -30,7 +36,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
     <section className="HairType-sec">
       <div className="HairType-container" id="Hairtype">
         <div className="HairType-image">
-          <img src={hairImage} alt={getTranslation(`${lastSelected}_hair`, `${lastSelected} Hair`)} />
+          <img key={activeButton} src={hairImage} alt={getTranslation(`${lastSelected}_hair`, `${lastSelected} Hair`)} />
         </div>
         <div className="HairType-image-type">
           <h2>
@@ -85,7 +91,7 @@ const HairType = ({ lastSelected, setLastSelected }) => {
               <span>{getTranslation("curly", "Curly")}</span>
             </button>
           </div>
-          <p>{hairDescription}</p>
+          <p key={`desc-${activeButton}`} className="hair-description-animate">{hairDescription}</p>
         </div>
       </div>
     </section>

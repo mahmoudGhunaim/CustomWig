@@ -197,7 +197,7 @@ const HairColorHighlight = ({
     <section className="HairColor-sec">
       <div className="HairColor-container" id="Haircolor">
         <div className="HairColor-image">
-          <img src={hairImage} alt="Hair" />
+          <img key={lastSelected} src={hairImage} alt="Hair" />
           {selectedColors.colorGradient ? svgHairGradient : svgHairBase}
           {selectedColors.highlight && svgHairHighlight}
         </div>
@@ -236,7 +236,7 @@ const HairColorHighlight = ({
             </div>
           )}
 
-          <div className="HairColor-filters">
+          <div className="HairColor-filters HairColor-filters-animate" key={`filters-${lastSelected}`}>
             <button onClick={() => handleFilterChange("black")} className={activeFilter === "black" ? "filter-active" : ""}>
               {getTranslation("black", "Black")}
             </button>
@@ -254,7 +254,7 @@ const HairColorHighlight = ({
             </button>
           </div>
 
-          <div className="HairColor-colors">
+          <div className="HairColor-colors HairColor-colors-animate" key={`colors-${activeFilter}`}>
             {colorOptions[activeFilter]?.map((color) => (
               <div
                 key={color.id}

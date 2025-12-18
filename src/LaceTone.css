@@ -88,8 +88,89 @@ html[lang="ar"] .LaceTone-container p{
     background-size: contain;
 }
 @media (max-width: 1024px) {
-    .LaceTone-colors{
-        flex-direction: column;
+    .LaceTone-sec {
+        margin-top: 24px;
+    }
+
+    .LaceTone-container {
+        padding: 20px;
+        border-radius: 16px;
+        border-color: var(--border-color);
+        gap: 16px;
+    }
+
+    .LaceTone-container h2 {
+        font-size: 18px;
+        justify-content: center;
+    }
+
+    .LaceTone-container h2 img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .LaceTone-container p {
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .LaceTone-colors {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+    }
+
+    .LaceTone-color {
+        flex-direction: column;
+        text-align: center;
+        padding: 12px;
+        background: var(--accent-bg);
+        border-radius: 12px;
+        gap: 8px;
+        transition: var(--transition-smooth);
+    }
+
+    .LaceTone-color:active {
+        transform: scale(0.98);
+    }
+
+    .LaceTone-color-select img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .LaceTone-color h6 {
+        font-size: 14px;
+    }
+
+    .LaceTone-color p {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    .LaceTone-color-select::after {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .LaceTone-colors {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .LaceTone-color {
+        padding: 10px;
+    }
+
+    .LaceTone-color-select img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .LaceTone-color h6 {
+        font-size: 13px;
     }
 }

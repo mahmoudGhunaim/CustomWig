@@ -1,9 +1,10 @@
-.PUedge-sec{
+.PUedge-sec {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
-.PUedge-container{
+
+.PUedge-container {
     padding: 25px;
     max-width: 1280px;
     width: 90%;
@@ -13,13 +14,15 @@
     flex-direction: column;
     gap: 20px;
 }
-.PUedge-content{
+
+.PUedge-content {
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
 }
-.PUedge-content button{
+
+.PUedge-content button {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -40,7 +43,8 @@
     text-align: left;
     color: #131313;
 }
-.PUedge-content h2{
+
+.PUedge-content h2 {
     font-family: 'Outfit';
     font-size: 20px;
     font-weight: 500;
@@ -50,7 +54,8 @@
     align-items: center;
     gap: 10px;
 }
-.PUedge-content h2 h6{
+
+.PUedge-content h2 h6 {
     font-family: 'Outfit';
     font-size: 14px;
     font-weight: 500;
@@ -59,7 +64,8 @@
     color: #FFFFFF;
     padding: 5px;
 }
-.PUedge-content h2 span{
+
+.PUedge-content h2 span {
     font-family: 'Outfit';
     font-size: 14px;
     font-weight: 400;
@@ -67,19 +73,22 @@
     text-align: left;
     color: #9A9A9A;
 }
-.PUedge-content p{
+
+.PUedge-content p {
     font-family: 'Lato';
-font-size: 16px;
-font-weight: 400;
-line-height: 24px;
-text-align: left;
-color: #131313;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #131313;
 }
-.PUedge-select{
+
+.PUedge-select {
     display: flex;
     justify-content: space-between;
 }
-.PUedge-select button{ 
+
+.PUedge-select button {
     width: 33%;
     height: 44px;
     background: #A9A9A9;
@@ -92,7 +101,8 @@ color: #131313;
     border-radius: 5px;
     cursor: pointer;
 }
-.PUedge-button-selected{
+
+.PUedge-button-selected {
     position: relative;
     background: #131313 !important;
     display: flex;
@@ -100,47 +110,123 @@ color: #131313;
     gap: 10px;
     align-items: center;
 }
-.PUedge-button-selected::before{
+
+.PUedge-button-selected::before {
     content: "";
     width: 18px;
     height: 18px;
-    background: url("./assets/whiteChech.svg");
+    background: url("https://hairs.softylus.com/wp-content/uploads/2025/12/whiteChech.svg");
     background-size: contain;
 }
-.SwiperSlide-pu p{
+
+.SwiperSlide-pu p {
     font-family: 'Outfit';
     font-size: 18px;
     font-weight: 400;
     line-height: 20px;
     text-align: center;
     color: #131313;
-} 
-.SwiperSlide-pu >div {
+}
+
+.SwiperSlide-pu>div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.SwiperSlide-pu >div img{
+
+.SwiperSlide-pu>div img {
     width: 50%;
     max-width: 350px;
 }
-@media (max-width: 1024px){
-    .PUedge-select{
+
+@media (max-width: 1024px) {
+    .PUedge-sec {
+        margin-top: 16px;
+    }
+
+    .PUedge-container {
+        padding: 20px;
+        border-radius: 16px;
+        border-color: var(--border-color);
+        gap: 16px;
+    }
+
+    .PUedge-content {
+        gap: 12px;
+        align-items: center;
+    }
+
+    .PUedge-content h2 {
+        font-size: 18px;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .PUedge-content h2 h6 {
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .PUedge-content h2 span {
+        font-size: 13px;
+    }
+
+    .PUedge-content p {
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .PUedge-content button {
+        font-size: 14px;
+        justify-content: center;
+    }
+
+    .PUedge-select {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
-    .PUedge-select button{
+
+    .PUedge-select button {
         width: 100%;
+        height: 48px;
+        border-radius: 12px;
+        font-size: 15px;
+        transition: var(--transition-smooth);
     }
-    .SwiperSlide-pu >div img{
+
+    .PUedge-select button:active {
+        transform: scale(0.98);
+    }
+
+    .PUedge-button-selected {
+        border-radius: 12px !important;
+    }
+
+    .SwiperSlide-pu>div img {
         width: 40%;
         max-width: 350px;
     }
-    .PUedge-sec{
-        margin-top: 15px;
+
+    .SwiperSlide-pu p {
+        font-size: 14px;
     }
-    .LaceTone-sec{
-        margin-top: 30px;
+
+    .LaceTone-sec {
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .PUedge-content h2 {
+        font-size: 16px;
+    }
+
+    .PUedge-select button {
+        height: 44px;
+        font-size: 14px;
     }
 }

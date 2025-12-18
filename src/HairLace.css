@@ -210,47 +210,144 @@ html[lang="ar"] .lace-description h3 {
 }
 
 @media (max-width:1024px){
-    .HairLace-container-image,.HairLace-container-image img{
+    .HairLace-sec {
+        margin-top: 24px;
+    }
+
+    .HairLace-container {
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
+
+    .HairLace-container-image {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .HairLace-container-image img {
         width: 100%;
         height: auto;
+        max-height: 380px;
+        object-fit: contain;
+        border-radius: 16px;
     }
-    .HairLace-container{
-        flex-direction: column-reverse;
-        gap: 50px;
-    }
-    .HairLace-container-content{
+
+    .HairLace-container-content {
         width: 100%;
-        gap: 20px;
+        gap: 16px;
+        padding: 0 4px;
     }
-    .HairLace-container-content h2{
-        font-size: 32px;
+
+    .HairLace-container-content h2 {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.3;
+        text-align: center;
     }
-    .HairLace-container-buttons{
+
+    .HairLace-container-buttons {
+        display: flex;
+        gap: 10px;
         overflow-x: auto;
+        padding: 4px 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        justify-content: center;
     }
-    .HairLace-container-buttons button{
-        min-width: 200px;
+
+    .HairLace-container-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .HairLace-container-buttons button {
+        min-width: 105px;
+        height: 100px;
+        border-radius: 14px;
+        border: 1.5px solid var(--border-color);
+        background: #fff;
+        transition: var(--transition-smooth);
+        flex-shrink: 0;
+        gap: 8px;
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .HairLace-container-buttons button:active {
+        transform: scale(0.97);
+    }
+
+    .HairLace-container-buttons button img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .HairLace-container-buttons button.active {
+        border-color: var(--success-color);
+        background: rgba(0, 205, 31, 0.04);
+        box-shadow: 0 0 0 3px rgba(0, 205, 31, 0.1);
     }
 
     .silk-top-options {
         flex-direction: column;
+        gap: 8px;
     }
 
     .silk-top-options label {
-        padding: 10px 15px;
+        padding: 14px 16px;
         font-size: 14px;
+        border-radius: 12px;
+        border-width: 1.5px;
+    }
+
+    .silk-top-options label:active {
+        transform: scale(0.98);
+    }
+
+    .silk-top-options input[type="radio"] {
+        width: 20px;
+        height: 20px;
     }
 
     .lace-description {
-        padding: 20px;
-        margin-top: 5px;
+        padding: 18px;
+        margin-top: 8px;
+        border-radius: 14px;
     }
 
     .lace-description h3 {
-        font-size: 18px;
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .lace-description ul {
+        gap: 10px;
     }
 
     .lace-description li {
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 1.5;
+        padding-left: 20px;
+    }
+
+    .lace-description li::before {
+        font-size: 8px;
+        top: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .HairLace-container-content h2 {
+        font-size: 24px;
+    }
+
+    .HairLace-container-buttons button {
+        min-width: 95px;
+        height: 90px;
+        font-size: 12px;
+    }
+
+    .lace-description li {
+        font-size: 12px;
     }
 }

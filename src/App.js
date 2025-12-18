@@ -413,6 +413,12 @@ function App() {
     />
   );
   const updateSwiperHeight = () => {
+    // Skip height calculation on mobile - let CSS handle it
+    if (window.innerWidth <= 1024) {
+      setSwiperHeight("auto");
+      return;
+    }
+
     if (!swiperRef.current) return;
     const activeSlide = swiperRef.current.slides[swiperRef.current.activeIndex];
 

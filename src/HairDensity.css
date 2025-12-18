@@ -480,7 +480,7 @@ html[lang="ar"] .HairDensity-content p{
         justify-content: center;
         gap: 5px;
       }
-      /* Optional: Add custom styles for mobile devices */
+      /* Mobile styles for density */
       @media (max-width: 768px) {
         .hair-density-slider-container {
           padding: 50px 0 20px;
@@ -495,49 +495,178 @@ html[lang="ar"] .HairDensity-content p{
         }
 
         .density-label {
-          font-size: 11px;
-          padding: 4px 5px;
+          font-size: 12px;
+          padding: 6px 8px;
         }
 
         .density-slider::-webkit-slider-thumb {
-          width: 26px;
-          height: 26px;
+          width: 28px;
+          height: 28px;
+          border: 3px solid #fff;
         }
 
         .density-slider::-moz-range-thumb {
-          width: 26px;
-          height: 26px;
+          width: 28px;
+          height: 28px;
+          border: 3px solid #fff;
         }
       }
+
 @media (max-width: 1024px) {
-  .HairDensity-content-button-container{
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  }
-    .main-content{
+    .HairDensity-sec {
+        margin-top: 24px;
+    }
+
+    .HairDensity-container {
+        width: 92%;
+    }
+
+    .main-content {
         flex-direction: column-reverse;
-        gap: 30px;
-        }
-    .HairDensity-Slider{
-        margin:0  ;
+        gap: 24px;
     }
-    .HairDensity-image img{
+
+    .HairDensity-image {
         width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
     }
-    .HairDensity-content,.HairDensity-image{
+
+    .HairDensity-image img {
         width: 100%;
+        border-radius: 16px;
+        max-height: 350px;
+        object-fit: cover;
     }
-    .HairDensity-content-button-container button{
-      flex-basis: 150px;
-      min-width: 120px;
+
+    .HairDensity-content {
+        width: 100%;
+        gap: 20px;
+        padding: 0 4px;
+    }
+
+    .HairDensity-content h6 {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 1.3;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .HairDensity-content h6 h6 {
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .HairDensity-content p {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .HairDensity-Slider {
+        margin: 0;
+    }
+
+    .density-slider-wrapper {
+        gap: 16px;
+    }
+
+    .density-current-value {
+        justify-content: center;
+    }
+
+    .density-value-number {
+        font-size: 42px;
+    }
+
+    .density-value-label {
+        font-size: 14px;
+    }
+
+    .density-slider-container {
+        background: var(--accent-bg);
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .density-slider {
+        height: 10px;
+        border-radius: 5px;
     }
 
     .density-slider-labels {
-      padding: 0;
+        padding: 0;
+        margin-top: 8px;
+    }
+
+    .density-label {
+        font-size: 13px;
+        padding: 6px 10px;
+        border-radius: 6px;
+    }
+
+    .density-label.active {
+        font-weight: 600;
+    }
+
+    .HairDensity-content-button-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 4px 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .HairDensity-content-button-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .HairDensity-content-button-container button {
+        flex-basis: 150px;
+        min-width: 120px;
+        height: 65px;
+        border-radius: 12px;
+        transition: var(--transition-smooth);
+    }
+
+    .HairDensity-content-button-container button:active {
+        transform: scale(0.97);
+    }
+
+    .HairDensity-content-button-container button.active {
+        border-color: var(--success-color);
+        box-shadow: 0 0 0 3px rgba(0, 205, 31, 0.1);
     }
 }
+
 @media (max-width: 767px) {
-    .detail-section.visible{
+    .detail-section.visible {
         height: 250px;
+    }
+
+    .density-label {
+        font-size: 11px;
+        padding: 5px 6px;
+    }
+
+    .HairDensity-image img {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .HairDensity-content h6 {
+        font-size: 24px;
+    }
+
+    .density-value-number {
+        font-size: 36px;
+    }
+
+    .density-label {
+        font-size: 10px;
+        padding: 4px 4px;
     }
 }
