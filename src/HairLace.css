@@ -1,136 +1,272 @@
-.HairLace-sec{
+.HairLace-sec {
     margin-top: 75px;
     display: flex;
     justify-content: center;
 }
-.HairLace-container{
+
+.HairLace-container {
     display: flex;
     align-items: center;
     width: 90%;
     max-width: 1711px;
     position: relative;
     justify-content: space-between;
+    gap: 60px;
 }
+
 .HairLace-container-content {
     width: 50%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
-.HairLace-container-content h2{
+.HairLace-container-content h2 {
     font-family: 'Outfit';
-    font-size: 43.8px;
-    font-weight: 600;
-    line-height: 52.62px;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
     text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #000000;
+    color: #1a1a1a;
+    position: relative;
 }
-html[lang="ar"] .HairLace-container-content h2{
+
+/* .HairLace-container-content h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00CD1F 0%, #38B449 100%);
+    border-radius: 2px;
+} */
+
+html[lang="ar"] .HairLace-container-content h2 {
     text-align: right;
 }
 
-.HairLace-container-buttons{
-    display: flex;
-    gap: 14px;
+html[lang="ar"] .HairLace-container-content h2::after {
+    left: auto;
+    right: 0;
 }
-.HairLace-container-image img{
+
+.HairLace-container-image {
+    position: relative;
+}
+
+.HairLace-container-image::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 85%;
+    background: linear-gradient(145deg, #f8f8f8 0%, #f0f0f0 100%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.HairLace-container-image img {
     width: 725px;
     height: 730px;
     object-fit: contain;
+    transition: transform 0.5s ease;
+    animation: laceImageFadeIn 0.5s ease;
+    opacity: 1;
 }
-.HairLace-container-buttons button{
+
+@keyframes laceImageFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.HairLace-container-image:hover img {
+    transform: scale(1.02);
+}
+
+.HairLace-container-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.HairLace-container-buttons button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    min-width: 180px;
-    height: 120px;
+    gap: 12px;
+    min-width: 160px;
+    height: 130px;
     justify-content: center;
-    padding: 0;
+    padding: 16px;
     font-family: 'Outfit';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    color: #000000;
-    border: 1px solid #E8E8E8;
-    background: white;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    color: #333333;
+    border: 2px solid #e8e8e8;
+    background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
     cursor: pointer;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
-.HairLace-container-buttons button.active span{
+
+.HairLace-container-buttons button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(0, 205, 31, 0.05) 0%, rgba(56, 180, 73, 0.08) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.HairLace-container-buttons button:hover {
+    border-color: #d0d0d0;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.HairLace-container-buttons button:hover::before {
+    opacity: 1;
+}
+
+.HairLace-container-buttons button img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.HairLace-container-buttons button:hover img {
+    transform: scale(1.1);
+}
+
+.HairLace-container-buttons button span {
+    position: relative;
+    z-index: 1;
+}
+
+.HairLace-container-buttons button.active {
+    border-color: #00CD1F;
+    background: linear-gradient(145deg, #f0fff3 0%, #e8ffed 100%);
+    box-shadow: 0 8px 25px rgba(0, 205, 31, 0.15), 0 0 0 4px rgba(0, 205, 31, 0.08);
+    animation: buttonPop 0.3s ease;
+}
+
+@keyframes buttonPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.HairLace-container-buttons button.active::before {
+    opacity: 1;
+}
+
+.HairLace-container-buttons button.active span {
     display: flex;
-    gap: 5px;
+    gap: 6px;
     align-items: center;
+    color: #1a1a1a;
+    font-weight: 600;
 }
-.HairLace-container-buttons button.active span::after{
+
+.HairLace-container-buttons button.active span::after {
     content: "";
     background: url("./assets/greencheck.png");
     width: 20px;
     height: 20px;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
+/* Silk Top Options */
 .silk-top-options {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 14px;
     position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .silk-top-options label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     font-family: 'Outfit';
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
     line-height: 24px;
-    color: #000000;
+    color: #333333;
     cursor: pointer;
-    padding: 10px 15px;
-    border: 1px solid #E8E8E8;
-    transition: all 0.3s ease;
-    background-color: white;
+    padding: 14px 20px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+    flex: 1;
 }
 
 .silk-top-options label:hover {
-    border-color: #38B449;
-    box-shadow: 0 3px 10px rgba(56, 180, 73, 0.1);
+    border-color: #c0c0c0;
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .silk-top-options input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 22px;
-    height: 22px;
-    border: 2px solid #E8E8E8;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #d0d0d0;
     border-radius: 50%;
     outline: none;
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .silk-top-options input[type="radio"]:checked {
-    border-color: #38B449;
-    background-color: #38B449;
-    border: 2px solid #E8E8E8;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.silk-top-options input[type="radio"]:checked {
-    border-color: #38B449;
-    background-color: #38B449;
+    border-color: #00CD1F;
+    background: linear-gradient(135deg, #00CD1F 0%, #38B449 100%);
+    box-shadow: 0 0 0 4px rgba(0, 205, 31, 0.15);
 }
 
 .silk-top-options input[type="radio"]:checked::after {
@@ -145,25 +281,53 @@ html[lang="ar"] .HairLace-container-content h2{
 }
 
 .silk-top-options label:has(input[type="radio"]:checked) {
-    border-color: #38B449;
-    background-color: rgba(56, 180, 73, 0.05);
-    font-weight: 500;
+    border-color: #00CD1F;
+    background: linear-gradient(145deg, #f0fff3 0%, #e8ffed 100%);
+    font-weight: 600;
+    color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(0, 205, 31, 0.12);
 }
 
 /* Lace Description Styles */
 .lace-description {
-    background: #FCF7EE;
-    padding: 25px 30px;
-    border-radius: 8px;
-    margin-top: 10px;
+    background: linear-gradient(145deg, #FCF7EE 0%, #FDF9F3 100%);
+    padding: 28px 32px;
+    border-radius: 16px;
+    margin-top: 8px;
+    border: 1px solid rgba(157, 146, 100, 0.15);
+    box-shadow: 0 4px 15px rgba(157, 146, 100, 0.08);
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .lace-description h3 {
     font-family: 'Outfit';
-    font-size: 20px;
-    font-weight: 600;
-    color: #131313;
-    margin: 0 0 15px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 18px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lace-description h3::before {
+    content: "";
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, #9D9264 0%, #BBA870 100%);
+    border-radius: 2px;
 }
 
 .lace-description ul {
@@ -172,31 +336,58 @@ html[lang="ar"] .HairLace-container-content h2{
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .lace-description li {
     font-family: 'Lato';
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 1.6;
-    color: #333;
-    padding-left: 24px;
+    line-height: 1.7;
+    color: #4a4a4a;
+    padding-left: 28px;
     position: relative;
+    animation: listItemFadeIn 0.4s ease backwards;
+}
+
+.lace-description li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.lace-description li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.lace-description li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes listItemFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .lace-description li::before {
-    content: "●";
+    content: "";
     position: absolute;
     left: 0;
-    top: 0;
-    color: #131313;
-    font-size: 10px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #9D9264 0%, #BBA870 100%);
+    border-radius: 50%;
 }
 
 html[lang="ar"] .lace-description li {
     padding-left: 0;
-    padding-right: 24px;
+    padding-right: 28px;
     text-align: right;
 }
 
@@ -207,22 +398,31 @@ html[lang="ar"] .lace-description li::before {
 
 html[lang="ar"] .lace-description h3 {
     text-align: right;
+    flex-direction: row-reverse;
 }
 
-@media (max-width:1024px){
+html[lang="ar"] .lace-description h3::before {
+    order: 1;
+}
+
+@media (max-width: 1024px) {
     .HairLace-sec {
         margin-top: 24px;
     }
 
     .HairLace-container {
         flex-direction: column-reverse;
-        gap: 24px;
+        gap: 28px;
     }
 
     .HairLace-container-image {
         width: 100%;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
+    }
+
+    .HairLace-container-image::before {
+        display: none;
     }
 
     .HairLace-container-image img {
@@ -230,25 +430,28 @@ html[lang="ar"] .lace-description h3 {
         height: auto;
         max-height: 380px;
         object-fit: contain;
-        border-radius: 16px;
+        border-radius: 20px;
     }
 
     .HairLace-container-content {
         width: 100%;
-        gap: 16px;
+        gap: 20px;
         padding: 0 4px;
     }
 
     .HairLace-container-content h2 {
-        font-size: 26px;
-        font-weight: 600;
-        line-height: 1.3;
+        font-size: 28px;
         text-align: center;
+    }
+
+    .HairLace-container-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .HairLace-container-buttons {
         display: flex;
-        gap: 10px;
+        gap: 12px;
         overflow-x: auto;
         padding: 4px 0;
         scrollbar-width: none;
@@ -261,16 +464,13 @@ html[lang="ar"] .lace-description h3 {
     }
 
     .HairLace-container-buttons button {
-        min-width: 105px;
-        height: 100px;
-        border-radius: 14px;
-        border: 1.5px solid var(--border-color);
-        background: #fff;
-        transition: var(--transition-smooth);
+        min-width: 110px;
+        height: 110px;
+        border-radius: 16px;
         flex-shrink: 0;
-        gap: 8px;
+        gap: 10px;
         font-size: 13px;
-        padding: 8px;
+        padding: 12px;
     }
 
     .HairLace-container-buttons button:active {
@@ -278,26 +478,23 @@ html[lang="ar"] .lace-description h3 {
     }
 
     .HairLace-container-buttons button img {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
     }
 
     .HairLace-container-buttons button.active {
-        border-color: var(--success-color);
-        background: rgba(0, 205, 31, 0.04);
-        box-shadow: 0 0 0 3px rgba(0, 205, 31, 0.1);
+        box-shadow: 0 6px 20px rgba(0, 205, 31, 0.15), 0 0 0 3px rgba(0, 205, 31, 0.1);
     }
 
     .silk-top-options {
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
     }
 
     .silk-top-options label {
-        padding: 14px 16px;
+        padding: 16px 18px;
         font-size: 14px;
-        border-radius: 12px;
-        border-width: 1.5px;
+        border-radius: 14px;
     }
 
     .silk-top-options label:active {
@@ -305,34 +502,35 @@ html[lang="ar"] .lace-description h3 {
     }
 
     .silk-top-options input[type="radio"] {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
 
     .lace-description {
-        padding: 18px;
+        padding: 20px;
         margin-top: 8px;
-        border-radius: 14px;
+        border-radius: 16px;
     }
 
     .lace-description h3 {
         font-size: 16px;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
 
     .lace-description ul {
-        gap: 10px;
+        gap: 12px;
     }
 
     .lace-description li {
         font-size: 13px;
-        line-height: 1.5;
-        padding-left: 20px;
+        line-height: 1.6;
+        padding-left: 24px;
     }
 
     .lace-description li::before {
-        font-size: 8px;
-        top: 2px;
+        width: 6px;
+        height: 6px;
+        top: 7px;
     }
 }
 
@@ -342,12 +540,21 @@ html[lang="ar"] .lace-description h3 {
     }
 
     .HairLace-container-buttons button {
-        min-width: 95px;
-        height: 90px;
+        min-width: 100px;
+        height: 100px;
         font-size: 12px;
+    }
+
+    .HairLace-container-buttons button img {
+        width: 32px;
+        height: 32px;
     }
 
     .lace-description li {
         font-size: 12px;
+    }
+
+    .lace-description h3 {
+        font-size: 15px;
     }
 }

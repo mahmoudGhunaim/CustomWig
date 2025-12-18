@@ -76,7 +76,7 @@ const HairLace = ({
     <section className="HairLace-sec">
       <div className="HairLace-container" id="NetType">
         <div className="HairLace-container-image">
-          <img src={image} alt={getTranslation(`${selectedCard}_lace`, `${selectedCard} Lace`)} />
+          <img key={`${hairLace}-${silkTopOption}`} src={image} alt={getTranslation(`${selectedCard}_lace`, `${selectedCard} Lace`)} />
         </div>
         <div className="HairLace-container-content">
           <h2>{getTranslation("choose_base_lace", "Choose Base & Lace")}</h2>
@@ -130,7 +130,7 @@ const HairLace = ({
           )}
 
           {getCurrentDescription() && (
-            <div className="lace-description">
+            <div className="lace-description" key={`desc-${hairLace}-${silkTopOption}`}>
               <h3>{getCurrentDescription().title}</h3>
               <ul>
                 {getCurrentDescription().points.map((point, index) => (
