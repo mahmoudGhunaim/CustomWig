@@ -1,12 +1,14 @@
-.HairColor-sec{
+.HairColor-sec {
     margin-top: 75px;
     display: flex;
     justify-content: center;
 }
+
 .HairColor-image img,
 .HairColor-image svg {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 .haircolor-svg,
 .hairGradient-svg,
 .highlightcolor-svg {
@@ -17,37 +19,45 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
+
 @keyframes filterSlideIn {
     from {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 @keyframes colorsGridFadeIn {
     from {
         opacity: 0;
         transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 .HairColor-filters-animate {
     animation: filterSlideIn 0.3s ease;
 }
+
 .HairColor-colors-animate {
     animation: colorsGridFadeIn 0.35s ease;
 }
-.HairColor-container{
+
+.HairColor-container {
     display: flex;
     max-width: 1711px;
     width: 90%;
@@ -55,7 +65,8 @@
     justify-content: space-between;
 
 }
-.HairColor-head h2{
+
+.HairColor-head h2 {
     font-family: 'Outfit';
     font-size: 43.8px;
     font-weight: 500;
@@ -63,19 +74,22 @@
     text-align: left;
     color: #000000;
 }
-.HairColor-head{
+
+.HairColor-head {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.HairColor-subtitle{
+
+.HairColor-subtitle {
     font-family: 'Lato';
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     color: #7A7A7A;
 }
-.HairColor-selected-info{
+
+.HairColor-selected-info {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -83,19 +97,22 @@
     background: #FCF7EE;
     border-radius: 8px;
 }
-.HairColor-selected-info .selected-color-preview{
+
+.HairColor-selected-info .selected-color-preview {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     border: 2px solid #00CD1F;
 }
-.HairColor-selected-info span{
+
+.HairColor-selected-info span {
     font-family: 'Outfit';
     font-size: 16px;
     font-weight: 500;
     color: #282C3B;
 }
-.HairColor-selected-info .selected-price{
+
+.HairColor-selected-info .selected-price {
     font-family: 'Outfit';
     font-size: 14px;
     font-weight: 600;
@@ -105,7 +122,8 @@
     padding: 5px 10px;
     border-radius: 4px;
 }
-.HairColor-base-preview{
+
+.HairColor-base-preview {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -114,31 +132,36 @@
     border-radius: 6px;
     margin-bottom: 10px;
 }
-.HairColor-base-preview .base-color-chip{
+
+.HairColor-base-preview .base-color-chip {
     width: 24px;
     height: 24px;
     border-radius: 50%;
     border: 2px solid #ccc;
 }
-.HairColor-base-preview span{
+
+.HairColor-base-preview span {
     font-family: 'Outfit';
     font-size: 14px;
     font-weight: 500;
     color: #666;
 }
+
 html[lang="ar"] .HairColor-head h2,
-html[lang="ar"] .HairColor-subtitle{
+html[lang="ar"] .HairColor-subtitle {
     text-align: right;
 }
-.HairColor-alert{
+
+.HairColor-alert {
     display: flex;
-    padding: 16px 33px ;
+    padding: 16px 33px;
     background: #FFE6B166;
     gap: 20px;
     align-items: center;
     border-radius: 5px;
 }
-.HairColor-alert p{
+
+.HairColor-alert p {
     font-family: 'Lato';
     font-size: 16px;
     font-weight: 400;
@@ -146,12 +169,15 @@ html[lang="ar"] .HairColor-subtitle{
     text-align: left;
     color: #9D9264;
 }
-html[lang="ar"] .HairColor-alert p{
+
+html[lang="ar"] .HairColor-alert p {
     text-align: right;
 }
+
 html[lang="ar"] .HairDensity-Slider {
     direction: ltr;
 }
+
 html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     content: "+";
     position: absolute;
@@ -161,20 +187,23 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     font-size: 45px;
     color: white;
 }
-.HairColor-image{
+
+.HairColor-image {
     position: relative;
     overflow: hidden;
-    width:756px ;
+    width: 756px;
     display: flex;
     justify-content: center;
     background: white;
 }
-.HairColor-image img{
+
+.HairColor-image img {
     width: 100%;
-    filter: saturate(0)
-    hue-rotate(90deg) /* Tint */
-    ; /* Increases saturation */
-    
+    filter: saturate(0) hue-rotate(90deg)
+        /* Tint */
+    ;
+    /* Increases saturation */
+
 }
 
 /* .hairhighlight2 {
@@ -192,10 +221,11 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     width: 385px;
     height: 570px;
     clip-path: inset(20% 40% 40% 55%);
-        mix-blend-mode: overlay;
+    mix-blend-mode: overlay;
     filter: blur(100px);
     border-radius: 999px;
 }
+
 /* .hairhighlight4 {
     position: absolute;
     top: 0;
@@ -214,31 +244,35 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     mix-blend-mode: overlay;
     filter: blur(30px);
 } */
-.hairlinearGradient{
+.hairlinearGradient {
     position: absolute;
     mix-blend-mode: color;
     filter: blur(100px);
     opacity: .6;
 }
-.highlightcolor-svg{
+
+.highlightcolor-svg {
     width: 100%;
     position: absolute;
     mix-blend-mode: soft-light;
     filter: blur(8px);
     opacity: 1;
 }
-.lasthear{
+
+.lasthear {
     position: absolute;
     top: 0%;
     left: 0%;
     mix-blend-mode: color;
     filter: blur(50px);
 }
-.HairColor-tabs{
+
+.HairColor-tabs {
     display: flex;
-        gap: 14px;
+    gap: 14px;
 }
-.HairColor-tabs .tab-button{
+
+.HairColor-tabs .tab-button {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -260,7 +294,8 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     position: relative;
     cursor: pointer;
 }
-.reset-color-button{
+
+.reset-color-button {
     display: flex;
     align-items: center;
     min-width: 120px;
@@ -274,22 +309,25 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    color:red;
+    color: red;
     border: 1px solid red;
     background: white;
     position: relative;
     cursor: pointer;
 
 }
-.tab-button > div{
+
+.tab-button>div {
     display: flex;
     gap: 5px;
     align-items: center;
 }
-.HairColor-tabs .tab-button.active{
+
+.HairColor-tabs .tab-button.active {
     border: 1px solid #636363 !important;
 }
-.HairColor-tabs .tab-button h6{
+
+.HairColor-tabs .tab-button h6 {
     font-family: 'Outfit';
     font-size: 14px;
     font-weight: 500;
@@ -302,7 +340,7 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     right: 0;
 }
 
-.tab-button-color{
+.tab-button-color {
     width: 20px;
     height: 20px;
     border-radius: 99px;
@@ -310,13 +348,14 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     transition: all .3ms ease;
 }
 
-.HairColor-filters{
+.HairColor-filters {
     width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 5px;
 }
-.HairColor-filters button{
+
+.HairColor-filters button {
     width: 100%;
     max-width: 225px;
     height: 45px;
@@ -333,36 +372,44 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     gap: 10px;
     cursor: pointer;
 }
-.HairColor-filters button:nth-child(1){
+
+.HairColor-filters button:nth-child(1) {
     background: #242424;
 }
-.HairColor-filters button:nth-child(2){
+
+.HairColor-filters button:nth-child(2) {
     background: #695137;
 }
-.HairColor-filters button:nth-child(3){
+
+.HairColor-filters button:nth-child(3) {
     background: #DBC476;
 }
-.HairColor-filters button:nth-child(4){
+
+.HairColor-filters button:nth-child(4) {
     background: #863D19;
 }
-.HairColor-filters button:nth-child(5){
+
+.HairColor-filters button:nth-child(5) {
     background: #5A5A5A;
 }
-.HairColor-filters .filter-active::before{
+
+.HairColor-filters .filter-active::before {
     content: "";
     width: 20px;
     height: 20px;
     background: url("https://hairs.softylus.com/wp-content/uploads/2025/12/check-circle-svgrepo-com.svg");
     background-size: contain;
 }
-.color-option{
+
+.color-option {
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 
 }
-.color-option h5{
+
+.color-option h5 {
     color: white;
     font-family: 'Outfit';
     font-size: 16px;
@@ -376,7 +423,8 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     justify-content: center;
     border-radius: 99px;
 }
-.color-option h6{
+
+.color-option h6 {
     font-family: 'Outfit';
     font-size: 16px;
     font-weight: 500;
@@ -384,47 +432,56 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     text-align: left;
     color: #282C3B;
 }
-.HairColor-colors{
+
+.HairColor-colors {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
-.haircolor-svg{
+
+.haircolor-svg {
     position: absolute;
-    
+
     width: 100%;
     mix-blend-mode: soft-light;
     filter: blur(50px);
 }
-.hairGradient-svg{
+
+.hairGradient-svg {
     position: absolute;
     mix-blend-mode: soft-light;
     filter: blur(100px);
 
     width: 100%;
 }
-.white-bg{
+
+.white-bg {
     width: 100%;
     background: #FFFFFF;
     margin-top: -30px;
 }
-.colorGradient-container{
+
+.colorGradient-container {
     display: flex;
     gap: 100px;
 }
-.colorGradientSlider{
+
+.colorGradientSlider {
     margin: 20px 0;
 }
-.colorGradient-hair{
+
+.colorGradient-hair {
     position: relative;
 }
-.colorGradient-container-des{
+
+.colorGradient-container-des {
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
-.colorGradient-hair-Gradient{
+
+.colorGradient-hair-Gradient {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -432,10 +489,12 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     filter: blur(5px);
     z-index: 2;
 }
-.colorr-active{
-    border:3px solid #00CD1F;
+
+.colorr-active {
+    border: 3px solid #00CD1F;
 }
-.HairColor-detail{
+
+.HairColor-detail {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -554,6 +613,7 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
 
     .HairColor-selected-info .selected-color-preview {
         width: 28px;
+        min-width: 28px;
         height: 28px;
     }
 

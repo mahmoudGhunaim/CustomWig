@@ -271,6 +271,16 @@ function App() {
   const [swiperHeight, setSwiperHeight] = useState("auto");
   const [moreItemsVisible, setMoreItemsVisible] = useState(false); // Track visibility of more items
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+  // Handle resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     fetchProductData();
@@ -452,23 +462,19 @@ function App() {
     // Initial height adjustment
     updateSwiperHeight();
 
-    // Update on slide change
+    // Update on slide change (desktop only)
     swiperInstance.on("slideChangeTransitionEnd", updateSwiperHeight);
-    swiperInstance.on("slideChange", () => {
-      setActiveSlideIndex(swiperInstance.activeIndex);
-    });
 
     // Cleanup event listener on unmount
     return () => {
       swiperInstance.off("slideChangeTransitionEnd", updateSwiperHeight);
-      swiperInstance.off("slideChange");
     };
   }, [moreItemsVisible]);
   useEffect(() => {
     updateSwiperHeight();
   }, [moreItemsVisible]);
   return (
-    <div className="body-page" ref={swiperContainerRef} style={{ height: swiperHeight, transition: "min-height 0.3s ease-in-out", overflow: "hidden" }}>
+    <div className="body-page" ref={swiperContainerRef} style={isMobile ? {} : { height: swiperHeight, transition: "min-height 0.3s ease-in-out", overflow: "hidden" }}>
       <Swiper
         className="Page-stipper"
         modules={[Navigation, Pagination, A11y, Autoplay]}
@@ -477,10 +483,17 @@ function App() {
         pagination={{ clickable: true }}
         initialSlide={0}
         allowTouchMove={false}
+        autoHeight={true}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setSwiperInstance(swiper);
           updateSwiperHeight();
+        }}
+        onSlideChange={(swiper) => {
+          setActiveSlideIndex(swiper.activeIndex);
+          if (isMobile) {
+            swiper.updateAutoHeight();
+          }
         }}
       >
         {/* <SwiperSlide>
