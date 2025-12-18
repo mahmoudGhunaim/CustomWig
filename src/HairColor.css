@@ -308,7 +308,7 @@ html[lang="ar"] .HairDensity-Slider .MuiSlider-thumb::after {
     content: "";
     width: 20px;
     height: 20px;
-    background: url("./assets/check-circle-svgrepo-com.svg");
+    background: url("https://hairs.softylus.com/wp-content/uploads/2025/12/check-circle-svgrepo-com.svg");
     background-size: contain;
 }
 .color-option{

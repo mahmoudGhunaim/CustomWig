@@ -24,7 +24,7 @@ const LaceTone = ({ setSelectedColor, selectedColor }) => {
     <section className="LaceTone-sec">
       <div className="LaceTone-container" id="Netcolor">
         <h2>
-          <img src={selectedColor ? check_circle : plus} alt={getTranslation("icon", "Icon")} />
+          <img src={selectedColor ? "https://hairs.softylus.com/wp-content/uploads/2025/12/plus.svg" : "https://hairs.softylus.com/wp-content/uploads/2025/12/plus.svg"} alt={getTranslation("icon", "Icon")} />
           {getTranslation("lace_tone", "Lace Tone")} {selectedColor ? `- ${selectedColor.name} ` : ""}
         </h2>
         <p>

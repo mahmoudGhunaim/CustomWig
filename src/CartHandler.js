@@ -27,14 +27,14 @@ const CartHandler = ({
   //   Full: [getTranslation("premium_full_lace_wig", "Premium Full Lace Wig"), ""],
   //   Silk: [getTranslation("front_lace_silk_top", "Front lace silk top"), getTranslation("folded_seamless_hairline", "Folded seamless hairline")],
   // };
-  console.log(hairLace,"hairLace")
+  console.log(hairLace, "hairLace")
   const validateFields = () => {
-    if (!measurements.circumference || 
-        !measurements.frontToNape || 
-        !measurements.forehead || 
-        !measurements.siteToSite || 
-        !measurements.neckWidth || 
-        !measurements.head) {
+    if (!measurements.circumference ||
+      !measurements.frontToNape ||
+      !measurements.forehead ||
+      !measurements.siteToSite ||
+      !measurements.neckWidth ||
+      !measurements.head) {
       setError(getTranslation("measurements_required", "All measurements are required"));
       return false;
     }
@@ -87,7 +87,7 @@ const CartHandler = ({
       },
       {
         name: getTranslation("hair_type", "Hair Type"),
-        value: lastSelected ? 
+        value: lastSelected ?
           `${lastSelected}` : "",
         price: "",
         field_type: "custom_text"
@@ -206,16 +206,16 @@ const CartHandler = ({
 
   return (
     <div className="">
-      <button 
+      <button
         onClick={handleAddToCart}
         className="w-full h-16 flex items-center justify-center gap-2.5 font-outfit text-lg bg-transparent border border-gray-900 cursor-pointer hover:bg-gray-100 transition-colors"
       >
-        <img src={Cart} alt={getTranslation("cart_icon", "Add to Cart Icon")} />
+        <img src="https://hairs.softylus.com/wp-content/uploads/2025/12/cart-plus.svg" alt={getTranslation("cart_icon", "Add to Cart Icon")} />
         <p>{getTranslation("add_to_cart", "Add to Cart")}</p>
       </button>
       {error && (
         <div className="text-red-500 text-sm mb-2 text-center error-alert">
-          <img src={Alert} alt={getTranslation("alert_icon", "Alert Icon")}/> {error}
+          <img src={Alert} alt={getTranslation("alert_icon", "Alert Icon")} /> {error}
         </div>
       )}
     </div>

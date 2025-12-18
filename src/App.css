@@ -9,8 +9,8 @@
 
 
 .Page-stipper-SwiperSlide-container {
-  min-height: calc(100vh - 102px);
-  height: auto;
+  height: calc(100vh - 102px) !important;
+  /* height: auto; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -143,7 +143,7 @@ html[lang="ar"] .btn-sliider button svg {
   }
 
   .Page-stipper-SwiperSlide-container {
-    min-height: calc(100vh - 102px);
+    height: auto !important;
     padding-bottom: 100px;
   }
 }

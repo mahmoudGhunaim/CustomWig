@@ -49,7 +49,7 @@ const PUedge = ({ setSelectedOptions, selectedOptions, getPricePUedge }) => {
       <div className="PUedge-container">
         <div className="PUedge-content">
           <h2>
-            <img src={plus} alt={getTranslation("plus_icon", "Plus icon")} />
+            <img src="https://hairs.softylus.com/wp-content/uploads/2025/12/plus.svg" alt={getTranslation("plus_icon", "Plus icon")} />
             {getTranslation("pu_edge", "PU Edge")}
             {selectedOptions.length === 0 && <span>*{getTranslation("optional", "optional")}</span>}
             {selectedOptions.length > 0 && <h6>{getPricePUedge()}</h6>}
