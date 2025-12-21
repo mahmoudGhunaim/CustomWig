@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect,useRef } from "react"; // Ensure to import useState
+import React, { useState, useEffect, useRef } from "react"; // Ensure to import useState
 import Header from "./header";
 import Label from "./Label";
 import Customize from "./customize";
@@ -53,7 +53,7 @@ const SliderButtons = ({ children, className, value }) => {
             scrollToTop(); // Scroll to the top when navigating to the previous slide
           }}
         >
-                    {getTranslation("prev", "PREV")}
+          {getTranslation("prev", "PREV")}
 
           <svg
             width="60"
@@ -82,9 +82,9 @@ const SliderButtons = ({ children, className, value }) => {
             swiper.slideNext();
             scrollToTop(); // Scroll to the top when navigating to the next slide
           }}
-          disabled={value === null || value === "null"} 
-          >
-                    {getTranslation("next", "NEXT")}
+          disabled={value === null || value === "null"}
+        >
+          {getTranslation("next", "NEXT")}
 
           <svg
             width="60"
@@ -173,7 +173,7 @@ const SliderButtonsFixed = ({ children, className, value, swiper }) => {
               scrollToTop();
             }
           }}
-          disabled={value === null || value === "null"} 
+          disabled={value === null || value === "null"}
         >
           {getTranslation("next", "NEXT")}
 
@@ -218,13 +218,13 @@ function App() {
   const [measurements, setMeasurements] = useState(
     window.innerWidth <= 1024
       ? {
-          circumference: 21.0,
-          frontToNape: 11.5,
-          forehead: 12.5,
-          head: 13.5,
-          siteToSite: 11.0,
-          neckWidth: 5.5,
-        }
+        circumference: 21.0,
+        frontToNape: 11.5,
+        forehead: 12.5,
+        head: 13.5,
+        siteToSite: 11.0,
+        neckWidth: 5.5,
+      }
       : {
         circumference: 19.0,
         frontToNape: 10.5,
@@ -232,7 +232,7 @@ function App() {
         head: 12.5,
         siteToSite: 10.0,
         neckWidth: 5.0,
-        }
+      }
   );
 
   const [lastSelected, setLastSelected] = useState();
@@ -245,7 +245,7 @@ function App() {
     Full: 0,
     Silk: 0,
   });
-  const [hairLace , setHairLace] = useState("Front Lace-Wig")
+  const [hairLace, setHairLace] = useState("Front Lace-Wig")
   const [selectedColors, setSelectedColors] = useState({
     hairColor: null, // Default color for hair color
     colorGradient: null, // Default color for color gradient
@@ -375,7 +375,7 @@ function App() {
       return "+100 SAR";
     } else if (Density === 200) {
       return "+150 SAR";
-    } 
+    }
     return "0 SAR"; // For 60% and 80%
   };
   const getPricePUedge = () => {
@@ -440,7 +440,7 @@ function App() {
 
   // Function to get the current slide's value for the SliderButtons
   const getCurrentSlideValue = () => {
-    switch(activeSlideIndex) {
+    switch (activeSlideIndex) {
       case 0: return lastSelected; // Hair Type
       case 1: return selectedColors.hairColor; // Base Color
       case 2: return "valid"; // Gradient Color (optional, always allow next)
@@ -474,7 +474,7 @@ function App() {
     updateSwiperHeight();
   }, [moreItemsVisible]);
   return (
-    <div className="body-page" ref={swiperContainerRef} style={isMobile ? {} : { height: swiperHeight, transition: "min-height 0.3s ease-in-out", overflow: "hidden" }}>
+    <div className="body-page" ref={swiperContainerRef} style={isMobile ? {} : { height: "100%", transition: "min-height 0.3s ease-in-out", overflow: "hidden" }}>
       <Swiper
         className="Page-stipper"
         modules={[Navigation, Pagination, A11y, Autoplay]}
@@ -610,8 +610,8 @@ function App() {
             
           </div>
         </SwiperSlide> */}
-        
-        
+
+
         <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
             <HairLace
@@ -633,25 +633,25 @@ function App() {
               setSelectedColor={setSelectedColor}
             />{" "}
             <PUedge
-            selectedOptions={selectedOptions}
-            setSelectedOptions={setSelectedOptions}
-            getPricePUedge={getPricePUedge}
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+              getPricePUedge={getPricePUedge}
 
             />
-            
-              {selectedOptionsBK.length > 0 && (
-          
-          <BleachedKnots
-            selectedCard={selectedCard}
-            getPriceBleachedKnots={getPriceBleachedKnots}
-            selectedOptionsBK={selectedOptionsBK}
-            setSelectedOptionsBK={setSelectedOptionsBK}
-          />
-        
-    )}
+
+            {selectedOptionsBK.length > 0 && (
+
+              <BleachedKnots
+                selectedCard={selectedCard}
+                getPriceBleachedKnots={getPriceBleachedKnots}
+                selectedOptionsBK={selectedOptionsBK}
+                setSelectedOptionsBK={setSelectedOptionsBK}
+              />
+
+            )}
           </div>
         </SwiperSlide>
-      
+
         <SwiperSlide>
           <div className="Page-stipper-SwiperSlide-container">
             <HeadMeasurements
@@ -690,16 +690,16 @@ function App() {
             />
           </div>
         </SwiperSlide>
-        
+
         {/* SliderButtons component for mobile view */}
         <SliderButtons className="SliderButtons-mobile" value={getCurrentSlideValue()} />
       </Swiper>
 
       {/* Fixed SliderButtons for desktop view */}
       <div className="fixed-desktop-slider">
-        <SliderButtonsFixed 
-          className="SliderButtons-desktop" 
-          value={getCurrentSlideValue()} 
+        <SliderButtonsFixed
+          className="SliderButtons-desktop"
+          value={getCurrentSlideValue()}
           swiper={swiperInstance}
         />
       </div>

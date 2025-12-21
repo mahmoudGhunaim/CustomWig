@@ -23,6 +23,7 @@
   justify-content: flex-end;
   padding-top: 20px;
   min-height: fit-content;
+  padding-bottom: 0 !important;
 }
 
 .Page-stipper-SwiperSlide-container:has(.LaceTone-sec, .HeadMeasurements-sec, .AlmostDone-sec) {
