@@ -320,7 +320,32 @@ function cwr_get_translatable_strings() {
 'color_category_brown' => esc_html__('Brown colors', 'custom-woocommerce-react'),
 'color_category_blonde' => esc_html__('Blonde colors', 'custom-woocommerce-react'),
 'color_category_red' => esc_html__('Red colors', 'custom-woocommerce-react'),
-'color_category_more' => esc_html__('More colors', 'custom-woocommerce-react')
+'color_category_more' => esc_html__('More colors', 'custom-woocommerce-react'),
+
+// Base Hair Color Translations
+'base_hair_color' => esc_html__('Base Hair Color', 'custom-woocommerce-react'),
+'select_base_color' => esc_html__('Select your base hair color', 'custom-woocommerce-react'),
+'gradient_color' => esc_html__('Gradient Color', 'custom-woocommerce-react'),
+'select_gradient_color' => esc_html__('Select a gradient color (optional)', 'custom-woocommerce-react'),
+'base_color' => esc_html__('Base Color', 'custom-woocommerce-react'),
+'highlight_color' => esc_html__('Highlight Color', 'custom-woocommerce-react'),
+'select_highlight_color' => esc_html__('Select a highlight color (optional)', 'custom-woocommerce-react'),
+
+// Lace Descriptions Translations
+'front_lace_best_for' => esc_html__('Best For', 'custom-woocommerce-react'),
+'front_lace_point_1' => esc_html__('First-Time Wearers: Perfect for beginners seeking a natural hairline without the advanced commitment of a full lace cap.', 'custom-woocommerce-react'),
+'front_lace_point_2' => esc_html__('Ideal for wearers who would like to use adhesives, and prefer a lighter weight at the crown area.', 'custom-woocommerce-react'),
+'front_lace_point_3' => esc_html__('Protective Styling: Ideal for those who wish to completely conceal their natural hair (using a cap) for a fresh, protective style or total look transformation.', 'custom-woocommerce-react'),
+'silk_top_with_lace_best_for' => esc_html__('Best For (androgenic alopecia & cancer hair loss)', 'custom-woocommerce-react'),
+'silk_top_with_lace_point_1' => esc_html__('Crown & Parting Realism: The ultimate choice for covering thinning or loss specifically at the crown, providing a flawless, skin-like part.', 'custom-woocommerce-react'),
+'silk_top_with_lace_point_2' => esc_html__('Natural Hairline Solution: Perfect for those who cannot or do not wish to blend their real hair at the front, offering a realistic, ready-to-wear front hairline.', 'custom-woocommerce-react'),
+'silk_top_without_lace_best_for' => esc_html__('Best For (androgenic alopecia & cancer hair loss)', 'custom-woocommerce-react'),
+'silk_top_without_lace_point_1' => esc_html__('Crown & Parting Realism: The ultimate choice for covering thinning or loss specifically at the crown, providing a flawless, skin-like part.', 'custom-woocommerce-react'),
+'silk_top_without_lace_point_2' => esc_html__('Ideal for women who wish to show and blend their own natural hairline at the front for a highly personalized look.', 'custom-woocommerce-react'),
+'full_lace_best_for' => esc_html__('Best For (Alopecia Totalis)', 'custom-woocommerce-react'),
+'full_lace_point_1' => esc_html__('Total Hair Loss: The superior choice for individuals with complete hair loss (such as Alopecia Totalis) or those who wish to cover their natural hair fully underneath using a wig cap and adhesive.', 'custom-woocommerce-react'),
+'full_lace_point_2' => esc_html__('Ultimate Styling Freedom: Essential for clients who want the option to wear their hair in high ponytails, elaborate braids, or complete up-dos, as the perimeter (nape and sides) hairline is recreated.', 'custom-woocommerce-react'),
+
 'kinky_curly_description' => esc_html__('Highly defined kinky curly hair suitable for afro hair textures, providing a natural look with minimal blending.', 'custom-woocommerce-react'),
     );
 }

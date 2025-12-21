@@ -399,6 +399,7 @@ html[lang="ar"] .lace-description li::before {
 html[lang="ar"] .lace-description h3 {
     text-align: right;
     flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 html[lang="ar"] .lace-description h3::before {
